@@ -13,8 +13,8 @@ services:
       MYSQL_USER: ${MYSQL_USER:-coze}
       MYSQL_PASSWORD: ${MYSQL_PASSWORD:-coze123}
     env_file: *env_file
-    # ports:
-    #   - '3306'
+    ports:
+      - '3506:3306'
     volumes:
       - ./data/mysql:/var/lib/mysql
       - ./volumes/mysql/schema.sql:/docker-entrypoint-initdb.d/init.sql
@@ -92,8 +92,8 @@ services:
       - REDIS_PORT_NUMBER=${REDIS_PORT_NUMBER:-6379}
       - REDIS_IO_THREADS=${REDIS_IO_THREADS:-4}
       - ALLOW_EMPTY_PASSWORD=${ALLOW_EMPTY_PASSWORD:-yes}
-    # ports:
-    #   - '6379'
+    ports:
+      - '6579:6379'
     volumes:
       - ./data/bitnami/redis:/bitnami/redis/data:rw,Z
     command: >
@@ -124,8 +124,8 @@ services:
       - TEST=1
       # Add Java certificate trust configuration
       # - ES_JAVA_OPTS=-Djdk.tls.client.protocols=TLSv1.2 -Dhttps.protocols=TLSv1.2 -Djavax.net.ssl.trustAll=true -Xms4096m -Xmx4096m
-    # ports:
-    #   - '9200'
+    ports:
+      - '9400:9200'
     volumes:
       - ./data/bitnami/elasticsearch:/bitnami/elasticsearch/data
       - ./volumes/elasticsearch/elasticsearch.yml:/opt/bitnami/elasticsearch/config/my_elasticsearch.yml
@@ -139,9 +139,9 @@ services:
           'curl -f http://localhost:9200 && [ -f /tmp/es_plugins_ready ] && [ -f /tmp/es_init_complete ]',
         ]
       interval: 5s
-      timeout: 10s
+      timeout: 500s
       retries: 10
-      start_period: 10s
+      start_period: 500s
     networks:
       - coze-network
     # Install smartcn analyzer plugin and initialize ES
@@ -207,9 +207,9 @@ services:
     privileged: true
     restart: always
     env_file: *env_file
-    # ports:
-    #   - '9000'
-    #   - '9001'
+    ports:
+      - '9200:9000'
+      - '9201:9001'
     volumes:
       - ./data/minio:/data
       - ./volumes/minio/default_icon/:/default_icon
@@ -265,9 +265,9 @@ services:
       - ETCD_AUTO_COMPACTION_RETENTION=1000
       - ETCD_QUOTA_BACKEND_BYTES=4294967296
       - ALLOW_NONE_AUTHENTICATION=yes
-    # ports:
-    #   - '2379'
-    #   - '2380'
+    ports:
+      - '2579:2379'
+      - '2580:2380'
     volumes:
       - ./data/bitnami/etcd:/bitnami/etcd:rw,Z
       - ./volumes/etcd/etcd.conf.yml:/opt/bitnami/etcd/conf/etcd.conf.yml:ro,Z
@@ -322,9 +322,9 @@ services:
       timeout: 10s
       retries: 10
       start_period: 10s
-    # ports:
-    #   - '19530'
-    #   - '9091'
+    ports:
+      - '21530:19530'
+      - '9291:9091'
     depends_on:
       etcd:
         condition: service_healthy
@@ -337,9 +337,9 @@ services:
     container_name: coze-nsqlookupd
     command: /nsqlookupd
     restart: always
-    # ports:
-    #   - '4160'
-    #   - '4161'
+    ports:
+      - '4360:4160'
+      - '4361:4161'
     networks:
       - coze-network
     healthcheck:
@@ -354,9 +354,9 @@ services:
     container_name: coze-nsqd
     command: /nsqd --lookupd-tcp-address=nsqlookupd:4160 --broadcast-address=nsqd
     restart: always
-    # ports:
-    #   - '4150'
-    #   - '4151'
+    ports:
+      - '4350:4150'
+      - '4351:4151'
     depends_on:
       nsqlookupd:
         condition: service_healthy
@@ -374,8 +374,8 @@ services:
     container_name: coze-nsqadmin
     command: /nsqadmin --lookupd-http-address=nsqlookupd:4161
     restart: always
-    # ports:
-    #   - '4171'
+    ports:
+      - '4371:4171'
     depends_on:
       nsqlookupd:
         condition: service_healthy
@@ -383,10 +383,11 @@ services:
       - coze-network
 
   coze-server:
-    # build:
-    #   context: ../
-    #   dockerfile: backend/Dockerfile
-    image: cozedev/coze-studio-server:latest
+    #    2.使用本地源代码进行构建还是远程镜像构建
+    build:
+        context: ../
+        dockerfile: backend/Dockerfile
+#    image: cozedev/coze-studio-server:latest
     restart: always
     container_name: coze-server
     env_file: *env_file
@@ -394,9 +395,10 @@ services:
     #   LISTEN_ADDR: 0.0.0.0:8888
     networks:
       - coze-network
-    # ports:
-    #   - '8888'
-    #   - '8889'
+    #     1.如果是进行开发就解除注释，不开发就注释掉
+    ports:
+      - '8888:8888'
+      - '8889:8889'
     volumes:
       - .env:/app/.env
       - ../backend/conf:/app/resources/conf
@@ -415,10 +417,11 @@ services:
     command: ['/app/opencoze']
 
   coze-web:
-    # build:
-    #   context: ..
-    #   dockerfile: frontend/Dockerfile
-    image: cozedev/coze-studio-web:latest
+    #    2.使用本地源代码进行构建还是远程镜像构建
+    build:
+      context: ..
+      dockerfile: frontend/Dockerfile
+    #    image: cozedev/coze-studio-web:latest
     container_name: coze-web
     restart: always
     ports:

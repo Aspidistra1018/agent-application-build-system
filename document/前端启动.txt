@@ -1,0 +1,30 @@
+思考：用户需要在 Windows 11 上本地运行前端，项目采用 Rush+PNPM 管理，因此梳理依赖安装、命令路径和启动方式即可。
+
+准备环境
+
+在 PowerShell 中检查 Node 版本：node -v（需 ≥21，若未安装请先从 Node.js 官网安装 LTS 以上版本）。
+启用并锁定 pnpm 版本：corepack enable → corepack use pnpm@8.15.8（任意路径执行一次即可）。
+安装 Rush CLI：以管理员 PowerShell 执行 npm install -g @microsoft/rush@5.147.1。
+安装依赖
+
+打开 PowerShell，切到仓库根目录：cd F:\毕设测试\coze-studio。
+首次或依赖更新后运行：rush install（若想强制刷新锁文件可用 rush update，同样在仓库根目录执行）。
+启动前端开发服
+
+方式一（直接进入应用目录，用 npm/pnpm）：
+cd F:\毕设测试\coze-studio\frontend\apps\coze-studio
+pnpm run dev（等同 npm run dev，实际调用 Rsbuild 开发服务器，默认严格占用输出日志中的端口，首次一般是 3000）。
+方式二（保持在仓库根目录，用 rushx 调度）：
+cd F:\毕设测试\coze-studio
+rushx --cwd frontend/apps/coze-studio dev 或进入子目录后执行 rushx dev。
+运行结果与常用参数
+
+首次启动会自动生成构建缓存，命令行输出中可看到访问地址（形如 http://127.0.0.1:3000，若端口被占用会提示更换失败，因为配置了 strictPort: true，需手动释放或改端口）。
+若需要指定端口，可在启动命令前设置环境变量：$env:PORT=3100; pnpm run dev（PowerShell 用法）。
+前端的 /api、/v1 等请求会按照 frontend/apps/coze-studio/rsbuild.config.ts 中的代理设置转发至 http://localhost:${WEB_SERVER_PORT||8888}，请确保后端或 mock 服务已相应启动。
+开发提示
+
+变更依赖后重新执行 rush install。
+若遇到权限或大小写问题，建议在 PowerShell 中运行，并留意日志中的错误信息。
+浏览器访问时请始终使用终端输出的最终地址；如需要对外访问，可在命令后追加 --host 0.0.0.0。
+这样即可在本地完成前端的启动与调试。

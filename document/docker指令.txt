@@ -1,0 +1,24 @@
+构建后端
+docker-compose build coze-server
+构建前端
+docker-compose build coze-web
+
+运行后端
+docker-compose up -d coze-server
+运行前端
+docker-compose up -d coze-web 
+
+构建并运行后端
+docker-compose up -d --build coze-server
+构建并运行前端
+docker-compose up -d --build coze-web
+
+拉取镜像并运行所有容器
+docker compose up -d
+
+启动debug环境指定容器
+docker compose -f docker-compose-debug.yml --profile middleware up -d
+
+重启 Windows NAT 网络驱动
+net stop winnat
+net start winnat

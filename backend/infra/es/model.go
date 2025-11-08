@@ -70,6 +70,4 @@ type TotalHits struct {
 	Value    int64             `json:"value"`
 }
 
-type TotalHitsRelation struct {
-	Name string
-}
+type TotalHitsRelation string
