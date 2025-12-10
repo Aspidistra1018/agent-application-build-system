@@ -342,3 +342,10 @@ func userDo2PlaygroundTo(userDo *entity.User) *playground.UserBasicInfo {
 		CreateTime:     ptr.Of(userDo.CreatedAt / 1000),
 	}
 }
+
+func (u *UserApplicationService) GetUserByEmail(ctx context.Context, email string) (*entity.User, error) {
+	if email == "" {
+		return nil, errorx.New(errno.ErrUserInvalidParamCode, errorx.KV("msg", "Email is empty"))
+	}
+	return u.DomainSVC.GetUserByEmail(ctx, email)
+}

@@ -24,8 +24,10 @@ import (
 )
 
 func rootMw() []app.HandlerFunc {
-	// your code...
-	return nil
+	// Add SSO authentication middleware
+	return []app.HandlerFunc{
+		middleware.SSOAuthMW(),
+	}
 }
 
 func _apiMw() []app.HandlerFunc {
@@ -1656,6 +1658,16 @@ func _message0Mw() []app.HandlerFunc {
 }
 
 func _listchatmessageapiMw() []app.HandlerFunc {
+	// your code...
+	return nil
+}
+
+func _ssoMw() []app.HandlerFunc {
+	// your code...
+	return nil
+}
+
+func _passportssolLogingetMw() []app.HandlerFunc {
 	// your code...
 	return nil
 }

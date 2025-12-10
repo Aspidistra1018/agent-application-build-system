@@ -696,3 +696,23 @@ func userPo2Do(model *model.User, iconURL string) *userEntity.User {
 		UpdatedAt:    model.UpdatedAt,
 	}
 }
+
+func (u *userImpl) GetUserByEmail(ctx context.Context, email string) (*userEntity.User, error) {
+	if email == "" {
+		return nil, errorx.New(errno.ErrUserInvalidParamCode, errorx.KV("msg", "Email is empty"))
+	}
+
+	userPo, exist, err := u.UserRepo.GetUsersByEmail(ctx, email)
+	if err != nil {
+		return nil, err
+	}
+	if !exist || userPo == nil {
+		return nil, errorx.New(errno.ErrUserInfoInvalidateCode, errorx.KV("email", email))
+	}
+
+	iconURL, err := u.IconOSS.GetObjectUrl(ctx, userPo.IconURI)
+	if err != nil {
+		return nil, err
+	}
+	return userPo2Do(userPo, iconURL), nil
+}

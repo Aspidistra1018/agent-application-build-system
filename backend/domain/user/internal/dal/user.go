@@ -160,3 +160,12 @@ func (dao *UserDAO) GetUsersByIDs(ctx context.Context, userIDs []int64) ([]*mode
 		dao.query.User.ID.In(userIDs...),
 	).Find()
 }
+
+// GetUserByEmail Get user by email
+func (dao *UserDAO) GetUserByEmail(ctx context.Context, email string) (*model.User, error) {
+	user, err := dao.query.User.WithContext(ctx).Where(dao.query.User.Email.Eq(email)).First()
+	if errors.Is(err, gorm.ErrRecordNotFound) {
+		return nil, nil
+	}
+	return user, err
+}

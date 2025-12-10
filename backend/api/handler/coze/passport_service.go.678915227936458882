@@ -241,7 +241,7 @@ func UserUpdateProfile(ctx context.Context, c *app.RequestContext) {
 // @router /passport/sso/login [GET]
 func PassportSSOLoginGet(ctx context.Context, c *app.RequestContext) {
 	token := string(c.Query("token"))
-
+	
 	if token == "" {
 		c.JSON(http.StatusBadRequest, map[string]interface{}{
 			"code": http.StatusBadRequest,
@@ -276,12 +276,12 @@ func PassportSSOLoginGet(ctx context.Context, c *app.RequestContext) {
 	if err != nil || userInfo == nil {
 		// User not found in Agent system, create user automatically (SSO sync)
 		logs.Infof("[PassportSSOLoginGet] User not found, creating SSO user: %s", claims.Email)
-
+		
 		// Create SSO user with basic info
 		registerReq := &passport.PassportWebEmailRegisterV2PostRequest{}
 		registerReq.Email = claims.Email
 		registerReq.Password = "sso-auto-generated-" + claims.Email // Random password for SSO users
-
+		
 		// Register the user
 		_, sessionKey, regErr := user.UserApplicationSVC.PassportWebEmailRegisterV2(ctx, "zh-CN", registerReq)
 		if regErr != nil {
@@ -292,7 +292,7 @@ func PassportSSOLoginGet(ctx context.Context, c *app.RequestContext) {
 			})
 			return
 		}
-
+		
 		// Get the newly created user
 		userInfo, err = user.UserApplicationSVC.GetUserByEmail(ctx, claims.Email)
 		if err != nil || userInfo == nil {
@@ -303,7 +303,7 @@ func PassportSSOLoginGet(ctx context.Context, c *app.RequestContext) {
 			})
 			return
 		}
-
+		
 		// Use the session key from registration
 		userInfo.SessionKey = sessionKey
 	}
