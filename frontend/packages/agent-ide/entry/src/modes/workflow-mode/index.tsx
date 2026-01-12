@@ -182,13 +182,13 @@ export const WorkflowMode: React.FC<WorkflowModeProps> = ({
       title={I18n.t('bot_preview_debug_title')}
       titleClassName={showBackground ? '!coz-fg-images-white' : ''}
       containerClassName={classNames(
-        s['bj-cover'],
+        s['chat-header-card'],
         showBackground && `${s['bj-img-cover']} `,
         s['bj-single-cover'],
       )}
       headerClassName={classNames(
         s['debug-chat-header-padding'],
-        `${s['border-cover']}`,
+        s['chat-header'],
         {
           '!bg-transparent': showBackground,
         },

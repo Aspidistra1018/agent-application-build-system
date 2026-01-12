@@ -31,6 +31,8 @@ import {
 } from '@coze-data/knowledge-resource-processor-adapter';
 import { useSpaceStore } from '@coze-arch/bot-studio-store';
 
+import styles from './index.module.less';
+
 export const KnowledgeUploadPage = () => {
   const navigate = useNavigate();
   const spaceID = useSpaceStore(store => store.space.id);
@@ -61,27 +63,29 @@ export const KnowledgeUploadPage = () => {
   }
 
   return (
-    <KnowledgeParamsStoreProvider
-      params={{ ...params, spaceID }}
-      resourceNavigate={{
-        // eslint-disable-next-line max-params
-        toResource: (resource, resourceID, query, opts) =>
-          navigate(
-            `/space/${params.spaceID}/${resource}/${resourceID}?${qs.stringify(
-              query,
-            )}`,
-            opts,
-          ),
-        upload: (query, opts) =>
-          navigate(
-            `/space/${params.spaceID}/knowledge/${
-              params.datasetID
-            }/upload?${qs.stringify(query)}`,
-            opts,
-          ),
-      }}
-    >
-      <KnowledgeResourceProcessor uploadConfig={uploadConfig} />
-    </KnowledgeParamsStoreProvider>
+    <div className={styles['knowledge-upload-wrapper']}>
+      <KnowledgeParamsStoreProvider
+        params={{ ...params, spaceID }}
+        resourceNavigate={{
+          // eslint-disable-next-line max-params
+          toResource: (resource, resourceID, query, opts) =>
+            navigate(
+              `/space/${params.spaceID}/${resource}/${resourceID}?${qs.stringify(
+                query,
+              )}`,
+              opts,
+            ),
+          upload: (query, opts) =>
+            navigate(
+              `/space/${params.spaceID}/knowledge/${
+                params.datasetID
+              }/upload?${qs.stringify(query)}`,
+              opts,
+            ),
+        }}
+      >
+        <KnowledgeResourceProcessor uploadConfig={uploadConfig} />
+      </KnowledgeParamsStoreProvider>
+    </div>
   );
 };

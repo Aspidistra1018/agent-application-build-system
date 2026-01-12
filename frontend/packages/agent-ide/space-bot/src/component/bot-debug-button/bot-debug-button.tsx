@@ -20,6 +20,7 @@ import { useBotDetailIsReadonly } from '@coze-studio/bot-detail-store';
 import { type IconButtonProps } from '@coze-arch/coze-design/types';
 import { Button, IconButton } from '@coze-arch/coze-design';
 import { type UIButton } from '@coze-arch/bot-semi';
+import cx from 'classnames';
 
 import s from './index.module.less';
 
@@ -32,8 +33,16 @@ export const BotDebugButton: FC<IconButtonProps> = forwardRef(
       return null;
     }
     if (props.icon && !props.children) {
-      return <IconButton {...props} className={s[className]} ref={ref} />;
+      return (
+        <IconButton
+          {...props}
+          className={cx(s[className], props.className)}
+          ref={ref}
+        />
+      );
     }
-    return <Button {...props} className={s[className]} ref={ref} />;
+    return (
+      <Button {...props} className={cx(s[className], props.className)} ref={ref} />
+    );
   },
 );

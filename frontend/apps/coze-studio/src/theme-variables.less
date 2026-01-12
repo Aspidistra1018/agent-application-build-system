@@ -1,0 +1,48 @@
+// 全局主题色变量配置
+// 统一整个系统的主题颜色
+
+// ============================================
+// 主题色定义
+// ============================================
+
+// 主色 - 粉橙色
+@theme-color-primary: rgb(254 200 180);
+@theme-color-primary-hover: rgb(254 190 168);
+@theme-color-primary-active: rgb(252 178 154);
+@theme-color-primary-disabled: rgb(254 200 180 / 45%);
+@theme-color-primary-light: rgb(254 200 180 / 20%);
+@theme-color-primary-light-hover: rgb(254 200 180 / 28%);
+
+// 渐变背景色
+@theme-gradient-background: linear-gradient(180deg, #fff7f0 0%, #f3f6ff 100%);
+
+// 文字颜色
+@theme-text-primary: #1c1f23;
+@theme-text-secondary: rgb(28 29 35 / 80%);
+
+// 边框颜色
+@theme-border-color: rgb(54 42 48 / 12%);
+
+// 卡片背景 - 更柔和的过渡
+@theme-card-bg: rgb(255 255 255 / 65%);
+@theme-card-bg-hover: rgb(255 255 255 / 80%);
+
+// ============================================
+// 全局 CSS 变量覆盖
+// ============================================
+
+:root {
+  // Semi Design 主题色覆盖
+  --semi-color-primary: @theme-color-primary;
+  --semi-color-primary-hover: @theme-color-primary-hover;
+  --semi-color-primary-active: @theme-color-primary-active;
+  --semi-color-primary-disabled: @theme-color-primary-disabled;
+  --semi-color-primary-light-default: @theme-color-primary-light;
+  --semi-color-primary-light-hover: @theme-color-primary-light-hover;
+
+  // 自定义主题变量
+  --theme-color-primary: @theme-color-primary;
+  --theme-color-primary-hover: @theme-color-primary-hover;
+  --theme-color-primary-active: @theme-color-primary-active;
+  --theme-color-primary-light: @theme-color-primary-light;
+}

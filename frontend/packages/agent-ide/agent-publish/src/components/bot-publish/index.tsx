@@ -126,6 +126,7 @@ export const AgentPublishPage = () => {
   const publishBtn = (
     <UIButton
       theme="solid"
+      className={styles['publish-primary-btn']}
       //Resolve the error caused by clicking publish when the asynchronous request botInfo is not returned
       disabled={Boolean(publishDisabled) || !botInfo.name}
       loading={publishLoading}
@@ -155,6 +156,7 @@ export const AgentPublishPage = () => {
           ) : (
             <UIButton
               theme="solid"
+              className={styles['publish-primary-btn']}
               onClick={() => {
                 goBack();
               }}
@@ -166,34 +168,38 @@ export const AgentPublishPage = () => {
       </UILayout.Header>
 
       <UILayout.Content className={styles['publish-content']}>
-        <PublishTableContext.Provider
-          value={{
-            publishLoading,
-            refreshTableData: refresh,
-          }}
-        >
-          <Spin spinning={loading} style={{ width: 800, margin: '0 auto' }}>
-            {publishStatus === Publish.NoPublish ? (
-              <PublishTable
-                setPublishStatus={setPublishStatus}
-                setPublishResult={setPublishResult}
-                connectInfoList={connectInfoList ?? []}
-                connectorBrandInfoMap={connectorBrandInfoMap ?? {}}
-                botInfo={botInfo}
-                monetizeConfig={monetizeConfig}
-                publishTips={publishTips}
-                getPublishDisabled={disabled => {
-                  setPublishDisabled(disabled);
-                }}
-                getPublishLoading={pubLoading => setPublishLoading(pubLoading)}
-                ref={publishRef}
-                canOpenSource={canOpenSource}
-              />
-            ) : (
-              <PublishResult publishResult={publishResult} />
-            )}
-          </Spin>
-        </PublishTableContext.Provider>
+        <div className={styles['publish-surface']}>
+          <PublishTableContext.Provider
+            value={{
+              publishLoading,
+              refreshTableData: refresh,
+            }}
+          >
+            <Spin spinning={loading} style={{ width: 800, margin: '0 auto' }}>
+              {publishStatus === Publish.NoPublish ? (
+                <PublishTable
+                  setPublishStatus={setPublishStatus}
+                  setPublishResult={setPublishResult}
+                  connectInfoList={connectInfoList ?? []}
+                  connectorBrandInfoMap={connectorBrandInfoMap ?? {}}
+                  botInfo={botInfo}
+                  monetizeConfig={monetizeConfig}
+                  publishTips={publishTips}
+                  getPublishDisabled={disabled => {
+                    setPublishDisabled(disabled);
+                  }}
+                  getPublishLoading={pubLoading =>
+                    setPublishLoading(pubLoading)
+                  }
+                  ref={publishRef}
+                  canOpenSource={canOpenSource}
+                />
+              ) : (
+                <PublishResult publishResult={publishResult} />
+              )}
+            </Spin>
+          </PublishTableContext.Provider>
+        </div>
       </UILayout.Content>
     </UILayout>
   );

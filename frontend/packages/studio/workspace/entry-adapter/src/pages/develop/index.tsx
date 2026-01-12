@@ -70,6 +70,8 @@ import {
 import { EVENT_NAMES, sendTeaEvent } from '@coze-arch/bot-tea';
 import { SpaceType } from '@coze-arch/bot-api/developer_api';
 
+import s from './index.module.less';
+
 export const Develop: FC<DevelopProps> = ({ spaceId }) => {
   const isPersonal = useSpaceStore(
     state => state.space.space_type === SpaceType.Personal,
@@ -146,13 +148,17 @@ export const Develop: FC<DevelopProps> = ({ spaceId }) => {
     <>
       {contextHolder}
       {cardActionsContextHolder}
-      <Layout>
+      <Layout className={s.page}>
         <Header>
           <HeaderTitle>
             <span>{I18n.t('workspace_develop')}</span>
           </HeaderTitle>
           <HeaderActions>
-            <Button icon={<IconCozPlus />} onClick={actions.createIntelligence}>
+            <Button
+              className={s['primary-btn']}
+              icon={<IconCozPlus />}
+              onClick={actions.createIntelligence}
+            >
               {I18n.t('workspace_create')}
             </Button>
           </HeaderActions>

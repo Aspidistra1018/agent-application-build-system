@@ -16,7 +16,7 @@
 
 import { useNavigate } from 'react-router-dom';
 import { Helmet } from 'react-helmet';
-import { type ReactNode, useEffect, useRef } from 'react';
+import { type ReactNode, useEffect, useMemo, useRef, useState } from 'react';
 
 import { useShallow } from 'zustand/react/shallow';
 import { cloneDeep } from 'lodash-es';
@@ -49,6 +49,132 @@ export interface BotHeaderProps {
   modeOptionList: ModeSelectProps['optionList'];
   deployButton: ReactNode;
 }
+
+type LayoutMode = 'split' | 'stack' | 'float';
+type PanelKey = 'config' | 'chat';
+
+const LAYOUT_ACTION_EVENT = 'agent-ide:single-mode-layout-action';
+const LAYOUT_STATE_EVENT = 'agent-ide:single-mode-layout-state';
+const STORAGE_KEY = 'agent-ide:single-mode-layout:v1';
+
+const safeParse = <T,>(raw: string | null): T | null => {
+  if (!raw) {
+    return null;
+  }
+  try {
+    return JSON.parse(raw) as T;
+  } catch {
+    return null;
+  }
+};
+
+const LayoutInline = () => {
+  const initial = useMemo(() => {
+    if (typeof window === 'undefined') {
+      return { layoutMode: 'split' as LayoutMode, panelOrder: ['config', 'chat'] as PanelKey[] };
+    }
+    const persisted = safeParse<{ layoutMode?: LayoutMode; panelOrder?: PanelKey[] }>(
+      localStorage.getItem(STORAGE_KEY),
+    );
+    return {
+      layoutMode: persisted?.layoutMode ?? 'split',
+      panelOrder:
+        persisted?.panelOrder?.length === 2
+          ? (persisted.panelOrder as PanelKey[])
+          : (['config', 'chat'] as PanelKey[]),
+    };
+  }, []);
+
+  const [layoutMode, setLayoutMode] = useState<LayoutMode>(initial.layoutMode);
+  const [panelOrder, setPanelOrder] = useState<PanelKey[]>(initial.panelOrder);
+
+  useEffect(() => {
+    const onState = (evt: Event) => {
+      const detail = (evt as CustomEvent<{ layoutMode: LayoutMode; panelOrder: PanelKey[] }>)
+        .detail;
+      if (!detail) {
+        return;
+      }
+      setLayoutMode(detail.layoutMode);
+      setPanelOrder(detail.panelOrder);
+    };
+
+    window.addEventListener(LAYOUT_STATE_EVENT, onState as EventListener);
+    return () => {
+      window.removeEventListener(LAYOUT_STATE_EVENT, onState as EventListener);
+    };
+  }, []);
+
+  const dispatch = (detail: { type: 'setMode'; mode: LayoutMode } | { type: 'swap' } | { type: 'reset' }) => {
+    window.dispatchEvent(new CustomEvent(LAYOUT_ACTION_EVENT, { detail }));
+  };
+
+  const onKeyDown =
+    (action: () => void) => (e: React.KeyboardEvent<HTMLSpanElement>) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        action();
+      }
+    };
+
+  return (
+    <div className={s['layout-inline']}>
+      <span className={s['layout-label']}>布局</span>
+      <span className={s['layout-links']}>
+        <span
+          className={cx(s['layout-link'], layoutMode === 'split' && s['layout-link-active'])}
+          onClick={() => dispatch({ type: 'setMode', mode: 'split' })}
+          onKeyDown={onKeyDown(() => dispatch({ type: 'setMode', mode: 'split' }))}
+          role="button"
+          tabIndex={0}
+        >
+          并排
+        </span>
+        <span className={s['layout-dot']} />
+        <span
+          className={cx(s['layout-link'], layoutMode === 'stack' && s['layout-link-active'])}
+          onClick={() => dispatch({ type: 'setMode', mode: 'stack' })}
+          onKeyDown={onKeyDown(() => dispatch({ type: 'setMode', mode: 'stack' }))}
+          role="button"
+          tabIndex={0}
+        >
+          上下
+        </span>
+        <span className={s['layout-dot']} />
+        <span
+          className={cx(s['layout-link'], layoutMode === 'float' && s['layout-link-active'])}
+          onClick={() => dispatch({ type: 'setMode', mode: 'float' })}
+          onKeyDown={onKeyDown(() => dispatch({ type: 'setMode', mode: 'float' }))}
+          role="button"
+          tabIndex={0}
+        >
+          自由
+        </span>
+      </span>
+      <span className={s['layout-sep']} />
+      <span
+        className={s['layout-action']}
+        onClick={() => dispatch({ type: 'swap' })}
+        onKeyDown={onKeyDown(() => dispatch({ type: 'swap' }))}
+        role="button"
+        tabIndex={0}
+        title={panelOrder[0] === 'config' ? '编辑/预览互换' : '预览/编辑互换'}
+      >
+        交换
+      </span>
+      <span className={s['layout-sep']} />
+      <span
+        className={s['layout-action']}
+        onClick={() => dispatch({ type: 'reset' })}
+        onKeyDown={onKeyDown(() => dispatch({ type: 'reset' }))}
+        role="button"
+        tabIndex={0}
+      >
+        重置
+      </span>
+    </div>
+  );
+};
 
 export const BotHeader: React.FC<BotHeaderProps> = props => {
   const navigate = useNavigate();
@@ -133,7 +259,8 @@ export const BotHeader: React.FC<BotHeaderProps> = props => {
           {diffTask ? null : <ModeSelect optionList={props.modeOptionList} />}
         </div>
 
-        {/* 2. Middle bot menu area - offline */}
+        {/* 2. Middle inline layout control */}
+        {diffTask ? null : <LayoutInline />}
 
         {/* 3. Right bot state area */}
         {props.addonAfter}

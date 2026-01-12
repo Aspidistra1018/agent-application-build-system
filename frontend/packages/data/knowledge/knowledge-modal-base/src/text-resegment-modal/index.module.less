@@ -1,12 +1,35 @@
 
+// 知识库主题色变量
+@knowledge-color-primary: rgb(254 200 180);
+@knowledge-color-primary-hover: rgb(254 190 168);
+@knowledge-color-primary-active: rgb(252 178 154);
+
 .text-resegment-modal {
+  // 覆盖 Semi Design 主题色
+  --semi-color-primary: @knowledge-color-primary;
+  --semi-color-primary-hover: @knowledge-color-primary-hover;
+  --semi-color-primary-active: @knowledge-color-primary-active;
+
   :global {
     .semi-modal-content {
       color: var(--coz-fg-secondary);
+      background: linear-gradient(180deg, #fff7f0 0%, #f3f6ff 100%);
     }
 
     .semi-modal-footer .semi-button {
       margin-left: 16px;
+    }
+
+    // 按钮主色调
+    .semi-button-primary {
+      background-color: @knowledge-color-primary;
+      border-color: @knowledge-color-primary;
+      color: #1c1f23;
+
+      &:hover {
+        background-color: @knowledge-color-primary-hover;
+        border-color: @knowledge-color-primary-hover;
+      }
     }
   }
 

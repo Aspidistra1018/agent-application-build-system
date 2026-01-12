@@ -24,6 +24,8 @@ import {
 } from '@coze-data/knowledge-stores';
 import { DatabaseDetail } from '@coze-data/database-v2';
 
+import styles from './index.module.less';
+
 const DatabaseDetailPage = () => {
   const urlParams = useParams();
   const queryParams = new URLSearchParams(location.search);
@@ -41,21 +43,23 @@ const DatabaseDetailPage = () => {
   };
 
   return (
-    <KnowledgeParamsStoreProvider
-      params={params}
-      resourceNavigate={{
-        // eslint-disable-next-line max-params
-        toResource: (resource, resourceID, query, opts) =>
-          navigate(
-            `/space/${params.spaceID}/${resource}/${resourceID}?${qs.stringify(
-              query,
-            )}`,
-            opts,
-          ),
-      }}
-    >
-      <DatabaseDetail />
-    </KnowledgeParamsStoreProvider>
+    <div className={styles['database-wrapper']}>
+      <KnowledgeParamsStoreProvider
+        params={params}
+        resourceNavigate={{
+          // eslint-disable-next-line max-params
+          toResource: (resource, resourceID, query, opts) =>
+            navigate(
+              `/space/${params.spaceID}/${resource}/${resourceID}?${qs.stringify(
+                query,
+              )}`,
+              opts,
+            ),
+        }}
+      >
+        <DatabaseDetail />
+      </KnowledgeParamsStoreProvider>
+    </div>
   );
 };
 

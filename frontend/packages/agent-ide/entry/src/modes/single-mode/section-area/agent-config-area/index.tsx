@@ -40,7 +40,9 @@ export const AgentConfigArea: React.FC<AgentConfigAreaProps> = props => {
   );
   return (
     <SingleSheet
+      containerClassName={s['ide-sheet-card']}
       headerClassName={classNames([
+        s['ide-sheet-header'],
         'coz-bg-plus',
         'coz-fg-secondary',
         '!h-12',
@@ -59,7 +61,12 @@ export const AgentConfigArea: React.FC<AgentConfigAreaProps> = props => {
         </div>
       }
     >
-      <div className={s['tool-card']}>
+      <div
+        className={classNames(
+          s['tool-card'],
+          props.isAllToolHidden && s['tool-card-with-tool-area-hidden'],
+        )}
+      >
         <LayoutContext value={{ placement: PlacementEnum.LEFT }}>
           <PromptView />
         </LayoutContext>

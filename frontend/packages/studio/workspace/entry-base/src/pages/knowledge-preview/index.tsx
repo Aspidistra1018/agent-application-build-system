@@ -31,6 +31,8 @@ import {
 } from '@coze-data/knowledge-ide-adapter';
 import { useSpaceStore } from '@coze-arch/bot-studio-store';
 
+import styles from './index.module.less';
+
 export const KnowledgePreviewPage = () => {
   const { dataset_id, space_id } = useParams();
   const searchParams = new URLSearchParams(window.location.search);
@@ -57,39 +59,41 @@ export const KnowledgePreviewPage = () => {
   const navigate = useNavigate();
   const spaceID = useSpaceStore(store => store.space.id);
   return (
-    <KnowledgeParamsStoreProvider
-      params={{ ...params, spaceID }}
-      resourceNavigate={{
-        // eslint-disable-next-line max-params
-        toResource: (resource, resourceID, query, opts) =>
-          navigate(
-            `/space/${params.spaceID}/${resource}/${resourceID}?${qs.stringify(
-              query,
-            )}`,
-            opts,
-          ),
-        upload: (query, opts) =>
-          navigate(
-            `/space/${params.spaceID}/knowledge/${
-              params.datasetID
-            }/upload?${qs.stringify(query)}`,
-            opts,
-          ),
-      }}
-    >
-      {(() => {
-        if (params.biz === 'agentIDE') {
-          return <BizAgentKnowledgeIDE />;
-        }
-        if (params.biz === 'workflow') {
-          return <BizWorkflowKnowledgeIDE />;
-        }
-        if (params.biz === 'project') {
-          return <BizProjectKnowledgeIDE />;
-        }
-        // Default'library'
-        return <BizLibraryKnowledgeIDE />;
-      })()}
-    </KnowledgeParamsStoreProvider>
+    <div className={styles['knowledge-preview-wrapper']}>
+      <KnowledgeParamsStoreProvider
+        params={{ ...params, spaceID }}
+        resourceNavigate={{
+          // eslint-disable-next-line max-params
+          toResource: (resource, resourceID, query, opts) =>
+            navigate(
+              `/space/${params.spaceID}/${resource}/${resourceID}?${qs.stringify(
+                query,
+              )}`,
+              opts,
+            ),
+          upload: (query, opts) =>
+            navigate(
+              `/space/${params.spaceID}/knowledge/${
+                params.datasetID
+              }/upload?${qs.stringify(query)}`,
+              opts,
+            ),
+        }}
+      >
+        {(() => {
+          if (params.biz === 'agentIDE') {
+            return <BizAgentKnowledgeIDE />;
+          }
+          if (params.biz === 'workflow') {
+            return <BizWorkflowKnowledgeIDE />;
+          }
+          if (params.biz === 'project') {
+            return <BizProjectKnowledgeIDE />;
+          }
+          // Default'library'
+          return <BizLibraryKnowledgeIDE />;
+        })()}
+      </KnowledgeParamsStoreProvider>
+    </div>
   );
 };

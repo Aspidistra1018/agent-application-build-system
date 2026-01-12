@@ -23,6 +23,7 @@ import { TopBody } from './top-body';
 import { ResultModal } from './result-modal';
 import { PermissionModal, type PermissionModalProps } from './permission-modal';
 import { DataTable, type GetCustomDataConfig } from './data-table';
+import s from './index.module.less';
 export interface PATProps {
   size?: 'small' | 'default';
   type?: 'primary' | 'default';
@@ -74,7 +75,8 @@ export const PatBody: React.FC<PATProps> = ({
     onCancel,
   };
   return (
-    <div className="w-full h-full flex flex-col">
+    <div className={s.theme}>
+      <div className="w-full h-full flex flex-col">
       {renderTopBodySlot?.({ openAddModal: onAddClick }) || (
         <TopBody openAddModal={onAddClick} />
       )}
@@ -99,6 +101,7 @@ export const PatBody: React.FC<PATProps> = ({
         visible={showResult}
         onOk={() => setShowResult(false)}
       />
+      </div>
     </div>
   );
 };

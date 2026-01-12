@@ -24,6 +24,7 @@ import { type Type } from '@coze-arch/bot-semi/Button';
 import { BotDebugButton } from '@coze-agent-ide/space-bot/component';
 
 import { useDeployService } from './hooks/service';
+import s from './style.module.less';
 
 export interface DeployButtonUIProps {
   btnType?: Type;
@@ -80,6 +81,7 @@ export const DeployButtonUI = ({
     >
       <BotDebugButton
         data-testid="agent-ide.goto.publish-button"
+        className={s['publish-btn']}
         theme="solid"
         type={btnType}
         iconPosition="right"

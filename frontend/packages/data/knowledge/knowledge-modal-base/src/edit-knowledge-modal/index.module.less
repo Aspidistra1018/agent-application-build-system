@@ -1,5 +1,18 @@
 /* stylelint-disable declaration-no-important */
+
+// 知识库主题色变量
+@knowledge-color-primary: rgb(254 200 180);
+@knowledge-color-primary-hover: rgb(254 190 168);
+@knowledge-color-primary-active: rgb(252 178 154);
+@knowledge-color-primary-light: rgb(254 200 180 / 20%);
+
 .create-dataset-modal {
+  // 覆盖 Semi Design 主题色
+  --semi-color-primary: @knowledge-color-primary;
+  --semi-color-primary-hover: @knowledge-color-primary-hover;
+  --semi-color-primary-active: @knowledge-color-primary-active;
+  --semi-color-primary-light-default: @knowledge-color-primary-light;
+
   :global {
     .semi-form-field {
       padding-top: 0;
@@ -13,8 +26,64 @@
       font-size: 12px;
       font-weight: 500;
       font-style: normal;
-      line-height: 16px; /* 133.333% */
+      line-height: 16px;
       color: var(--coz-fg-secondary);
+    }
+
+    // 按钮主色调 - 避免叠加
+    .semi-button-primary:not(.semi-button-disabled) {
+      background-color: @knowledge-color-primary;
+      border-color: @knowledge-color-primary;
+      color: #1c1f23;
+      box-shadow: 0 2px 8px rgb(254 200 180 / 30%);
+      transition: all 0.2s ease;
+
+      &:hover {
+        background-color: @knowledge-color-primary-hover;
+        border-color: @knowledge-color-primary-hover;
+        box-shadow: 0 4px 12px rgb(254 200 180 / 40%);
+      }
+
+      &:active {
+        background-color: @knowledge-color-primary-active;
+        border-color: @knowledge-color-primary-active;
+      }
+    }
+
+    // 输入框样式 - 更柔和
+    .semi-input-wrapper {
+      border-radius: 10px;
+      background-color: rgb(255 255 255 / 60%);
+      border-color: rgb(54 42 48 / 8%);
+      transition: all 0.2s ease;
+
+      &:hover {
+        background-color: rgb(255 255 255 / 75%);
+      }
+    }
+
+    // 输入框聚焦状态
+    .semi-input-wrapper:focus-within,
+    .semi-input-wrapper-focus {
+      border-color: @knowledge-color-primary;
+      box-shadow: 0 0 0 2px rgb(254 200 180 / 20%);
+    }
+
+    // 文本域样式
+    .semi-input-textarea-wrapper {
+      border-radius: 10px;
+      background-color: rgb(255 255 255 / 60%);
+      border-color: rgb(54 42 48 / 8%);
+      transition: all 0.2s ease;
+
+      &:hover {
+        background-color: rgb(255 255 255 / 75%);
+      }
+
+      &:focus-within {
+        border-color: @knowledge-color-primary;
+        box-shadow: 0 0 0 2px rgb(254 200 180 / 20%);
+      }
     }
   }
 }

@@ -1,6 +1,13 @@
 /* stylelint-disable declaration-no-important */
 /* stylelint-disable selector-class-pattern */
 /* stylelint-disable max-nesting-depth */
+
+// 知识库主题色变量
+@knowledge-color-primary: rgb(254 200 180);
+@knowledge-color-primary-hover: rgb(254 190 168);
+@knowledge-color-primary-light: rgb(254 200 180 / 20%);
+@knowledge-color-primary-light-hover: rgb(254 200 180 / 28%);
+
 .select-format-type {
   display: flex !important;
   gap: 8px;
@@ -33,15 +40,15 @@
 
 
     .semi-radio-cardRadioGroup_checked {
-      background: var(--coz-mg-hglt);
-      border: 1px solid var(--coz-stroke-hglt);
+      background: @knowledge-color-primary-light;
+      border: 1px solid @knowledge-color-primary;
 
       &:hover {
-        background: var(--coz-mg-hglt-hovered);
+        background: @knowledge-color-primary-light-hover;
       }
 
       &:active {
-        background: var(--coz-mg-hglt-pressed);
+        background: @knowledge-color-primary-light-hover;
       }
     }
 
@@ -68,6 +75,15 @@
             height: 28px;
           }
         }
+      }
+    }
+
+    // 单选框选中状态
+    .semi-radio-checked .semi-radio-inner {
+      border-color: @knowledge-color-primary;
+
+      &::after {
+        background-color: @knowledge-color-primary;
       }
     }
   }

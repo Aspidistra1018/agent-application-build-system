@@ -1,8 +1,65 @@
 /* stylelint-disable declaration-no-important */
+
+// 知识库主题色变量
+@knowledge-color-primary: rgb(254 200 180);
+@knowledge-color-primary-hover: rgb(254 190 168);
+@knowledge-color-primary-active: rgb(252 178 154);
+@knowledge-color-primary-light: rgb(254 200 180 / 20%);
+
 .create-knowledge-modal {
+  // 覆盖 Semi Design 主题色
+  --semi-color-primary: @knowledge-color-primary;
+  --semi-color-primary-hover: @knowledge-color-primary-hover;
+  --semi-color-primary-active: @knowledge-color-primary-active;
+  --semi-color-primary-light-default: @knowledge-color-primary-light;
+
   :global {
     .semi-modal-content {
       max-height: calc(100vh - 100px) !important;
+      background: linear-gradient(180deg, #fff7f0 0%, #f3f6ff 100%);
+    }
+
+    // 按钮主色调
+    .semi-button-primary {
+      background-color: @knowledge-color-primary;
+      border-color: @knowledge-color-primary;
+      color: #1c1f23;
+
+      &:hover {
+        background-color: @knowledge-color-primary-hover;
+        border-color: @knowledge-color-primary-hover;
+      }
+
+      &:active {
+        background-color: @knowledge-color-primary-active;
+        border-color: @knowledge-color-primary-active;
+      }
+    }
+
+    // 输入框聚焦状态
+    .semi-input-wrapper:focus-within,
+    .semi-input-wrapper-focus {
+      border-color: @knowledge-color-primary;
+    }
+
+    // 文本域聚焦状态
+    .semi-input-textarea-wrapper:focus-within {
+      border-color: @knowledge-color-primary;
+    }
+
+    // 单选框选中状态
+    .semi-radio-checked .semi-radio-inner {
+      border-color: @knowledge-color-primary;
+
+      &::after {
+        background-color: @knowledge-color-primary;
+      }
+    }
+
+    // 卡片单选框选中状态
+    .semi-radio-cardRadioGroup_checked {
+      background: @knowledge-color-primary-light;
+      border-color: @knowledge-color-primary;
     }
   }
 }

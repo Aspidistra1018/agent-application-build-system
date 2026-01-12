@@ -65,15 +65,15 @@ export const AgentChatArea: React.FC<AgentChatAreaProps> = ({
         '!text-[16px]',
       )}
       containerClassName={classNames(
-        s['bj-cover'],
+        s['chat-header-card'],
         showBackground && `${s['bj-img-cover']}`,
         'flex-none !h-12',
       )}
-      headerSlotClassName="!h-12"
+      headerSlotClassName={classNames('!h-12', s['chat-header-slot'])}
       headerClassName={classNames(
         s['debug-chat-header-padding'],
-        '!h-12 !text-[16px] !border-0',
-        `${s['border-cover']}`,
+        s['chat-header'],
+        '!h-12 !text-[16px]',
         {
           '!bg-transparent': showBackground,
         },

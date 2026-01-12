@@ -1,0 +1,45 @@
+/* stylelint-disable declaration-no-important */
+
+.publish-btn {
+  &:global(.semi-button) {
+    border: 0 !important;
+    border-radius: 12px !important;
+    color: rgb(54 42 48 / 92%) !important;
+
+    background: linear-gradient(
+      180deg,
+      rgb(254 210 193) 0%,
+      rgb(254 200 180) 55%,
+      rgb(250 190 168) 100%
+    ) !important;
+    box-shadow:
+      0 12px 26px rgb(16 24 40 / 10%),
+      0 1px 0 rgb(255 255 255 / 32%) inset !important;
+
+    transition:
+      transform 0.12s ease,
+      filter 0.12s ease,
+      box-shadow 0.12s ease !important;
+  }
+
+  &:global(.semi-button:hover) {
+    filter: saturate(1.06) contrast(1.02);
+    transform: translateY(-1px);
+    box-shadow:
+      0 14px 30px rgb(16 24 40 / 12%),
+      0 1px 0 rgb(255 255 255 / 36%) inset !important;
+  }
+
+  &:global(.semi-button:active) {
+    transform: translateY(0);
+    filter: saturate(1);
+  }
+
+  &:global(.semi-button-disabled),
+  &:global(.semi-button[disabled]) {
+    opacity: 0.55;
+    filter: grayscale(0.15);
+    transform: none;
+    box-shadow: none !important;
+  }
+}

@@ -31,8 +31,229 @@
   //  @reference: https://stackoverflow.com/questions/14962468/how-can-i-combine-flexbox-and-vertical-scroll-in-a-full-height-app
   min-height: 0;
 
+  --ide-gap: 14px;
+  --ide-radius-lg: 18px;
+  --ide-radius-md: 14px;
+  --ide-border: rgb(54 42 48 / 14%);
+  --ide-border-strong: rgb(54 42 48 / 20%);
+  --ide-surface: rgb(255 252 249 / 90%);
+  --ide-surface-solid: #fffaf6;
+  --ide-shadow-soft: 0 6px 18px rgb(16 24 40 / 8%);
+  --ide-accent: #c44536;
+  --ide-accent-2: #2e7d7a;
+  --ide-accent-3: #6a4aa6;
+
+  background:
+    radial-gradient(1100px 680px at 10% 0%, rgb(255 195 170 / 70%), transparent 62%),
+    radial-gradient(920px 560px at 95% 10%, rgb(202 232 227 / 62%), transparent 60%),
+    radial-gradient(860px 620px at 55% 102%, rgb(210 198 255 / 60%), transparent 58%),
+    linear-gradient(180deg, #fff7f0 0%, #f3f6ff 100%);
+
   &.store {
     height: 100%;
+  }
+}
+
+.single-mode-content {
+  padding: var(--ide-gap);
+  display: block !important;
+}
+
+.single-mode-stage {
+  position: relative;
+  isolation: isolate;
+  width: 100%;
+  height: 100%;
+  min-height: 0;
+  padding-top: 0;
+}
+
+.single-mode-stage-split {
+  display: grid;
+  grid-template-columns: minmax(760px, 1fr) clamp(340px, 30vw, 460px);
+  gap: var(--ide-gap);
+}
+
+.single-mode-stage-slim {
+  grid-template-columns: minmax(900px, 1fr) clamp(320px, 26vw, 420px);
+}
+
+.single-mode-stage-stack {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ide-gap);
+  overflow: auto;
+  padding-bottom: var(--ide-gap);
+}
+
+.single-mode-stage-float {
+  overflow: hidden;
+}
+
+@media (max-width: 1200px) {
+  .single-mode-stage-split {
+    grid-template-columns: 1fr;
+  }
+}
+
+.docked-panel {
+  min-height: 0;
+}
+
+.stack-panel {
+  position: relative;
+  flex: 0 0 auto;
+  min-height: 280px;
+}
+
+.ide-sheet-card {
+  background:
+    linear-gradient(180deg, rgb(255 255 255 / 82%), rgb(255 255 255 / 62%)) !important;
+  border: 1px solid var(--ide-border);
+  border-radius: var(--ide-radius-lg);
+  box-shadow: var(--ide-shadow-soft);
+}
+
+.ide-sheet-header {
+  background-color: transparent !important;
+  border-bottom: 1px solid var(--ide-border) !important;
+}
+
+.chat-header-card {
+  background-color: transparent !important;
+  border: 0 !important;
+  box-shadow: none !important;
+}
+
+.chat-header {
+  background-color: transparent !important;
+  border-bottom: 1px solid var(--ide-border) !important;
+}
+
+.chat-header-slot {
+  justify-content: flex-start !important;
+}
+
+.float-panel {
+  position: absolute;
+  min-height: 240px;
+  will-change: transform;
+
+  border: 1px solid var(--ide-border);
+  border-radius: var(--ide-radius-lg);
+  background:
+    linear-gradient(180deg, rgb(255 255 255 / 62%), rgb(255 255 255 / 42%));
+  box-shadow: 0 18px 42px rgb(16 24 40 / 16%);
+
+  overflow: hidden;
+}
+
+.float-panel-active {
+  border-color: rgb(221 92 76 / 38%);
+  box-shadow:
+    0 20px 48px rgb(16 24 40 / 18%),
+    0 0 0 4px rgb(221 92 76 / 10%);
+}
+
+.float-handle {
+  cursor: grab;
+  touch-action: none;
+
+  position: absolute;
+  top: 10px;
+  left: 12px;
+  z-index: 3;
+
+  width: 64px;
+  height: 22px;
+
+  border: 1px solid rgb(54 42 48 / 16%);
+  border-radius: 999px;
+  background:
+    radial-gradient(circle at 30% 50%, rgb(221 92 76 / 45%) 0 10%, transparent 12%),
+    radial-gradient(circle at 50% 50%, rgb(132 104 165 / 45%) 0 10%, transparent 12%),
+    radial-gradient(circle at 70% 50%, rgb(64 121 140 / 45%) 0 10%, transparent 12%),
+    rgb(255 255 255 / 86%);
+}
+
+.float-resizer {
+  cursor: nwse-resize;
+  touch-action: none;
+
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
+  z-index: 3;
+
+  width: 22px;
+  height: 22px;
+
+  border: 1px solid rgb(54 42 48 / 14%);
+  border-radius: 10px;
+  background:
+    linear-gradient(135deg, rgb(255 255 255 / 86%), rgb(255 255 255 / 58%));
+}
+
+.float-resizer::after {
+  content: '';
+  position: absolute;
+  inset: 5px;
+  border-right: 2px solid rgb(54 42 48 / 18%);
+  border-bottom: 2px solid rgb(54 42 48 / 18%);
+  border-radius: 4px;
+}
+
+.stack-resizer {
+  cursor: ns-resize;
+  touch-action: none;
+
+  position: absolute;
+  left: 50%;
+  bottom: 6px;
+  transform: translateX(-50%);
+  z-index: 2;
+
+  width: 84px;
+  height: 14px;
+
+  border: 1px solid rgb(54 42 48 / 12%);
+  border-radius: 999px;
+  background:
+    linear-gradient(180deg, rgb(255 255 255 / 74%), rgb(255 255 255 / 48%));
+}
+
+.stack-resizer::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 44px;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, rgb(196 69 54 / 50%), rgb(46 125 122 / 50%), transparent);
+  border-radius: 999px;
+}
+
+.float-handle:active {
+  cursor: grabbing;
+}
+
+.float-body {
+  width: 100%;
+  height: 100%;
+}
+
+.float-panel {
+  .ide-sheet-card {
+    border: 0;
+    border-radius: 0;
+    box-shadow: none;
+  }
+
+  .message-area {
+    border: 0;
+    border-radius: 0;
+    box-shadow: none;
   }
 }
 
@@ -68,7 +289,10 @@
   flex: 1 1;
   flex-direction: column;
 
-  border-left: 1px solid rgb(28 29 35 / 12%);
+  border: 1px solid var(--ide-border);
+  border-radius: var(--ide-radius-md);
+  background-color: var(--ide-surface-solid) !important;
+  box-shadow: 0 1px 0 rgb(16 24 40 / 2%);
 
   .setting-title-block {
     display: flex;
@@ -85,6 +309,12 @@
     .semi-collapse-header {
       margin-right: 0;
       margin-left: 0;
+      border-radius: 10px;
+      transition: background-color 0.15s ease;
+    }
+
+    .semi-collapse-header:hover {
+      background-color: rgb(221 92 76 / 6%);
     }
 
     .semi-collapse-content {
@@ -98,7 +328,7 @@
     }
 
     .semi-collapsible-wrapper {
-      padding-left: 16px;
+      padding-left: 12px;
     }
   }
 }
@@ -112,17 +342,21 @@
   justify-content: space-between;
 
   width: 100%;
-  min-width: 404px;
+  min-width: 360px;
   height: 100%;
 
-  transition: min-width 0.2s ease;
+  border: 1px solid var(--ide-border);
+  border-radius: var(--ide-radius-lg);
+  box-shadow: var(--ide-shadow-soft);
+  background:
+    linear-gradient(180deg, rgb(255 255 255 / 86%), rgb(255 255 255 / 62%)) !important;
 
-  @apply bg-background-3;
+  transition: min-width 0.2s ease;
 }
 
 .playground-neat {
   .message-area {
-    min-width: 258px;
+    min-width: 280px;
   }
 }
 
@@ -217,18 +451,30 @@
 }
 
 .wrapper-single-with-tool-area-hidden {
-  grid-template-columns: 26fr 14fr !important;
+  grid-template-columns: minmax(900px, 1fr) clamp(320px, 26vw, 420px) !important;
 }
 
 .tool-card {
   overflow: hidden;
   display: grid;
-  grid-template-columns: 13fr 13fr;
+  grid-template-columns: minmax(520px, 1.2fr) minmax(320px, 0.8fr);
   height: 100%;
+  min-height: 0;
+  gap: var(--ide-gap);
+  padding: var(--ide-gap);
+
+  background:
+    radial-gradient(520px 240px at 0% 0%, rgb(196 69 54 / 10%), transparent 60%),
+    radial-gradient(520px 240px at 100% 0%, rgb(46 125 122 / 10%), transparent 60%),
+    rgb(255 255 255 / 35%);
+
+  > * {
+    min-height: 0;
+  }
 }
 
 .tool-card-with-tool-area-hidden {
-  grid-template-columns: 26fr !important;
+  grid-template-columns: 1fr !important;
 }
 
 .tool-hidden {
