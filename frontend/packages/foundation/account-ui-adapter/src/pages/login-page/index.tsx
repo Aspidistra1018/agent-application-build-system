@@ -14,7 +14,8 @@
  * limitations under the License.
  */
 
-import { type FC, useState } from 'react';
+import { type FC, useState, useEffect } from 'react';
+import { useSearchParams } from 'react-router-dom';
 
 import { CozeBrand } from '@coze-studio/components/coze-brand';
 import { I18n } from '@coze-arch/i18n';
@@ -25,8 +26,9 @@ import { useLoginService } from './service';
 import { Favicon } from './favicon';
 
 export const LoginPage: FC = () => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [searchParams] = useSearchParams();
+  const [email, setEmail] = useState(searchParams.get('sso_email') || '');
+  const [password, setPassword] = useState(searchParams.get('sso_password') || '');
   const [hasError, setHasError] = useState(false);
 
   const { login, register, loginLoading, registerLoading } = useLoginService({
@@ -35,6 +37,20 @@ export const LoginPage: FC = () => {
   });
 
   const submitDisabled = !email || !password || hasError;
+
+  // SSO自动登录
+  useEffect(() => {
+    const ssoEmail = searchParams.get('sso_email');
+    const ssoPassword = searchParams.get('sso_password');
+    
+    if (ssoEmail && ssoPassword) {
+      console.log('检测到SSO登录，自动登录中...');
+      // 延迟执行登录，确保状态已更新
+      setTimeout(() => {
+        login();
+      }, 100);
+    }
+  }, [searchParams, login]);
 
   return (
     <SignFrame brandNode={<CozeBrand isOversea={IS_OVERSEA} />}>
@@ -55,6 +71,7 @@ export const LoginPage: FC = () => {
                 noLabel
                 type="email"
                 field="email"
+                initValue={email}
                 rules={[
                   {
                     required: true,
@@ -81,6 +98,7 @@ export const LoginPage: FC = () => {
                 ]}
                 field="password"
                 type="password"
+                initValue={password}
                 onChange={setPassword}
                 placeholder={I18n.t('open_source_login_placeholder_password')}
               />

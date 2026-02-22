@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useSearchParams } from 'react-router-dom';
 import { useEffect } from 'react';
 
 import { useRequest } from 'ahooks';
@@ -32,6 +32,9 @@ export const useLoginService = ({
   email: string;
   password: string;
 }) => {
+  const [searchParams] = useSearchParams();
+  const navigate = useNavigate();
+
   const loginService = useRequest(
     async () => {
       const res = (await passport.PassportWebEmailLoginPost({
@@ -61,13 +64,25 @@ export const useLoginService = ({
   );
 
   const loginStatus = useLoginStatus();
-  const navigate = useNavigate();
 
   useEffect(() => {
     if (loginStatus === 'logined') {
-      navigate('/');
+      const redirect = searchParams.get('redirect');
+      navigate(redirect || '/');
     }
-  }, [loginStatus]);
+  }, [loginStatus, navigate, searchParams]);
+
+  // SSO自动登录：检查URL参数
+  useEffect(() => {
+    const ssoEmail = searchParams.get('sso_email');
+    const ssoPassword = searchParams.get('sso_password');
+    
+    if (ssoEmail && ssoPassword && !loginService.loading) {
+      console.log('检测到SSO登录参数，自动登录中...');
+      // 自动触发登录
+      loginService.run();
+    }
+  }, [searchParams, loginService]);
 
   return {
     login: loginService.run,

@@ -83,10 +83,37 @@ func startHttpServer() {
 
 	s := server.Default(opts...)
 
-	// cors option
+	// CORS配置 - 同时支持localhost和127.0.0.1
 	config := cors.DefaultConfig()
-	config.AllowAllOrigins = true
-	config.AllowHeaders = []string{"*"}
+	config.AllowOrigins = []string{
+		"http://localhost:5173",   // 统一登录系统前端
+		"http://127.0.0.1:5173",   // 统一登录系统前端（IP形式）
+		"http://localhost:8080",   // Agent系统前端
+		"http://127.0.0.1:8080",   // Agent系统前端（IP形式）
+		"http://localhost:3000",   // Web系统前端
+		"http://127.0.0.1:3000",   // Web系统前端（IP形式）
+	}
+	config.AllowCredentials = true
+	config.AllowHeaders = []string{
+		"Content-Type",
+		"content-type",  // 小写形式
+		"Accept",
+		"accept",
+		"Authorization",
+		"authorization",
+		"X-Requested-With",
+		"Origin",
+		"origin",
+		"Referer",
+		"referer",
+		"User-Agent",
+		"user-agent",
+		"Cookie",
+		"cookie",
+	}
+	config.AllowMethods = []string{"GET", "POST", "PUT", "DELETE", "OPTIONS", "PATCH", "HEAD"}
+	config.ExposeHeaders = []string{"Content-Type", "Content-Length", "Set-Cookie", "Authorization"}
+	config.MaxAge = 12 * 3600 // 预检请求缓存12小时
 	corsHandler := cors.New(config)
 
 	// Middleware order matters
