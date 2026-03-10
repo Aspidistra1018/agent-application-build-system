@@ -22,7 +22,6 @@ import {
   useCommitVersion,
 } from '@coze-project-ide/framework';
 import { useWorkflowResource } from '@coze-project-ide/biz-workflow';
-import { usePluginResource } from '@coze-project-ide/biz-plugin';
 import { useDataResource } from '@coze-project-ide/biz-data';
 import {
   BizResourceTypeEnum,
@@ -41,7 +40,6 @@ import {
   IconCozDatabase,
   IconCozDocument,
   IconCozImage,
-  IconCozPlugin,
   IconCozTable,
   IconCozVariables,
 } from '@coze-arch/coze-design/icons';
@@ -66,16 +64,6 @@ export const ResourceList = ({
     iconRender: workflowIconRender,
     modals: workflowModals,
   } = useWorkflowResource();
-
-  const {
-    onCustomCreate: createPlugin,
-    onDelete: deletePlugin,
-    onChangeName: changeNamePlugin,
-    onAction: handlePluginAction,
-    // createResourceConfig: workflowCreateConfig,
-    validateConfig: validatePluginConfig,
-    modals: pluginModals,
-  } = usePluginResource();
 
   const {
     onCustomCreate: createData,
@@ -108,8 +96,7 @@ export const ResourceList = ({
     () => (projectRoles?.length ?? 0) === 0 || !!commitVersion,
     [projectRoles, commitVersion],
   );
-  const { workflowResource, pluginResource, dataResource, initLoaded } =
-    useResourceList();
+  const { workflowResource, dataResource, initLoaded } = useResourceList();
 
   return (
     <div>
@@ -127,22 +114,6 @@ export const ResourceList = ({
         createResourceConfig={workflowCreateConfig}
         iconRender={workflowIconRender}
         hideMoreBtn={hideMoreBtn}
-      />
-      <ResourceFolderCoze
-        id={`${idPrefix}_${ProjectResourceGroupType.Plugin}`}
-        groupType={ProjectResourceGroupType.Plugin}
-        defaultResourceType={BizResourceTypeEnum.Plugin}
-        resourceTree={pluginResource}
-        canCreate={canCreate}
-        initLoaded={initLoaded}
-        // business realization
-        onChangeName={changeNamePlugin}
-        onCustomCreate={createPlugin}
-        onDelete={deletePlugin}
-        onAction={handlePluginAction}
-        iconRender={() => <IconCozPlugin />}
-        hideMoreBtn={hideMoreBtn}
-        validateConfig={validatePluginConfig}
       />
       <ResourceFolderCoze
         id={`${idPrefix}_${ProjectResourceGroupType.Data}`}
@@ -184,7 +155,6 @@ export const ResourceList = ({
         }}
       />
       {workflowModals}
-      {pluginModals}
       {dataModals}
     </div>
   );

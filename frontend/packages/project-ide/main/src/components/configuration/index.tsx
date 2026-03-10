@@ -31,7 +31,6 @@ import { I18n } from '@coze-arch/i18n';
 import {
   IconCozArrowDown,
   IconCozArrowUp,
-  IconCozChatSetting,
   IconCozVariables,
 } from '@coze-arch/coze-design/icons';
 import { IconButton } from '@coze-arch/coze-design';
@@ -40,8 +39,6 @@ import { HEADER_HEIGHT } from '../../constants/styles';
 
 import styles from './index.module.less';
 
-export const SESSION_CONFIG_STR = '/session';
-const SESSION_CONFIG_URI = new URI(`${URI_SCHEME}:///session`);
 const VARIABLE_CONFIG_URI = new URI(`${URI_SCHEME}:///variables`);
 const VARIABLES_STR = '/variables';
 
@@ -52,10 +49,6 @@ export const Configuration = () => {
   const context = useActivateWidgetContext();
 
   const [expand, setExpand] = useState(true);
-
-  const handleOpenSession = useCallback(() => {
-    navigate(SESSION_CONFIG_STR);
-  }, []);
 
   const handleOpenVariables = useCallback(() => {
     navigate(VARIABLES_STR);
@@ -89,19 +82,6 @@ export const Configuration = () => {
           size="small"
           onClick={handleSwitchExpand}
         />
-      </div>
-      <div
-        className={classnames(
-          styles.item,
-          compareURI(context?.uri, SESSION_CONFIG_URI) && styles.activate,
-        )}
-        onClick={handleOpenSession}
-      >
-        <IconCozChatSetting
-          className="coz-fg-plus"
-          style={{ marginRight: 4 }}
-        />
-        {I18n.t('wf_chatflow_101')}
       </div>
       <div
         className={classnames(

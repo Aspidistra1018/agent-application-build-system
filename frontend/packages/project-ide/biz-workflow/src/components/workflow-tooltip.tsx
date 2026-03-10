@@ -20,10 +20,8 @@ import { I18n } from '@coze-arch/i18n';
 import { WorkflowMode } from '@coze-arch/bot-api/workflow_api';
 import { Image, useTheme } from '@coze-arch/coze-design';
 
-import workflowLightImg from './assets/workflow-light.jpg';
-import workflowDarkImg from './assets/workflow-dark.jpg';
-import chatflowLightImg from './assets/chatflow-light.jpg';
-import chatflowDarkImg from './assets/chatflow-dark.jpg';
+import workflowAgentCard from './assets/workflow-agent-card.svg';
+import chatflowAgentCard from './assets/chatflow-agent-card.svg';
 
 export interface WorkflowTooltipProps {
   flowMode: WorkflowMode;
@@ -31,12 +29,12 @@ export interface WorkflowTooltipProps {
 
 const ILLUSTRATION_IMG_URL = {
   workflow: {
-    dark: workflowDarkImg,
-    light: workflowLightImg,
+    dark: workflowAgentCard,
+    light: workflowAgentCard,
   },
   chatflow: {
-    dark: chatflowDarkImg,
-    light: chatflowLightImg,
+    dark: chatflowAgentCard,
+    light: chatflowAgentCard,
   },
 };
 

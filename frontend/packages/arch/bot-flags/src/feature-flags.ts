@@ -3319,7 +3319,7 @@ export interface FEATURE_FLAGS extends Record<string, boolean> {
 
   /**
    *
-   * 扣子罗盘在扣子的入口
+   * Agent应用自动构建平台罗盘在Agent应用自动构建平台的入口
    *
    * Creator: ** wangziqiang.carl **
    *

@@ -1,0 +1,24 @@
+<svg width="200" height="120" viewBox="0 0 200 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="kbg" x1="0" y1="0" x2="200" y2="120" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FFF9F6"/>
+      <stop offset="1" stop-color="#FFF1EB"/>
+    </linearGradient>
+  </defs>
+  <rect x="0.5" y="0.5" width="199" height="119" rx="10" fill="url(#kbg)" stroke="#F1D0C3"/>
+  <rect x="16" y="16" width="168" height="18" rx="9" fill="#FFF" stroke="#EFC9B9"/>
+  <text x="66" y="29" fill="#A15D45" font-size="10" font-family="Arial, sans-serif">知识库构建</text>
+  <rect x="22" y="44" width="48" height="28" rx="8" fill="#FFF" stroke="#EFC9B9"/>
+  <rect x="76" y="44" width="48" height="28" rx="8" fill="#FFF" stroke="#EFC9B9"/>
+  <rect x="130" y="44" width="48" height="28" rx="8" fill="#FFF" stroke="#EFC9B9"/>
+  <rect x="30" y="52" width="32" height="4" rx="2" fill="#F8E5DD"/>
+  <rect x="84" y="52" width="32" height="4" rx="2" fill="#F8E5DD"/>
+  <rect x="138" y="52" width="32" height="4" rx="2" fill="#F8E5DD"/>
+  <rect x="30" y="60" width="24" height="4" rx="2" fill="#FAEEE9"/>
+  <rect x="84" y="60" width="24" height="4" rx="2" fill="#FAEEE9"/>
+  <rect x="138" y="60" width="24" height="4" rx="2" fill="#FAEEE9"/>
+  <path d="M70 58H76" stroke="#F1A88A" stroke-width="2" stroke-linecap="round"/>
+  <path d="M124 58H130" stroke="#F1A88A" stroke-width="2" stroke-linecap="round"/>
+  <rect x="32" y="84" width="136" height="20" rx="10" fill="#FFF" stroke="#EFC9B9"/>
+  <text x="58" y="97" fill="#8F4F38" font-size="10" font-family="Arial, sans-serif">检索增强与知识问答</text>
+</svg>

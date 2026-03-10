@@ -26,9 +26,6 @@ import {
   IconCozPlusCircle,
   IconCozWorkspace,
   IconCozWorkspaceFill,
-  IconCozCompass,
-  IconCozCompassFill,
-  IconCozDocument,
 } from '@coze-arch/coze-design/icons';
 
 import { AccountDropdown } from '../account-dropdown';
@@ -66,24 +63,6 @@ export const GlobalLayoutComposed: FC<PropsWithChildren> = ({ children }) => {
             activeIcon: <IconCozWorkspaceFill />,
             path: '/space',
             dataTestId: 'layout_workspace-button',
-          },
-          {
-            title: I18n.t('menu_title_store'),
-            icon: <IconCozCompass />,
-            activeIcon: <IconCozCompassFill />,
-            path: '/explore',
-            dataTestId: 'layout_explore-button',
-          },
-        ]}
-        extras={[
-          {
-            icon: <IconCozDocument />,
-            tooltip: I18n.t('menu_documents'),
-            onClick: () => {
-              // cp-disable-next-line
-              window.open('https://www.coze.cn/open/docs/guides');
-            },
-            dataTestId: 'layout_document-button',
           },
         ]}
         footer={<AccountDropdown />}

@@ -17,7 +17,6 @@
 import {
   forwardRef,
   type MouseEvent,
-  type RefObject,
   useEffect,
   useImperativeHandle,
   useRef,
@@ -44,14 +43,12 @@ import { NodePanelContextProvider } from '../hooks/node-panel-context';
 import { useSearchNode, useTemplateNodeList } from '../hooks';
 import { PANEL_WIDTH, THROTTLE_INTERVAL } from '../constant';
 import { SearchResultNodeList } from './search-result-node-list';
-import {
-  FavoritePluginNodeList,
-  type FavoritePluginNodeListRefType,
-} from './plugin-node/favorite-plugin-node-list';
 import { AtomCategoryList } from './atom-category-list';
 
 import styles from './styles.module.less';
-export type NodeListRefType = FavoritePluginNodeListRefType;
+export interface NodeListRefType {
+  refetch: () => Promise<void>;
+}
 interface NodesContainerProps {
   onSelect: (props: {
     event: MouseEvent<HTMLElement>;
@@ -77,7 +74,7 @@ export const NodeList = forwardRef<NodeListRefType, NodesContainerProps>(
       onAddingNode,
     } = props;
     const nodeCategoryList = useTemplateNodeList(containerNode);
-    const nodeListRef = useRef<HTMLDivElement>();
+    const nodeListRef = useRef<HTMLDivElement>(null);
     const [showBorder, setShowBorder] = useState(false);
     const [input, setInput] = useState('');
 
@@ -110,11 +107,13 @@ export const NodeList = forwardRef<NodeListRefType, NodesContainerProps>(
       el.addEventListener('scroll', handleScroll);
       return () => el.removeEventListener('scroll', handleScroll);
     }, [showSearchResult]);
-    const favoritePluginsRef = useRef<FavoritePluginNodeListRefType>();
+    const searchPlaceholder = I18n.t('workflow_250306_01')
+      .replace(/插件[、,\s]*/g, '')
+      .replace(/plugins?,\s*/gi, '');
 
     useImperativeHandle(ref, () => ({
       refetch: async () => {
-        await favoritePluginsRef.current?.refetch();
+        return;
       },
     }));
 
@@ -148,7 +147,7 @@ export const NodeList = forwardRef<NodeListRefType, NodesContainerProps>(
           <Input
             className={styles['node-search-input']}
             showClear
-            placeholder={I18n.t('workflow_250306_01')}
+            placeholder={searchPlaceholder}
             value={input}
             onClear={() => setInput('')}
             onChange={setInput}
@@ -166,7 +165,7 @@ export const NodeList = forwardRef<NodeListRefType, NodesContainerProps>(
         ) : null}
         <Root className={classNames('node-panel-render', styles['node-list'])}>
           <ScrollAreaViewport
-            ref={nodeListRef as RefObject<HTMLDivElement>}
+            ref={nodeListRef}
             className={styles.viewport}
           >
             <NodePanelContextProvider
@@ -190,11 +189,6 @@ export const NodeList = forwardRef<NodeListRefType, NodesContainerProps>(
                   data-testid="workflow.detail.node-panel.list"
                 >
                   <AtomCategoryList data={[nodeCategoryList[0]]} />
-                  <FavoritePluginNodeList
-                    ref={
-                      favoritePluginsRef as RefObject<FavoritePluginNodeListRefType>
-                    }
-                  />
                   <AtomCategoryList data={nodeCategoryList.slice(1)} />
                 </div>
               )}
@@ -212,3 +206,4 @@ export const NodeList = forwardRef<NodeListRefType, NodesContainerProps>(
     );
   },
 );
+

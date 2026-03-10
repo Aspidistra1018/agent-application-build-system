@@ -21,7 +21,7 @@ import type { FlowNodeEntity } from '@flowgram-adapter/free-layout-editor';
 import { useNodeRender } from '@flowgram-adapter/free-layout-editor';
 import { NodeStatusBar } from '@coze-workflow/test-run/log';
 import { NodeExeStatus } from '@coze-workflow/base/api';
-import { CONVERSATION_NODES, StandardNodeType } from '@coze-workflow/base';
+import { StandardNodeType } from '@coze-workflow/base';
 import { I18n } from '@coze-arch/i18n';
 import { Spin, Typography } from '@coze-arch/bot-semi';
 import {
@@ -90,9 +90,6 @@ export const ExecuteStatusBarContent: React.FC<ExecuteStatusBarProps> = ({
    * Error reporting node expanded by default
    */
   const defaultShowPanel = defaultResultCollapseMode === 'all';
-
-  const hasConversation =
-    !!runProjectId && CONVERSATION_NODES.includes(nodeType as StandardNodeType);
 
   const tagColor = useMemo(() => {
     if (isNodeSuccess) {
@@ -185,26 +182,12 @@ export const ExecuteStatusBarContent: React.FC<ExecuteStatusBarProps> = ({
     );
   };
 
-  const handleJumpToProjectConversation = () => {
-    const projectApi = getProjectApi();
-    if (projectId && projectApi) {
-      projectApi.sendMsgOpenWidget('/session', {
-        name: 'tab',
-        data: { value: 'testrun' },
-      });
-    } else {
-      window.open(`/space/${spaceId}/project-ide/${runProjectId}/session`);
-    }
-  };
-
   return (
     <NodeStatusBar
       defaultShowDetail={defaultShowPanel}
       hasExecuteResult={hasExecuteResult}
       needAuth={needAuth}
       onAuth={handleAuth}
-      hasConversation={hasConversation}
-      onJumpToProjectConversation={handleJumpToProjectConversation}
       header={
         <>
           {renderIcon()}

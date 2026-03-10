@@ -28,10 +28,10 @@ import {
 } from '@coze-arch/coze-design';
 
 import { useHiddenSession } from '../../hooks/use-hidden-session';
-import ProjectImg from '../../assets/project-img.png';
-import ProjectImgOversea from '../../assets/project-img-oversea.png';
-import AgentImg from '../../assets/agent-img.png';
-import AgentImgOversea from '../../assets/agent-img-oversea.png';
+import ProjectImg from '../../assets/project-img-custom.svg';
+import ProjectImgOversea from '../../assets/project-img-custom.svg';
+import AgentImg from '../../assets/agent-img-custom.svg';
+import AgentImgOversea from '../../assets/agent-img-custom.svg';
 
 import styles from './index.module.less';
 

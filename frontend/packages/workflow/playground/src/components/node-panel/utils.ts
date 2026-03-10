@@ -16,11 +16,9 @@
 
 import { cloneDeep } from 'lodash-es';
 import { type BotPluginWorkFlowItem } from '@coze-workflow/components';
-import { StandardNodeType } from '@coze-workflow/base';
 import { I18n } from '@coze-arch/i18n';
 import {
   NodePanelSearchType,
-  type NodePanelPlugin,
   type NodePanelSearchResponse,
   type Workflow,
 } from '@coze-arch/bot-api/workflow_api';
@@ -29,13 +27,9 @@ import {
   NodeSearchSectionType,
   type NodeSearchCategoryData,
   type NodeSearchResult,
-  type PluginNodeTemplate,
   type SubWorkflowNodeTemplate,
 } from '@/typing';
-import {
-  createApiNodeInfo,
-  createSubWorkflowNodeInfo,
-} from '@/hooks/use-add-node-modal/helper';
+import { createSubWorkflowNodeInfo } from '@/hooks/use-add-node-modal/helper';
 export const formatWorkflow = (
   spaceId: string,
   workflow: Workflow,
@@ -58,44 +52,6 @@ export const formatWorkflow = (
       spaceId,
       isImageflow: false,
       templateIcon: url,
-    }),
-  };
-};
-
-export const formatPlugin = (plugin: NodePanelPlugin): PluginNodeTemplate => {
-  const {
-    name = '',
-    desc = '',
-    icon = '',
-    plugin_id,
-    tool_list = [],
-    version,
-  } = plugin;
-  return {
-    plugin_id: plugin_id ?? '',
-    name,
-    desc,
-    icon_url: icon,
-    tools: tool_list.map(tool => {
-      const { api_name, api_desc, api_id } = tool;
-      return {
-        type: StandardNodeType.Api,
-        name: api_name,
-        desc: api_desc,
-        plugin_id,
-        version,
-        nodeJSON: createApiNodeInfo(
-          {
-            name: api_name,
-            plugin_name: name,
-            api_id,
-            plugin_id,
-            desc,
-            version_ts: version,
-          },
-          icon,
-        ),
-      };
     }),
   };
 };
@@ -144,79 +100,11 @@ export const formatBackendSearchResult = (
       cursor: next_page_or_cursor,
     });
   }
-  const pluginCategoryData: Array<NodeSearchCategoryData<PluginNodeTemplate>> =
-    [];
-
-  if (panelData?.favorite_plugin?.plugin_list?.length) {
-    const {
-      plugin_list,
-      has_more = false,
-      next_page_or_cursor,
-    } = panelData.favorite_plugin;
-    pluginCategoryData.push({
-      id: NodePanelSearchType.FavoritePlugin,
-      categoryName: I18n.t('workflow_0224_03'),
-      nodeList: plugin_list.map(formatPlugin),
-      hasMore: has_more,
-      cursor: next_page_or_cursor,
-    });
-  }
-  if (panelData?.project_plugin?.plugin_list?.length) {
-    const {
-      plugin_list,
-      has_more = false,
-      next_page_or_cursor,
-    } = panelData.project_plugin;
-    pluginCategoryData.push({
-      id: NodePanelSearchType.ProjectPlugin,
-      categoryName: I18n.t('workflow_0224_02', {
-        source: I18n.t('wf_chatflow_106'),
-      }),
-      nodeList: plugin_list.map(formatPlugin),
-      hasMore: has_more,
-      cursor: next_page_or_cursor,
-    });
-  }
-  if (panelData?.resource_plugin?.plugin_list?.length) {
-    const {
-      plugin_list,
-      has_more = false,
-      next_page_or_cursor,
-    } = panelData.resource_plugin;
-    pluginCategoryData.push({
-      id: NodePanelSearchType.ResourcePlugin,
-      categoryName: I18n.t('workflow_0224_02', {
-        source: I18n.t('navigation_workspace_library'),
-      }),
-      nodeList: plugin_list.map(formatPlugin),
-      hasMore: has_more,
-      cursor: next_page_or_cursor,
-    });
-  }
-  if (panelData?.store_plugin?.plugin_list?.length) {
-    const {
-      plugin_list,
-      has_more = false,
-      next_page_or_cursor,
-    } = panelData.store_plugin;
-    pluginCategoryData.push({
-      id: NodePanelSearchType.StorePlugin,
-      categoryName: I18n.t('workflow_0224_06'),
-      nodeList: plugin_list.map(formatPlugin),
-      hasMore: has_more,
-      cursor: next_page_or_cursor,
-    });
-  }
   return [
     {
       name: I18n.t('Workflow'),
       data: workflowCategoryData,
       dataType: NodeSearchSectionType.SubWorkflow,
-    },
-    {
-      name: I18n.t('project_ide_frame_plugin'),
-      data: pluginCategoryData,
-      dataType: NodeSearchSectionType.Plugin,
     },
   ].filter(item => item.data.length > 0) as NodeSearchResult;
 };

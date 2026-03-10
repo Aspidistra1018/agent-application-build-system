@@ -78,7 +78,7 @@ import { useMoveOut } from './use-move-out';
 import { DescriptionDisplay } from './description-display';
 import { Description } from './description';
 import PluginMockSet from './components/PluginMockSet';
-import { HelpLinkButton } from './components/help-link-button';
+// import { HelpLinkButton } from './components/help-link-button'; // 已移除帮助按钮
 import { CloseButton } from './components/close-button';
 
 import styles from './index.module.less';
@@ -395,14 +395,6 @@ export const NodeHeader: React.FC<NodeHeaderProps> = ({
               <div>
                 <TestRunSingleNodeButton />
               </div>
-            ) : null}
-
-            {registry?.meta?.helpLink && isNodeSideSheet ? (
-              <HelpLinkButton
-                nodeData={nodeData}
-                nodeType={registry.type}
-                helpLink={registry.meta.helpLink}
-              />
             ) : null}
 
             {needShowOperations ? (

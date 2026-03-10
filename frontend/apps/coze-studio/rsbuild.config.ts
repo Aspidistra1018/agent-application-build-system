@@ -42,7 +42,7 @@ const mergedConfig = defineConfig({
     ],
   },
   html: {
-    title: '扣子 Studio',
+    title: 'Agent应用自动构建平台 Studio',
     favicon: './assets/favicon.png',
     template: './index.html',
     crossorigin: 'anonymous',

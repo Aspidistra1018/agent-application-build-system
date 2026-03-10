@@ -19,7 +19,6 @@ import { type FC, useRef } from 'react';
 import {
   BaseLibraryPage,
   useDatabaseConfig,
-  usePluginConfig,
   useWorkflowConfig,
   usePromptConfig,
   useKnowledgeConfig,
@@ -33,8 +32,6 @@ export const LibraryPage: FC<{ spaceId: string }> = ({ spaceId }) => {
       basePageRef.current?.reloadList();
     },
   };
-  const { config: pluginConfig, modals: pluginModals } =
-    usePluginConfig(configCommonParams);
   const { config: workflowConfig, modals: workflowModals } =
     useWorkflowConfig(configCommonParams);
   const { config: knowledgeConfig, modals: knowledgeModals } =
@@ -50,14 +47,12 @@ export const LibraryPage: FC<{ spaceId: string }> = ({ spaceId }) => {
         spaceId={spaceId}
         ref={basePageRef}
         entityConfigs={[
-          pluginConfig,
           workflowConfig,
           knowledgeConfig,
           promptConfig,
           databaseConfig,
         ]}
       />
-      {pluginModals}
       {workflowModals}
       {promptModals}
       {databaseModals}

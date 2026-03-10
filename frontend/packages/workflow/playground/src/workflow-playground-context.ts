@@ -41,8 +41,6 @@ import { REPORT_EVENTS } from '@coze-arch/report-events';
 import { CustomError } from '@coze-arch/bot-error';
 import {
   type NodeCategory as ServerNodeCategory,
-  type PluginCategory,
-  type PluginAPINode,
 } from '@coze-arch/bot-api/workflow_api';
 import {
   ProductEntityType,
@@ -54,11 +52,8 @@ import { ProductApi } from '@coze-arch/bot-api';
 
 import {
   type NodeTemplate,
-  type PluginApiNodeTemplate,
-  type PluginCategoryNodeTemplate,
   type NodeCategory,
 } from './typing';
-import { createApiNodeInfo } from './hooks/use-add-node-modal/helper';
 import { WorkflowGlobalStateEntity } from './entities';
 import { PAGE_SIZE } from './components/node-panel/constant';
 
@@ -79,8 +74,6 @@ export interface ImageflowNodesGroup {
 @injectable()
 export class WorkflowPlaygroundContext implements PlaygroundContext {
   protected nodeTemplateMap = new Map<StandardNodeType, NodeTemplate>();
-  protected pluginApiMap: Record<string, PluginAPINode> = {};
-  protected pluginCategoryMap: Record<string, PluginCategory> = {};
   public favoritePlugins: GetUserFavoriteListData | undefined;
 
   protected nodeCategoryList: ServerNodeCategory[] = [];
@@ -141,18 +134,6 @@ export class WorkflowPlaygroundContext implements PlaygroundContext {
 
     this.favoritePlugins = favoritePlugins;
     this.nodeCategoryList = resp?.data?.cate_list ?? [];
-    this.pluginApiMap = (resp?.data?.plugin_api_list ?? []).reduce<
-      Record<string, PluginAPINode>
-    >((acc, curr) => {
-      curr.api_id && (acc[curr.api_id] = curr);
-      return acc;
-    }, {});
-    this.pluginCategoryMap = (resp?.data?.plugin_category_list ?? []).reduce<
-      Record<string, PluginCategory>
-    >((acc, curr) => {
-      curr.plugin_category_id && (acc[curr.plugin_category_id] = curr);
-      return acc;
-    }, {});
     resp?.data?.template_list?.forEach(temp => {
       if (temp[typeKey]) {
         this.nodeTemplateMap.set(`${temp[typeKey]}` as StandardNodeType, {
@@ -260,9 +241,8 @@ export class WorkflowPlaygroundContext implements PlaygroundContext {
 
   getTemplateCategoryList(
     enabledNodeTypes: StandardNodeType[] = [],
-    isSupportImageflowNodes = false,
+    _isSupportImageflowNodes = false,
   ): NodeCategory[] {
-    const isBindDouyin = Boolean(this.globalState?.isBindDouyin);
     const nodeCategoryList =
       this.nodeCategoryList.length !== 0
         ? this.nodeCategoryList
@@ -284,48 +264,9 @@ export class WorkflowPlaygroundContext implements PlaygroundContext {
             ?.filter<NodeTemplate>((item): item is NodeTemplate =>
               Boolean(item),
             ) ?? [];
-        const pluginApiList: PluginApiNodeTemplate[] = (
-          category.plugin_api_id_list ?? []
-        )?.map(apiId => {
-          const pluginInfo = this.pluginApiMap[apiId];
-          const nodeJSON = createApiNodeInfo(
-            {
-              name: pluginInfo.api_name,
-              plugin_name: pluginInfo.name,
-              api_id: pluginInfo.api_id,
-              plugin_id: pluginInfo.plugin_id,
-              desc: pluginInfo.desc,
-            },
-            pluginInfo.icon_url,
-          );
-          return {
-            type: StandardNodeType.Api,
-            ...pluginInfo,
-            nodeJSON,
-          };
-        });
-        const pluginCategoryList: PluginCategoryNodeTemplate[] = (
-          category.plugin_category_id_list ?? []
-        ).map(categoryId => {
-          const pluginCategory = this.pluginCategoryMap[categoryId];
-          return {
-            type: StandardNodeType.Api,
-            ...pluginCategory,
-            categoryInfo: {
-              categoryId,
-              onlyOfficial: pluginCategory.only_official,
-            },
-          };
-        });
         return {
           categoryName: category.name,
-          nodeList: isSupportImageflowNodes
-            ? [
-                ...nodeList,
-                ...(isBindDouyin ? [] : pluginApiList),
-                ...(isBindDouyin ? [] : pluginCategoryList),
-              ]
-            : nodeList,
+          nodeList,
         };
       })
       .filter(category => category.nodeList.length > 0);

@@ -1,0 +1,511 @@
+﻿<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>应用调用页面</title>
+  <style>
+    :root {
+      --bg: #f5f7fb;
+      --card: #ffffff;
+      --text: #1f2937;
+      --sub: #6b7280;
+      --line: #d1d5db;
+      --primary: #2563eb;
+      --primary-hover: #1d4ed8;
+      --warn-bg: #fef3c7;
+      --warn-text: #92400e;
+      --error: #dc2626;
+      --ok: #065f46;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: "Microsoft YaHei", "PingFang SC", sans-serif;
+      background: linear-gradient(180deg, #eef2ff 0%, var(--bg) 100%);
+      color: var(--text);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 760px;
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      padding: 24px;
+      box-shadow: 0 12px 30px rgba(31, 41, 55, 0.08);
+    }
+
+    h1 {
+      margin: 0 0 8px;
+      font-size: 26px;
+    }
+
+    .desc {
+      margin: 0 0 20px;
+      color: var(--sub);
+      font-size: 14px;
+      line-height: 1.6;
+    }
+
+    .warning {
+      margin-bottom: 20px;
+      background: var(--warn-bg);
+      color: var(--warn-text);
+      border: 1px solid #fcd34d;
+      border-radius: 10px;
+      padding: 12px;
+      font-size: 13px;
+      line-height: 1.6;
+    }
+
+    .grid {
+      display: grid;
+      gap: 14px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 6px;
+      font-size: 13px;
+      color: #374151;
+      font-weight: 600;
+    }
+
+    input {
+      width: 100%;
+      padding: 11px 12px;
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      font-size: 14px;
+      outline: none;
+      transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    input:focus {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+    }
+
+    input.error {
+      border-color: var(--error);
+      background: #fef2f2;
+    }
+
+    .actions {
+      margin-top: 18px;
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    button {
+      border: 0;
+      border-radius: 10px;
+      padding: 11px 16px;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    .primary {
+      background: var(--primary);
+      color: #fff;
+    }
+
+    .primary:hover { background: var(--primary-hover); }
+
+    .ghost {
+      background: #e5e7eb;
+      color: #111827;
+    }
+
+    .status {
+      margin-top: 14px;
+      font-size: 13px;
+      line-height: 1.6;
+      min-height: 24px;
+    }
+
+    .status.error { color: var(--error); }
+    .status.ok { color: var(--ok); }
+
+    code {
+      background: #f3f4f6;
+      border-radius: 6px;
+      padding: 2px 5px;
+      font-size: 12px;
+    }
+  </style>
+</head>
+<body>
+  <main class="container">
+    <h1>应用调用页面</h1>
+    <p class="desc">填写参数后点击“加载并启动”即可调用 Coze Web SDK。</p>
+
+    <div class="warning">
+      需要你填写的值：<code>SDK Script URL</code>、<code>workflowId</code>、<code>token</code>。<br />
+      这些值如果为空，页面会提示并阻止启动。
+    </div>
+
+    <section class="grid">
+      <div>
+        <label for="sdkUrl">SDK Script URL（必填）</label>
+        <input id="sdkUrl" placeholder="例如：https://sf-cdn.coze.cn/xxx/coze-web-sdk.min.js" value="http://127.0.0.1:8080/libs/cn/index.js" />
+      </div>
+
+      <div>
+        <label for="apiHost">API Host（默认转发到 8888）</label>
+        <input id="apiHost" value="http://127.0.0.1:8888" />
+      </div>
+
+      <div>
+        <label for="appId">appId（必填）</label>
+        <input id="appId" value="7583639318204252160" />
+      </div>
+
+      <div>
+        <label for="workflowId">workflowId（必填）</label>
+        <input id="workflowId" placeholder="请填写 workflowId" value="7615293014168043520" />
+      </div>
+
+      <div>
+        <label for="token">token（必填）</label>
+        <input id="token" placeholder="请填写 pat_********" value="pat_26f9e271a320a193f473dfed154341a3ad03a6ff134079a98f3a37e9d6112ba2" />
+      </div>
+    </section>
+
+    <div class="actions">
+      <button class="primary" id="startBtn">加载并启动</button>
+      <button class="ghost" id="clearBtn" type="button">清空可填项</button>
+    </div>
+
+    <div id="status" class="status"></div>
+  </main>
+
+  <script>
+    (function () {
+      var sdkScriptLoaded = false;
+      var sdkScriptLoading = false;
+      var messageNormalizerInstalled = false;
+
+      var fields = {
+        sdkUrl: document.getElementById('sdkUrl'),
+        apiHost: document.getElementById('apiHost'),
+        appId: document.getElementById('appId'),
+        workflowId: document.getElementById('workflowId'),
+        token: document.getElementById('token')
+      };
+
+      var apiProxyInstalled = false;
+
+      var statusEl = document.getElementById('status');
+      var startBtn = document.getElementById('startBtn');
+      var clearBtn = document.getElementById('clearBtn');
+
+      function setStatus(message, type) {
+        statusEl.textContent = message;
+        statusEl.className = 'status' + (type ? ' ' + type : '');
+      }
+
+      function validate() {
+        var missing = [];
+        Object.keys(fields).forEach(function (key) {
+          var input = fields[key];
+          var value = (input.value || '').trim();
+          if (!value) {
+            input.classList.add('error');
+            missing.push(key);
+          } else {
+            input.classList.remove('error');
+          }
+        });
+        return missing;
+      }
+
+      function ensureSdkLoaded(sdkUrl, onReady) {
+        if (window.CozeWebSDK && sdkScriptLoaded) {
+          onReady();
+          return;
+        }
+
+        if (sdkScriptLoading) {
+          setStatus('SDK 正在加载中，请稍候再点一次。', 'error');
+          return;
+        }
+
+        sdkScriptLoading = true;
+        setStatus('正在加载 SDK...', 'ok');
+
+        var webSdkScript = document.createElement('script');
+        webSdkScript.type = 'text/javascript';
+        webSdkScript.src = sdkUrl;
+
+        webSdkScript.onload = function () {
+          sdkScriptLoading = false;
+          sdkScriptLoaded = true;
+          setStatus('SDK 加载成功，正在初始化 WebChatClient...', 'ok');
+          onReady();
+        };
+
+        webSdkScript.onerror = function () {
+          sdkScriptLoading = false;
+          setStatus('SDK 加载失败，请检查 SDK Script URL 是否正确。', 'error');
+        };
+
+        document.head.appendChild(webSdkScript);
+      }
+
+      function extractDisplayText(parsed) {
+        if (parsed == null) {
+          return '';
+        }
+        if (typeof parsed === 'string') {
+          return parsed.trim();
+        }
+        if (typeof parsed === 'number' || typeof parsed === 'boolean') {
+          return String(parsed);
+        }
+
+        var priorityKeys = [
+          'output',
+          'answer',
+          'text',
+          'content',
+          'message',
+          'result',
+          'final_answer'
+        ];
+
+        if (Array.isArray(parsed)) {
+          for (var i = 0; i < parsed.length; i++) {
+            var arrValue = extractDisplayText(parsed[i]);
+            if (arrValue) {
+              return arrValue;
+            }
+          }
+          return '';
+        }
+
+        for (var p = 0; p < priorityKeys.length; p++) {
+          var key = priorityKeys[p];
+          if (Object.prototype.hasOwnProperty.call(parsed, key)) {
+            var value = extractDisplayText(parsed[key]);
+            if (value) {
+              return value;
+            }
+          }
+        }
+
+        var objectKeys = Object.keys(parsed);
+        for (var j = 0; j < objectKeys.length; j++) {
+          var fallbackValue = extractDisplayText(parsed[objectKeys[j]]);
+          if (fallbackValue) {
+            return fallbackValue;
+          }
+        }
+        return '';
+      }
+
+      function normalizeJsonMessageText(rawText) {
+        var text = (rawText || '').trim();
+        if (!text) {
+          return '';
+        }
+        var first = text.charAt(0);
+        var last = text.charAt(text.length - 1);
+        var maybeJson = (first === '{' && last === '}') || (first === '[' && last === ']');
+        if (!maybeJson) {
+          return '';
+        }
+
+        try {
+          var parsed = JSON.parse(text);
+          var displayText = extractDisplayText(parsed);
+          if (displayText) {
+            return displayText;
+          }
+          return '[空响应]';
+        } catch (e) {
+          return '';
+        }
+      }
+
+      function processMessageNodes(rootNode) {
+        var root = rootNode || document.body;
+        var candidates = root.querySelectorAll('div,span,p,pre');
+        for (var i = 0; i < candidates.length; i++) {
+          var el = candidates[i];
+          if (!el || el.childElementCount > 0) {
+            continue;
+          }
+          var currentText = (el.textContent || '').trim();
+          if (!currentText) {
+            continue;
+          }
+          if (el.getAttribute('data-normalized-source') === currentText) {
+            continue;
+          }
+          var normalized = normalizeJsonMessageText(currentText);
+          if (!normalized || normalized === currentText) {
+            el.setAttribute('data-normalized-source', currentText);
+            continue;
+          }
+          el.textContent = normalized;
+          el.setAttribute('data-normalized-source', normalized);
+        }
+      }
+
+      function installMessageNormalizer() {
+        if (messageNormalizerInstalled) {
+          return;
+        }
+        messageNormalizerInstalled = true;
+
+        processMessageNodes(document.body);
+        var observer = new MutationObserver(function (mutations) {
+          for (var i = 0; i < mutations.length; i++) {
+            var target = mutations[i].target;
+            if (target && target.nodeType === 1) {
+              processMessageNodes(target);
+            }
+            var added = mutations[i].addedNodes || [];
+            for (var j = 0; j < added.length; j++) {
+              if (added[j] && added[j].nodeType === 1) {
+                processMessageNodes(added[j]);
+              }
+            }
+          }
+        });
+        observer.observe(document.body, {
+          childList: true,
+          subtree: true,
+          characterData: true
+        });
+      }
+
+      function installApiProxy(apiHost) {
+        if (apiProxyInstalled) {
+          return;
+        }
+        apiProxyInstalled = true;
+        var apiBase;
+        try {
+          apiBase = new URL(apiHost);
+        } catch (e) {
+          setStatus('API Host 格式错误，请填写如 http://127.0.0.1:8888', 'error');
+          return;
+        }
+
+        var originalFetch = window.fetch ? window.fetch.bind(window) : null;
+        var originalOpen = window.XMLHttpRequest && window.XMLHttpRequest.prototype.open;
+
+        function rewriteUrl(inputUrl) {
+          if (!inputUrl) {
+            return inputUrl;
+          }
+          var parsed;
+          try {
+            parsed = new URL(inputUrl, window.location.origin);
+          } catch (e) {
+            return inputUrl;
+          }
+
+          var isApiPath = parsed.pathname.indexOf('/v1/') === 0 || parsed.pathname.indexOf('/v3/') === 0;
+          if (!isApiPath) {
+            return inputUrl;
+          }
+          parsed.protocol = apiBase.protocol;
+          parsed.host = apiBase.host;
+          return parsed.toString();
+        }
+
+        if (originalFetch) {
+          window.fetch = function (input, init) {
+            if (typeof input === 'string' || input instanceof URL) {
+              return originalFetch(rewriteUrl(String(input)), init);
+            }
+            if (input && typeof input.url === 'string') {
+              return originalFetch(new Request(rewriteUrl(input.url), input), init);
+            }
+            return originalFetch(input, init);
+          };
+        }
+
+        if (originalOpen) {
+          window.XMLHttpRequest.prototype.open = function (method, url) {
+            var args = Array.prototype.slice.call(arguments);
+            args[1] = rewriteUrl(url);
+            return originalOpen.apply(this, args);
+          };
+        }
+      }
+
+      function startClient() {
+        var missing = validate();
+        if (missing.length) {
+          setStatus('以下字段未填写：' + missing.join(', ') + '。请先补全后再启动。', 'error');
+          return;
+        }
+
+        var sdkUrl = fields.sdkUrl.value.trim();
+        var apiHost = fields.apiHost.value.trim();
+        var appId = fields.appId.value.trim();
+        var workflowId = fields.workflowId.value.trim();
+        var token = fields.token.value.trim();
+        installApiProxy(apiHost);
+
+        ensureSdkLoaded(sdkUrl, function () {
+          if (!window.CozeWebSDK || !window.CozeWebSDK.WebChatClient) {
+            setStatus('SDK 已加载，但未找到 CozeWebSDK.WebChatClient。请确认 SDK 版本。', 'error');
+            return;
+          }
+
+          try {
+            new CozeWebSDK.WebChatClient({
+              config: {
+                type: 'app',
+                appInfo: {
+                  appId: appId,
+                  workflowId: workflowId
+                }
+              },
+              auth: {
+                type: 'token',
+                token: token,
+                onRefreshToken: function () {
+                  return token;
+                }
+              }
+            });
+
+            installMessageNormalizer();
+            setStatus('WebChatClient 初始化成功。', 'ok');
+          } catch (err) {
+            setStatus('初始化失败：' + (err && err.message ? err.message : String(err)), 'error');
+          }
+        });
+      }
+
+      startBtn.addEventListener('click', startClient);
+
+      clearBtn.addEventListener('click', function () {
+        fields.sdkUrl.value = '';
+        fields.workflowId.value = '';
+        fields.token.value = '';
+        Object.keys(fields).forEach(function (key) {
+          fields[key].classList.remove('error');
+        });
+        setStatus('已清空可填项。', '');
+      });
+    })();
+  </script>
+</body>
+</html>

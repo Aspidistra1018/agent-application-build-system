@@ -26,7 +26,7 @@ import {
 } from '@coze-project-ide/framework';
 import {
   WorkflowWidgetRegistry,
-  ConversationRegistry,
+  // ConversationRegistry, // 已移除会话管理注册
 } from '@coze-project-ide/biz-workflow';
 import { PluginWidgetRegistry } from '@coze-project-ide/biz-plugin-registry-adapter';
 import {
@@ -73,7 +73,7 @@ const ProjectIDE: React.FC<ProjectIDEProps> = memo(
       () => ({
         view: {
           widgetRegistries: [
-            ConversationRegistry,
+            // ConversationRegistry, // 已移除会话管理
             WorkflowWidgetRegistry,
             DatabaseWidgetRegistry,
             KnowledgeWidgetRegistry,

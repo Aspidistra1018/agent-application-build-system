@@ -45,5 +45,20 @@
     justify-content: flex-end;
 
     height: 100%;
+
+    :global(.semi-button.semi-button-primary) {
+      background-color: var(--theme-color-primary, rgb(254 199 179));
+      border-color: var(--theme-color-primary, rgb(254 199 179));
+    }
+
+    :global(.semi-button.semi-button-primary:hover) {
+      background-color: var(--theme-color-primary-hover, rgb(253 187 164));
+      border-color: var(--theme-color-primary-hover, rgb(253 187 164));
+    }
+
+    :global(.semi-button.semi-button-primary:active) {
+      background-color: var(--theme-color-primary-active, rgb(250 174 149));
+      border-color: var(--theme-color-primary-active, rgb(250 174 149));
+    }
   }
 }

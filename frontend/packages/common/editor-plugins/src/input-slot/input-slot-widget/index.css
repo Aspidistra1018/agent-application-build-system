@@ -1,9 +1,9 @@
 
 .cm-content {
   .slot-content {
-    color: #4E40E5;
+    color: #9d4e30;
     word-break: break-all;
-    background-color: rgba(186, 192, 255, 20%);
+    background-color: rgba(254, 199, 179, 32%);
 
     /* padding: 2px 0; */
   }
@@ -11,7 +11,7 @@
   .slot-side-left {
     /* padding: 2px 0 2px 5px; */
     padding-left: 5px;
-    background-color: rgba(186, 192, 255, 20%);
+    background-color: rgba(254, 199, 179, 32%);
     border-radius: 4px 0 0 4px;
   }
 
@@ -20,14 +20,14 @@
 
     /* padding: 2px 5px 2px 0; */
     padding-right: 5px;
-    background-color: rgba(186, 192, 255, 20%);
+    background-color: rgba(254, 199, 179, 32%);
     border-radius: 0 5px 5px 0;
   }
 
   .slot-placeholder {
-    color: rgba(148, 152, 247, 70%);
+    color: rgba(141, 80, 53, 0.9);
     word-break: break-all;
-    background-color: rgba(186, 192, 255, 20%);
+    background-color: rgba(254, 199, 179, 28%);
 
     /* padding: 2px 0; */
   }

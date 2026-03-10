@@ -3515,9 +3515,12 @@ func (w *ApplicationService) publishWorkflowResource(ctx context.Context, policy
 }
 
 func mustParseInt64(s string) int64 {
+	if s == "" {
+		panic(fmt.Errorf("cannot parse empty string to int64"))
+	}
 	i, err := strconv.ParseInt(s, 10, 64)
 	if err != nil {
-		panic(err)
+		panic(fmt.Errorf("failed to parse '%s' to int64: %w", s, err))
 	}
 	return i
 }

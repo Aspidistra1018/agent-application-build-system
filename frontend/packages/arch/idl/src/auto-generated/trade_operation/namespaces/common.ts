@@ -205,7 +205,7 @@ export enum CreditChangeType {
   EvaluateConsume = 5,
   /** 应用 */
   ProjectConsume = 6,
-  /** 扣子罗盘 */
+  /** Agent应用自动构建平台罗盘 */
   FornaxConsume = 7,
   /** 智能语音 */
   IntelligentVoiceConsume = 8,

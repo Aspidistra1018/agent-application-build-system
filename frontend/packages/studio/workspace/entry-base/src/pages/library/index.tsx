@@ -93,8 +93,14 @@ export const BaseLibraryPage = forwardRef<
             },
           ),
         );
+        const enabledResTypes = new Set(
+          entityConfigs.flatMap(config => config.target),
+        );
+        const visibleResourceList = (resp?.resource_list || []).filter(
+          item => item.res_type !== undefined && enabledResTypes.has(item.res_type),
+        );
         return {
-          list: resp?.resource_list || [],
+          list: visibleResourceList,
           nextCursorId: resp?.cursor,
           hasMore: !!resp?.has_more,
         };

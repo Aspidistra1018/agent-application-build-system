@@ -103,7 +103,13 @@
 .stack-panel {
   position: relative;
   flex: 0 0 auto;
-  min-height: 280px;
+  min-height: 500px;
+  isolation: isolate;
+}
+
+/* 让预览与调试面板更高 */
+.stack-panel .message-area {
+  min-height: 500px;
 }
 
 .ide-sheet-card {
@@ -289,10 +295,10 @@
   flex: 1 1;
   flex-direction: column;
 
-  border: 1px solid var(--ide-border);
+  border: 2px solid rgba(196, 69, 54, 0.3);
   border-radius: var(--ide-radius-md);
-  background-color: var(--ide-surface-solid) !important;
-  box-shadow: 0 1px 0 rgb(16 24 40 / 2%);
+  background-color: rgba(255, 250, 246, 0.95) !important;
+  box-shadow: 0 2px 8px rgba(196, 69, 54, 0.1);
 
   .setting-title-block {
     display: flex;
@@ -344,6 +350,7 @@
   width: 100%;
   min-width: 360px;
   height: 100%;
+  flex: 1;
 
   border: 1px solid var(--ide-border);
   border-radius: var(--ide-radius-lg);
@@ -495,4 +502,28 @@
 .debug-chat-header-padding {
   padding-right: 24px;
   padding-left: 24px;
+}
+
+/* 人设与回复逻辑输入框边框样式 */
+.cm-content.cm-lineWrapping {
+  border: 2px solid rgba(54, 42, 48, 0.2) !important;
+  border-radius: 8px !important;
+  background-color: #fff !important;
+}
+
+.cm-content.cm-lineWrapping:focus-within {
+  border-color: rgba(54, 42, 48, 0.4) !important;
+  box-shadow: 0 0 0 2px rgba(54, 42, 48, 0.1) !important;
+}
+
+/* 更具体的选择器 */
+div[class*="bot-debug-system"] .cm-content {
+  border: 2px solid rgba(54, 42, 48, 0.2) !important;
+  border-radius: 8px !important;
+  background-color: #fff !important;
+}
+
+div[class*="bot-debug-system"] .cm-content:focus-within {
+  border-color: rgba(54, 42, 48, 0.4) !important;
+  box-shadow: 0 0 0 2px rgba(54, 42, 48, 0.1) !important;
 }

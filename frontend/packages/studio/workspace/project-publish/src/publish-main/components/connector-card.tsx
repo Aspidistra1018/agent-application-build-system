@@ -90,10 +90,23 @@ function getConnectorDisabledConfig({
   };
   // Unbound, Unauthorized
   if (getConnectorNotConfigured(connector)) {
+    // In open-source/local mode, API/SDK channels are allowed to be selected first.
+    if (
+      IS_OPEN_SOURCE &&
+      connector.connector_classification === ConnectorClassification.APIOrSDK
+    ) {
+      return;
+    }
     return notConfigured;
   }
   // The reason why it cannot be released after being issued by the backend.
   if (!connector.allow_publish && connector.not_allow_publish_reason) {
+    if (
+      IS_OPEN_SOURCE &&
+      connector.connector_classification === ConnectorClassification.APIOrSDK
+    ) {
+      return;
+    }
     return {
       reason: DisabledReason.NotAllowed,
       text: connector.not_allow_publish_reason,
@@ -116,6 +129,10 @@ function getConnectorDisabledConfig({
   );
 
   if (isWebSDK && !isSdkChatFlowConfigured) {
+    // In open-source/local mode, allow selecting Chat SDK before choosing chatflow.
+    if (IS_OPEN_SOURCE) {
+      return;
+    }
     return notConfigured;
   }
   const isStorePublish =

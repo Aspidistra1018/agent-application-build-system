@@ -44,6 +44,11 @@ export const createOrGetConversation = async (
       sectionId = res.last_section_id;
     } else {
       if (IS_OPEN_SOURCE) {
+        // 确保 workflow_id 不为空
+        if (!props?.workflow?.id) {
+          throw new Error('workflow_id is required for conversation creation');
+        }
+        
         const res = (await apiSdk?.post(
           '/v1/workflow/conversation/create',
           {

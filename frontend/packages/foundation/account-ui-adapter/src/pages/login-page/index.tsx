@@ -17,13 +17,13 @@
 import { type FC, useState, useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
 
-import { CozeBrand } from '@coze-studio/components/coze-brand';
 import { I18n } from '@coze-arch/i18n';
 import { Button, Form } from '@coze-arch/coze-design';
 import { SignFrame, SignPanel } from '@coze-arch/bot-semi';
 
 import { useLoginService } from './service';
 import { Favicon } from './favicon';
+import { PlatformBrand } from './platform-brand';
 
 export const LoginPage: FC = () => {
   const [searchParams] = useSearchParams();
@@ -53,8 +53,8 @@ export const LoginPage: FC = () => {
   }, [searchParams, login]);
 
   return (
-    <SignFrame brandNode={<CozeBrand isOversea={IS_OVERSEA} />}>
-      <SignPanel className="w-[600px] h-[640px] pt-[96px]">
+    <SignFrame brandNode={<PlatformBrand />}>
+      <SignPanel className="w-[600px] h-[640px] pt-[96px] bg-[linear-gradient(180deg,#FFFFFF_0%,#FFF5EF_100%)] border-[rgba(253,198,177,0.65)] shadow-[0_14px_32px_rgba(238,168,143,0.24)]">
         <div className="flex flex-col items-center w-full h-full">
           <Favicon />
           <div className="text-[24px] font-medium coze-fg-plug leading-[36px] mt-[32px]">
@@ -105,17 +105,17 @@ export const LoginPage: FC = () => {
             </Form>
             <Button
               data-testid="login.button.login"
-              className="mt-[12px]"
+              className="mt-[12px] border-0 text-white bg-[linear-gradient(90deg,rgb(253,198,177)_0%,rgb(247,141,167)_100%)] shadow-[0_8px_16px_rgba(240,150,130,0.35)] hover:brightness-95"
               disabled={submitDisabled || registerLoading}
               onClick={login}
               loading={loginLoading}
-              color="hgltplus"
+              color="brand"
             >
               {I18n.t('login_button_text')}
             </Button>
             <Button
               data-testid="login.button.signup"
-              className="mt-[20px]"
+              className="mt-[20px] border border-solid border-[rgba(253,198,177,0.9)] bg-[#FFF3ED] text-[#B85C4F] hover:bg-[#FFECE2]"
               disabled={submitDisabled || loginLoading}
               onClick={register}
               loading={registerLoading}
@@ -123,16 +123,6 @@ export const LoginPage: FC = () => {
             >
               {I18n.t('register')}
             </Button>
-            <div className="mt-[12px] flex justify-center">
-              <a
-                data-testid="login.link.terms"
-                href="https://github.com/coze-dev/coze-studio?tab=Apache-2.0-1-ov-file"
-                target="_blank"
-                className="no-underline coz-fg-hglt"
-              >
-                {I18n.t('open_source_terms_linkname')}
-              </a>
-            </div>
           </div>
         </div>
       </SignPanel>

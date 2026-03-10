@@ -5318,7 +5318,7 @@
                 "display_info": {
                     "name": "DeepSeek-R1·工具调用",
                     "description": {
-                        "zh_cn": "R1 functionCall 版本，支持在Single-Agent模式下调用各类扣子工具（插件、工作流、知识库等）。",
+                        "zh_cn": "R1 functionCall 版本，支持在Single-Agent模式下调用各类Agent应用自动构建平台工具（插件、工作流、知识库等）。",
                         "en_us": "DeepSeek-R1 functionCall version, which supports calling various Coze tools (plugins, workflows, knowledge bases, etc.) in Single-Agent mode."
                     },
                     "output_tokens": 4096,
@@ -5409,7 +5409,7 @@
                 "display_info": {
                     "name": "DeepSeek-V3·工具调用",
                     "description": {
-                        "zh_cn": "V3 functionCall 版本，支持在Single-Agent模式下调用各类扣子工具（插件、工作流、知识库等）。",
+                        "zh_cn": "V3 functionCall 版本，支持在Single-Agent模式下调用各类Agent应用自动构建平台工具（插件、工作流、知识库等）。",
                         "en_us": "DeepSeek-V3 functionCall version, which supports calling various Coze tools (plugins, workflows, knowledge bases, etc.) in Single-Agent mode."
                     },
                     "output_tokens": 4096,

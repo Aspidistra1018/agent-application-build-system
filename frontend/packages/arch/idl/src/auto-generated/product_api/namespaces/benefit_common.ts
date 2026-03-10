@@ -89,7 +89,7 @@ export enum BenefitHistoryType {
   WorkflowConsume = 6,
   /** 智能语音 */
   IntelligentVoice = 11,
-  /** 扣子罗盘消耗 */
+  /** Agent应用自动构建平台罗盘消耗 */
   Fornax = 12,
   EvaluateConsume = 41,
   EvaluateModelConsume = 42,
@@ -107,7 +107,7 @@ export enum BenefitRootHistoryType {
   ProjectConsume = 3,
   /** 智能语音 */
   IntelligentVoiceConsume = 4,
-  /** 扣子罗盘消耗 */
+  /** Agent应用自动构建平台罗盘消耗 */
   FornaxConsume = 5,
   /** 模型评测消耗 */
   EvaluateModelConsume = 6,

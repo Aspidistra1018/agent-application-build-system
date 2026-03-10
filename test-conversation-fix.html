@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agent应用自动构建平台</title>
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none'><rect x='3' y='3' width='7' height='7' rx='1' fill='%234A90E2'/><rect x='14' y='3' width='7' height='7' rx='1' fill='%234A90E2'/><rect x='3' y='14' width='7' height='7' rx='1' fill='%234A90E2'/><rect x='14' y='14' width='7' height='7' rx='1' fill='%234A90E2'/></svg>">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .test-section {
+            margin: 20px 0;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        .success {
+            background-color: #d4edda;
+            border-color: #c3e6cb;
+        }
+        .error {
+            background-color: #f8d7da;
+            border-color: #f5c6cb;
+        }
+        button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 5px;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        pre {
+            background-color: #f8f9fa;
+            padding: 10px;
+            border-radius: 5px;
+            overflow-x: auto;
+        }
+    </style>
+</head>
+<body>
+    <h1>测试对话创建修复</h1>
+    
+    <div class="test-section">
+        <h3>测试 1: 正常参数测试</h3>
+        <button onclick="testNormalParams()">测试正常参数</button>
+        <div id="normal-result"></div>
+    </div>
+    
+    <div class="test-section">
+        <h3>测试 2: 缺少 workflow_id 参数测试</h3>
+        <button onclick="testMissingWorkflowId()">测试缺少 workflow_id</button>
+        <div id="missing-result"></div>
+    </div>
+    
+    <div class="test-section">
+        <h3>测试 3: 空 workflow_id 参数测试</h3>
+        <button onclick="testEmptyWorkflowId()">测试空 workflow_id</button>
+        <div id="empty-result"></div>
+    </div>
+
+    <script>
+        const API_BASE = 'http://localhost:8888';
+        
+        async function makeRequest(url, data) {
+            try {
+                const response = await fetch(url, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Accept-Language': 'zh-CN'
+                    },
+                    body: JSON.stringify(data)
+                });
+                
+                const result = await response.json();
+                return {
+                    status: response.status,
+                    data: result
+                };
+            } catch (error) {
+                return {
+                    status: 'error',
+                    data: { error: error.message }
+                };
+            }
+        }
+        
+        function displayResult(elementId, result, testName) {
+            const element = document.getElementById(elementId);
+            const isSuccess = result.status === 200 || (result.data && !result.data.error);
+            
+            element.className = isSuccess ? 'success' : 'error';
+            element.innerHTML = `
+                <h4>${testName} 结果:</h4>
+                <p><strong>状态:</strong> ${result.status}</p>
+                <pre>${JSON.stringify(result.data, null, 2)}</pre>
+            `;
+        }
+        
+        async function testNormalParams() {
+            const data = {
+                app_id: "7583639318204252160",
+                conversation_name: "测试对话",
+                get_or_create: true,
+                draft_mode: true,
+                workflow_id: "7615293014168043520", // 提供有效的 workflow_id
+                connector_id: "10000010"
+            };
+            
+            const result = await makeRequest(`${API_BASE}/v1/workflow/conversation/create`, data);
+            displayResult('normal-result', result, '正常参数测试');
+        }
+        
+        async function testMissingWorkflowId() {
+            const data = {
+                app_id: "7583639318204252160",
+                conversation_name: "测试对话",
+                get_or_create: true,
+                draft_mode: true,
+                // 故意不包含 workflow_id
+                connector_id: "10000010"
+            };
+            
+            const result = await makeRequest(`${API_BASE}/v1/workflow/conversation/create`, data);
+            displayResult('missing-result', result, '缺少 workflow_id 测试');
+        }
+        
+        async function testEmptyWorkflowId() {
+            const data = {
+                app_id: "7583639318204252160",
+                conversation_name: "测试对话",
+                get_or_create: true,
+                draft_mode: true,
+                workflow_id: "", // 空字符串
+                connector_id: "10000010"
+            };
+            
+            const result = await makeRequest(`${API_BASE}/v1/workflow/conversation/create`, data);
+            displayResult('empty-result', result, '空 workflow_id 测试');
+        }
+    </script>
+</body>
+</html>

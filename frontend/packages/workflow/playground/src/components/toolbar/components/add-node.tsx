@@ -47,7 +47,7 @@ export const AddNode = (
   return (
     <Button
       icon={<IconCozPlus />}
-      color="highlight"
+      color="primary"
       id={ADD_NODE_BUTTON_ID}
       onClick={event => {
         debounceAddNode.cancel();

@@ -6,15 +6,20 @@
 // ============================================
 
 // 主色 - 粉橙色
-@theme-color-primary: rgb(254 200 180);
-@theme-color-primary-hover: rgb(254 190 168);
-@theme-color-primary-active: rgb(252 178 154);
-@theme-color-primary-disabled: rgb(254 200 180 / 45%);
-@theme-color-primary-light: rgb(254 200 180 / 20%);
-@theme-color-primary-light-hover: rgb(254 200 180 / 28%);
+@theme-color-primary: rgb(254 199 179);
+@theme-color-primary-hover: rgb(253 187 164);
+@theme-color-primary-active: rgb(250 174 149);
+@theme-color-primary-disabled: rgb(254 199 179 / 45%);
+@theme-color-primary-light: rgb(254 199 179 / 20%);
+@theme-color-primary-light-hover: rgb(254 199 179 / 28%);
 
 // 渐变背景色
-@theme-gradient-background: linear-gradient(180deg, #fff7f0 0%, #f3f6ff 100%);
+@theme-gradient-background: linear-gradient(
+  180deg,
+  rgb(254 199 179 / 18%) 0%,
+  rgb(255 255 255 / 94%) 42%,
+  rgb(255 255 255) 100%
+);
 
 // 文字颜色
 @theme-text-primary: #1c1f23;
@@ -45,4 +50,11 @@
   --theme-color-primary-hover: @theme-color-primary-hover;
   --theme-color-primary-active: @theme-color-primary-active;
   --theme-color-primary-light: @theme-color-primary-light;
+
+  // Legacy brand token mapping (some create/publish pages still consume these)
+  --light-color-brand-brand-5: @theme-color-primary;
+  --light-color-brand-brand-4: @theme-color-primary-hover;
+  --light-color-brand-brand-3: @theme-color-primary-active;
+  --light-color-brand-brand-2: rgb(255 220 207);
+  --light-color-brand-brand-1: rgb(255 236 228);
 }

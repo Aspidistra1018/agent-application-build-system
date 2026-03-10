@@ -18,7 +18,7 @@ import { type FC } from 'react';
 
 import classNames from 'classnames';
 import { Divider, Space } from '@coze-arch/coze-design';
-import { IconMenuLogo } from '@coze-arch/bot-icons';
+import { IconCozWorkspaceFill } from '@coze-arch/coze-design/icons';
 import { useRouteConfig } from '@coze-arch/bot-hooks';
 
 import { type LayoutProps } from '../types';
@@ -61,10 +61,16 @@ export const GlobalLayoutSider: FC<Omit<LayoutProps, 'hasSider'>> = ({
               'border-0 border-r-[1px] border-solid coz-stroke-primary',
           )}
         >
-          <IconMenuLogo
+          <button
+            type="button"
             onClick={onClickLogo}
-            className="cursor-pointer w-[40px] h-[40px]"
-          />
+            className="w-[40px] h-[40px] p-0 border-0 bg-transparent cursor-pointer"
+            aria-label="go-home"
+          >
+            <span className="w-[40px] h-[40px] rounded-[10px] bg-gradient-to-br from-[#FFB47A] to-[#FF8A3D] flex items-center justify-center shadow-[0_4px_12px_rgba(255,138,61,0.28)]">
+              <IconCozWorkspaceFill className="text-white text-[20px]" />
+            </span>
+          </button>
           <div className="mt-[16px]">
             {actions?.map((action, index) => (
               <GlobalLayoutActionBtn {...action} key={index} />

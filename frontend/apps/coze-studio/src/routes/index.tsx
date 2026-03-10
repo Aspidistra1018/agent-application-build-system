@@ -37,13 +37,9 @@ import {
   ProjectIDE,
   ProjectIDEPublish,
   Library,
-  PluginLayout,
-  PluginToolPage,
-  PluginPage,
   KnowledgePreview,
   KnowledgeUpload,
   DatabaseDetail,
-  ExplorePluginPage,
   ExploreTemplatePage,
 } from './async-components';
 
@@ -214,25 +210,10 @@ export const router: ReturnType<typeof createBrowserRouter> =
                   }),
                 },
 
-                // plugin resources
+                // plugin resources are hidden
                 {
-                  path: 'plugin/:plugin_id',
-                  Component: PluginLayout,
-                  children: [
-                    {
-                      index: true,
-                      Component: PluginPage,
-                    },
-                    {
-                      path: 'tool/:tool_id',
-                      children: [
-                        {
-                          index: true,
-                          Component: PluginToolPage,
-                        },
-                      ],
-                    },
-                  ],
+                  path: 'plugin/:plugin_id/*',
+                  element: <Navigate to="../../develop" replace />,
                 },
               ],
             },
@@ -272,15 +253,12 @@ export const router: ReturnType<typeof createBrowserRouter> =
           children: [
             {
               index: true,
-              element: <Navigate to="plugin" replace />,
+              element: <Navigate to="template" replace />,
             },
             // plugin store
             {
               path: 'plugin',
-              element: <ExplorePluginPage />,
-              loader: () => ({
-                type: 'plugin',
-              }),
+              element: <Navigate to="../template" replace />,
             },
             // template
             {

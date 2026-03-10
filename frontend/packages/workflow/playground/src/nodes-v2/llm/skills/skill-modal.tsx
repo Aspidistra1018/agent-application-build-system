@@ -26,8 +26,6 @@ import { KnowledgeListModalContent } from '@coze-data/knowledge-modal-adapter';
 import { I18n } from '@coze-arch/i18n';
 import { UITabsModal } from '@coze-arch/bot-semi';
 import { type Dataset } from '@coze-arch/bot-api/knowledge';
-import { From } from '@coze-agent-ide/plugin-shared';
-import { usePluginModalParts } from '@coze-agent-ide/bot-plugin-export/agentSkillPluginModal/hooks';
 
 import { useGlobalState, useSpaceId, useNodeVersionService } from '@/hooks';
 
@@ -71,42 +69,10 @@ export const SkillModal: FC<SkillModalProps> = props => {
     SkillKnowledgeSiderCategory.Library,
   );
 
-  // Plugin Add pop-up window
-  const pluginModalFrom = projectId
-    ? From.ProjectWorkflow
-    : From.WorkflowAddNode;
-
   const getOnSkillsChange = (type: SkillType) => data =>
     onSkillsChange(type, data);
 
-  const [activeKey, setActiveKey] = useState<SkillType>(SkillType.Plugin);
-  const pluginModalParts = usePluginModalParts({
-    pluginApiList: boundSkills?.pluginFCParam?.pluginList ?? [],
-    onPluginApiListChange: getOnSkillsChange(SkillType.Plugin),
-    from: pluginModalFrom,
-    projectId,
-    openModeCallback: async val => {
-      if (!val) {
-        return;
-      }
-      if (
-        !(await nodeVersionService.addApiCheck(val.plugin_id, val.version_ts))
-      ) {
-        return;
-      }
-      onSkillsChange(SkillType.Plugin, [
-        ...(boundSkills?.pluginFCParam?.pluginList ?? []),
-        {
-          plugin_id: val.plugin_id as string,
-          api_id: val.api_id as string,
-          api_name: val.name as string,
-          plugin_version: val.version_ts || '',
-          is_draft: isDraftByProjectId(val.project_id),
-          plugin_from: val.plugin_from,
-        },
-      ]);
-    },
-  });
+  const [activeKey, setActiveKey] = useState<SkillType>(SkillType.Workflow);
 
   const sourceTitle = I18n.t('workflow_241119_01');
   const workflowModalParts = useWorkflowModalParts({
@@ -193,23 +159,6 @@ export const SkillModal: FC<SkillModalProps> = props => {
           onChange: (key: string) => setActiveKey(key as SkillType),
         },
         tabPanes: [
-          {
-            tabPaneProps: {
-              tab: I18n.t('Tools'),
-              itemKey: SkillType.Plugin,
-            },
-            content: (
-              <div className={s.main}>
-                <div className={s.sider}>{pluginModalParts.sider}</div>
-                <div className={s.content}>
-                  <div className={s.filter}>{pluginModalParts.filter}</div>
-                  <div className={s['content-inner']}>
-                    {pluginModalParts.content}
-                  </div>
-                </div>
-              </div>
-            ),
-          },
           {
             tabPaneProps: {
               tab: I18n.t('Workflow'),

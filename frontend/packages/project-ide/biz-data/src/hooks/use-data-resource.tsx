@@ -32,6 +32,7 @@ import {
 import useKnowledgeResource from './use-knowledge-resource';
 import useImportData from './use-import-data';
 import useDatabaseResource from './use-database-resource';
+import { DataTooltip } from '../data-tooltip';
 
 type UseDataResourceReturn = Pick<
   ResourceFolderCozeProps,
@@ -53,7 +54,7 @@ const useDataResource = (): UseDataResourceReturn => {
           resource: I18n.t('performance_knowledge'),
         }),
         subType: BizResourceTypeEnum.Knowledge,
-        tooltip: null,
+        tooltip: <DataTooltip subType={BizResourceTypeEnum.Knowledge} />,
       },
       {
         icon: <IconCozDatabase />,
@@ -61,7 +62,7 @@ const useDataResource = (): UseDataResourceReturn => {
           resource: I18n.t('review_bot_database'),
         }),
         subType: BizResourceTypeEnum.Database,
-        tooltip: null,
+        tooltip: <DataTooltip subType={BizResourceTypeEnum.Database} />,
       },
     ],
     [],

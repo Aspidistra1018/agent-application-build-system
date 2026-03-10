@@ -27,7 +27,7 @@ export const getEnabledNodeTypes = (_params: {
   const { loopSelected } = _params;
   const nodesMap = {
     [StandardNodeType.LLM]: true,
-    [StandardNodeType.Api]: true,
+    [StandardNodeType.Api]: false,
     [StandardNodeType.Code]: true,
     [StandardNodeType.Dataset]: true,
     [StandardNodeType.If]: true,

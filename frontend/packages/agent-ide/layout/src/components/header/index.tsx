@@ -140,16 +140,6 @@ const LayoutInline = () => {
         >
           上下
         </span>
-        <span className={s['layout-dot']} />
-        <span
-          className={cx(s['layout-link'], layoutMode === 'float' && s['layout-link-active'])}
-          onClick={() => dispatch({ type: 'setMode', mode: 'float' })}
-          onKeyDown={onKeyDown(() => dispatch({ type: 'setMode', mode: 'float' }))}
-          role="button"
-          tabIndex={0}
-        >
-          自由
-        </span>
       </span>
       <span className={s['layout-sep']} />
       <span

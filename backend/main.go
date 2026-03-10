@@ -101,6 +101,8 @@ func startHttpServer() {
 		"accept",
 		"Authorization",
 		"authorization",
+		"X-Coze-Client-User-Agent",
+		"x-coze-client-user-agent",
 		"X-Requested-With",
 		"Origin",
 		"origin",

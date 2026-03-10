@@ -15,7 +15,7 @@ body {
   // 这里修复一下顺序 PingFang > Hiragino
   font-family: 'PingFang SC', 'Noto Sans SC', sans-serif;
 
-  background: linear-gradient(to bottom, transparent, #fff) #eceeef;
+  background: var(--theme-gradient-background);
 }
 
 body {
@@ -28,6 +28,7 @@ body {
 #root {
   width: 100%;
   height: 100%;
+  background: var(--theme-gradient-background);
 }
 
 p {
@@ -123,6 +124,7 @@ div:focus-visible {
 
 .operation-admin-base-app {
   height: 100%;
+  background: var(--theme-gradient-background);
 }
 
 .operation-admin-base-module-content {
@@ -130,18 +132,19 @@ div:focus-visible {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+  background: var(--theme-gradient-background);
 }
 
 .operation-admin-base-module-content[app-name='playground_prompt'] {
-  background-color: #fff;
+  background: var(--theme-gradient-background);
 }
 
 .operation-admin-base-module-content[app-name='build_bot'] {
-  background-color: #fff;
+  background: var(--theme-gradient-background);
 }
 
 .operation-admin-base-module-content[app-name='discover'] {
-  background-color: #fff;
+  background: var(--theme-gradient-background);
 }
 
 .operation-admin-base-404 {
@@ -176,6 +179,7 @@ div:focus-visible {
 
 .operation-admin-base-main-content {
   overflow: hidden;
+  background: var(--theme-gradient-background);
 }
 
 .operation-admin-base-header-name {
