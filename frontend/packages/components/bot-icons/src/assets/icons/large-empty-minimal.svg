@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="200" height="200" viewBox="0 0 200 200" fill="none">
+  <!-- 极简空状态图标 -->
+  <g opacity="0.5">
+    <!-- 主容器 -->
+    <rect x="60" y="70" width="80" height="60" rx="8" fill="#F8FAFC" stroke="#E2E8F0" stroke-width="2"/>
+    
+    <!-- 内容线条 -->
+    <rect x="75" y="90" width="50" height="3" rx="1.5" fill="#CBD5E1"/>
+    <rect x="75" y="100" width="35" height="3" rx="1.5" fill="#CBD5E1"/>
+    <rect x="75" y="110" width="45" height="3" rx="1.5" fill="#CBD5E1"/>
+    
+    <!-- 装饰图标 -->
+    <circle cx="100" cy="45" r="15" fill="#F1F5F9" stroke="#E2E8F0" stroke-width="2"/>
+    <path d="M92 45h16M100 37v16" stroke="#94A3B8" stroke-width="2" stroke-linecap="round"/>
+  </g>
+</svg>

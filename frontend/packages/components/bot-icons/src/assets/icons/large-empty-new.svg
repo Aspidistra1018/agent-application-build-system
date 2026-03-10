@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="200" height="200" viewBox="0 0 200 200" fill="none">
+  <!-- 简洁的空状态图标 - 文档和搜索主题 -->
+  <g opacity="0.6">
+    <!-- 背景圆形 -->
+    <circle cx="100" cy="100" r="80" fill="#F5F7FA" stroke="#E1E6ED" stroke-width="2"/>
+    
+    <!-- 文档图标 -->
+    <rect x="70" y="60" width="40" height="50" rx="4" fill="white" stroke="#C4CDD5" stroke-width="2"/>
+    <rect x="75" y="70" width="30" height="2" rx="1" fill="#E1E6ED"/>
+    <rect x="75" y="78" width="25" height="2" rx="1" fill="#E1E6ED"/>
+    <rect x="75" y="86" width="30" height="2" rx="1" fill="#E1E6ED"/>
+    <rect x="75" y="94" width="20" height="2" rx="1" fill="#E1E6ED"/>
+    
+    <!-- 搜索放大镜 -->
+    <circle cx="125" cy="85" r="12" fill="none" stroke="#C4CDD5" stroke-width="2"/>
+    <path d="134 94l8 8" stroke="#C4CDD5" stroke-width="2" stroke-linecap="round"/>
+    
+    <!-- 装饰性点点 -->
+    <circle cx="85" cy="130" r="2" fill="#E1E6ED"/>
+    <circle cx="100" cy="135" r="2" fill="#E1E6ED"/>
+    <circle cx="115" cy="130" r="2" fill="#E1E6ED"/>
+  </g>
+  
+  <!-- 中心文字区域（可选） -->
+  <text x="100" y="160" text-anchor="middle" fill="#8B95A1" font-family="system-ui, -apple-system, sans-serif" font-size="14" font-weight="500">
+    暂无内容
+  </text>
+</svg>
