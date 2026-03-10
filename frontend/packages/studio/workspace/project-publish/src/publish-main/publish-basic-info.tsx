@@ -42,7 +42,8 @@ export function PublishBasicInfo() {
     })),
   );
 
-  const inputBaseCls = '';
+  // 修复输入框边框透明度问题 - 增强边框可见性
+  const inputBaseCls = 'border border-solid !border-opacity-100 hover:!border-opacity-100 focus-within:!border-opacity-100';
 
   return (
     <div className="flex flex-col	gap-[8px] w-full coz-bg-plus rounded-md p-24px">
@@ -66,7 +67,7 @@ export function PublishBasicInfo() {
               : I18n.t('project_release_example')
           }
           initValue={versionNumber}
-          className="bg-transparent coz-stroke-plus"
+          className="bg-transparent coz-stroke-primary border border-solid"
           rules={[
             { required: true, message: I18n.t('project_release_example2') },
           ]}

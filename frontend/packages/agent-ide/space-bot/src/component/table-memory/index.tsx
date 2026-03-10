@@ -178,7 +178,8 @@ const BaseTableMemory: FC<TableMemoryProps> = ({
         blockEventName={OpenBlockEvent.TABLE_MEMORY_BLOCK_OPEN}
         showBottomBorder
         header={title}
-        tooltip={
+        // 移除数据库提示符号
+        /* tooltip={
           <div className={s['tip-content']}>
             <div style={{ marginBottom: '10px', width: 611 }}>
               <span>{I18n.t('db_memory_entry_tips')}</span>
@@ -210,7 +211,7 @@ const BaseTableMemory: FC<TableMemoryProps> = ({
               }
             />
           </div>
-        }
+        } */
         defaultExpand={defaultExpand}
         actionButton={
           <>

@@ -18,9 +18,8 @@ import React, { ReactElement } from 'react';
 
 import classNames from 'classnames';
 import { Empty } from '@douyinfe/semi-ui';
+import { EmptyDataIllustration } from '@coze-arch/bot-icons';
 import {
-  IllustrationNoContent,
-  IllustrationNoContentDark,
   IllustrationNoResult,
   IllustrationNoResultDark,
 } from '@douyinfe/semi-illustrations';
@@ -87,14 +86,14 @@ export function UIEmpty({
             empty?.icon ? (
               empty.icon
             ) : (
-              <IllustrationNoContent style={{ width: 150, height: '100%' }} />
+              <EmptyDataIllustration style={{ width: 150, height: '100%' }} />
             )
           }
           darkModeImage={
             empty?.iconDarkMode ? (
               empty.iconDarkMode
             ) : (
-              <IllustrationNoContentDark
+              <EmptyDataIllustration
                 style={{ width: 150, height: '100%' }}
               />
             )

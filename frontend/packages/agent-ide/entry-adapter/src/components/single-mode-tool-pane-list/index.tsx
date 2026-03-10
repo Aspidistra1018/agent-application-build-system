@@ -28,6 +28,10 @@ export const SingleModeToolPaneList: React.FC<SingleModeToolPaneListProps> = ({
   pageFrom,
   showBackground,
 }) => {
+  // 隐藏右上角的调试工具图标
+  return null;
+  
+  /* 原始代码已隐藏
   if (pageFrom === BotPageFromEnum.Store) {
     return (
       <DebugToolList showBackground={showBackground}>
@@ -37,11 +41,9 @@ export const SingleModeToolPaneList: React.FC<SingleModeToolPaneListProps> = ({
   }
   return (
     <DebugToolList showBackground={showBackground}>
-      {/* Task - Debugging Entry */}
       <SkillsPane />
-
-      {/* Memory view data entry */}
       <MemoryToolPane />
     </DebugToolList>
   );
+  */
 };

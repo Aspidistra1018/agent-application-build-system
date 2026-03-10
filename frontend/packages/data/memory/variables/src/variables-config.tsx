@@ -18,7 +18,7 @@ import React, { useEffect, useRef } from 'react';
 
 import { useShallow } from 'zustand/react/shallow';
 import cls from 'classnames';
-import { IllustrationNoContent } from '@douyinfe/semi-illustrations';
+import { EmptyDataIllustration } from '@coze-arch/bot-icons';
 import { I18n } from '@coze-arch/i18n';
 import { VariableChannel } from '@coze-arch/bot-api/memory';
 import { IconCozCross } from '@coze-arch/coze-design/icons';
@@ -124,7 +124,7 @@ export const VariablesConfig = ({
         ) : isEmpty ? (
           <div className="w-full h-full flex items-center justify-center">
             <Empty
-              image={<IllustrationNoContent className="w-[140px] h-[140px]" />}
+              image={<EmptyDataIllustration className="w-[140px] h-[140px]" />}
               title={I18n.t('card_builder_varpanel_var_empty')}
             />
           </div>

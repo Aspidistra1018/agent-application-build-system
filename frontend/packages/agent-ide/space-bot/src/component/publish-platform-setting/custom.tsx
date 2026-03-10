@@ -37,10 +37,7 @@ import {
 } from '@coze-arch/coze-design';
 import { type ConnectorMetaInfo } from '@coze-arch/bot-api/connector_api';
 import { NavLink } from 'react-router-dom';
-import {
-  IllustrationNoContent,
-  IllustrationNoContentDark,
-} from '@douyinfe/semi-illustrations';
+import { EmptyDataIllustration } from '@coze-arch/bot-icons';
 
 import { useCustomPlatformController } from '@/hook/publish-platform-setting/use-custom-platform-controller';
 
@@ -305,12 +302,10 @@ const CustomPlatform = ({
               <Empty
                 className="pt-[60px]"
                 image={
-                  <IllustrationNoContent style={{ width: 150, height: 150 }} />
+                  <EmptyDataIllustration style={{ width: 150, height: 150 }} />
                 }
                 darkModeImage={
-                  <IllustrationNoContentDark
-                    style={{ width: 150, height: 150 }}
-                  />
+                  <EmptyDataIllustration style={{ width: 150, height: 150 }} />
                 }
                 description={I18n.t('api_analytics_null')}
               />

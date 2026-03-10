@@ -21,10 +21,7 @@ import { logger } from '@coze-arch/logger';
 import { I18n } from '@coze-arch/i18n';
 import { Empty, UIButton, Spin, SideSheet, UIToast } from '@coze-arch/bot-semi';
 import { debuggerApi } from '@coze-arch/bot-api';
-import {
-  IllustrationNoContent,
-  IllustrationNoContentDark,
-} from '@douyinfe/semi-illustrations';
+import { EmptyDataIllustration } from '@coze-arch/bot-icons';
 
 import {
   TestsetEditSideSheet,
@@ -61,8 +58,8 @@ function EmptyContent({ onCreateTestset }: EmptyContentProps) {
         title={I18n.t('workflow_testset_empty')}
         className={s.empty}
         description={I18n.t('workflow_testset_create_tip')}
-        image={<IllustrationNoContent />}
-        darkModeImage={<IllustrationNoContentDark />}
+        image={<EmptyDataIllustration />}
+        darkModeImage={<EmptyDataIllustration />}
       >
         <div className="text-center">
           <UIButton theme="solid" onClick={onCreateTestset}>

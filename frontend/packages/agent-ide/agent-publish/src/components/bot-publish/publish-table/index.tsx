@@ -191,6 +191,7 @@ export const PublishTable = forwardRef(
         <Form.Label
           text={I18n.t('bot_publish_changelog')}
           className={styles['text-label']}
+          required={false}
         />
         <TextArea
           disabled={publishLoading}
@@ -204,7 +205,7 @@ export const PublishTable = forwardRef(
         />
 
         <Space className={styles['publish-title-container']}>
-          <Form.Label required className={styles['publish-title']}>
+          <Form.Label className={styles['publish-title']}>
             {I18n.t('bot_publish_select_title')}
           </Form.Label>
 

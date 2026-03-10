@@ -26,7 +26,7 @@ import React, {
 import { debounce } from 'lodash-es';
 import classNames from 'classnames';
 import { useInfiniteScroll } from 'ahooks';
-import { IllustrationNoContent } from '@douyinfe/semi-illustrations';
+import { EmptyDataIllustration } from '@coze-arch/bot-icons';
 import { IconSpin } from '@douyinfe/semi-icons';
 import { userStoreService } from '@coze-studio/user-store';
 import { type DatabaseInfo as DatabaseInitInfo } from '@coze-studio/bot-detail-store';
@@ -397,7 +397,7 @@ export const useSelectDatabaseModal = ({
   const renderEmpty = () => (
     <div className="overflow-y-auto relative w-full h-full flex justify-center items-center">
       <Empty
-        image={<IllustrationNoContent style={{ width: 150, height: 150 }} />}
+        image={<EmptyDataIllustration style={{ width: 150, height: 150 }} />}
       />
     </div>
   );

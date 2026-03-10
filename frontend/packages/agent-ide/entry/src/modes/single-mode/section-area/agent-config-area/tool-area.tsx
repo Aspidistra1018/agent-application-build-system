@@ -72,24 +72,27 @@ export const ToolArea: React.FC<ToolAreaProps> = props => {
       >
         <div className="p-[12px] overflow-auto flex-1" id={settingAreaScrollId}>
           <ToolView>
-            <GroupingContainer
-              title={I18n.t('bot_edit_type_skills')}
-              toolGroupKey={ToolGroupKey.SKILL}
-            >
-              {/* tool */}
-              <PluginApisArea
-                toolKey={ToolKey.PLUGIN}
-                title={I18n.t('Plugins')}
-              />
-              {/* Workflow */}
-              <WorkflowCard
-                flowMode={WorkflowMode.Workflow}
-                toolKey={ToolKey.WORKFLOW}
-                title={I18n.t('Workflows')}
-                from={WorkflowModalFrom.BotSkills}
-              />
-              {skillToolSlot}
-            </GroupingContainer>
+            {/* 隐藏技能组 - 插件和工作流 */}
+            {false && (
+              <GroupingContainer
+                title={I18n.t('bot_edit_type_skills')}
+                toolGroupKey={ToolGroupKey.SKILL}
+              >
+                {/* tool */}
+                <PluginApisArea
+                  toolKey={ToolKey.PLUGIN}
+                  title={I18n.t('Plugins')}
+                />
+                {/* Workflow */}
+                <WorkflowCard
+                  flowMode={WorkflowMode.Workflow}
+                  toolKey={ToolKey.WORKFLOW}
+                  title={I18n.t('Workflows')}
+                  from={WorkflowModalFrom.BotSkills}
+                />
+                {skillToolSlot}
+              </GroupingContainer>
+            )}
             <GroupingContainer
               toolGroupKey={ToolGroupKey.KNOWLEDGE}
               title={I18n.t('bot_edit_type_knowledge')}
@@ -112,13 +115,16 @@ export const ToolArea: React.FC<ToolAreaProps> = props => {
                 desc={I18n.t('bot_ide_knowledge_table_desc')}
               />
 
-              <DataSetArea
-                initRef={DataSetAreaRef}
-                toolKey={ToolKey.PHOTO}
-                title={I18n.t('knowledge_photo_025')}
-                formatType={FormatType.Image}
-                desc={I18n.t('knowledge_photo_027')}
-              />
+              {/* 隐藏照片知识库 */}
+              {false && (
+                <DataSetArea
+                  initRef={DataSetAreaRef}
+                  toolKey={ToolKey.PHOTO}
+                  title={I18n.t('knowledge_photo_025')}
+                  formatType={FormatType.Image}
+                  desc={I18n.t('knowledge_photo_027')}
+                />
+              )}
               {knowledgeToolSlot}
             </GroupingContainer>
             <GroupingContainer
@@ -146,18 +152,22 @@ export const ToolArea: React.FC<ToolAreaProps> = props => {
                 toolKey={ToolKey.SUGGEST}
                 title={I18n.t('bot_edit_suggestion')}
               />
-              {/* Shortcut shortcut */}
-              <ShortcutToolConfig
-                skillModal={SkillsModal}
-                toolKey={ToolKey.SHORTCUT}
-                botMode={BotMode.SingleMode}
-                title={I18n.t('bot_ide_shortcut')}
-              />
-              {/* Chat background image */}
-              <ChatBackground
-                toolKey={ToolKey.BACKGROUND}
-                title={I18n.t('bgi_title')}
-              />
+              {/* 隐藏快捷指令 */}
+              {false && (
+                <ShortcutToolConfig
+                  skillModal={SkillsModal}
+                  toolKey={ToolKey.SHORTCUT}
+                  botMode={BotMode.SingleMode}
+                  title={I18n.t('bot_ide_shortcut')}
+                />
+              )}
+              {/* 隐藏背景图片 */}
+              {false && (
+                <ChatBackground
+                  toolKey={ToolKey.BACKGROUND}
+                  title={I18n.t('bgi_title')}
+                />
+              )}
               {dialogToolSlot}
             </GroupingContainer>
             {extraToolSlot}

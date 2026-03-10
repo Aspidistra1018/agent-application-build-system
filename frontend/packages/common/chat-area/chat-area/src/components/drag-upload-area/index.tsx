@@ -15,7 +15,7 @@
  */
 
 import classNames from 'classnames';
-import { IllustrationNoContent } from '@douyinfe/semi-illustrations';
+import { EmptyDataIllustration } from '@coze-arch/bot-icons';
 
 import { usePreference } from '../../context/preference';
 import { useDragUploadContext } from '../../context/drag-upload';
@@ -24,7 +24,7 @@ import styles from './index.module.less';
 
 const UploadIllustrationContent = () => (
   <div className={styles['upload-illustration-content']}>
-    <IllustrationNoContent className={styles.illustration} />
+    <EmptyDataIllustration className={styles.illustration} />
     <div className={styles.title}>Upload the file</div>
     <div className={styles.description}>
       Drop files here to add to the conversation

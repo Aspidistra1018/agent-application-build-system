@@ -39,10 +39,7 @@ import { PageType, usePageJumpResponse } from '@coze-arch/bot-hooks';
 import { SpaceType } from '@coze-arch/bot-api/developer_api';
 import { infra, type MockRule } from '@coze-arch/bot-api/debugger_api';
 import { debuggerApi } from '@coze-arch/bot-api';
-import {
-  IllustrationNoContent,
-  IllustrationNoContentDark,
-} from '@douyinfe/semi-illustrations';
+import { EmptyDataIllustration } from '@coze-arch/bot-icons';
 import { IconAlertCircle } from '@douyinfe/semi-icons';
 import { getEnvironment } from '@coze-studio/mockset-shared';
 
@@ -259,8 +256,8 @@ export const MockDataList = forwardRef(
             <div className={s['list-container_flexible']}>
               <Empty
                 className={s.empty}
-                image={<IllustrationNoContent />}
-                darkModeImage={<IllustrationNoContentDark />}
+                image={<EmptyDataIllustration />}
+                darkModeImage={<EmptyDataIllustration />}
                 description={I18n.t('no_mock_yet')}
               />
             </div>

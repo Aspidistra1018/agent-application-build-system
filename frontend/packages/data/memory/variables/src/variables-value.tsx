@@ -17,7 +17,6 @@
 import dayjs from 'dayjs';
 import classNames from 'classnames';
 import { useRequest } from 'ahooks';
-import { IllustrationNoContent } from '@douyinfe/semi-illustrations';
 import { I18n } from '@coze-arch/i18n';
 import { typeSafeJSONParse } from '@coze-arch/bot-utils';
 import { EVENT_NAMES, sendTeaEvent } from '@coze-arch/bot-tea';
@@ -34,6 +33,7 @@ import {
   Tooltip,
   Empty,
 } from '@coze-arch/coze-design';
+import { EmptyDataIllustration } from '@coze-arch/bot-icons';
 
 export interface VariablesValueProps {
   projectID: string;
@@ -97,7 +97,7 @@ export function VariablesValue({ projectID, version }: VariablesValueProps) {
         useHoverStyle={false}
         empty={
           <Empty
-            image={<IllustrationNoContent className="w-[140px] h-[140px]" />}
+            image={<EmptyDataIllustration className="w-[140px] h-[140px]" />}
             title={I18n.t('variables_user_data_empty')}
           />
         }

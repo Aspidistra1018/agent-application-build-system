@@ -67,6 +67,8 @@ import { ReactComponent as SvgExampleInvalidIcon } from './assets/icons/plugin-e
 import { ReactComponent as MenuCollapse } from './assets/icons/menu-collapse.svg';
 import { ReactComponent as SvgValcanoColored } from './assets/icons/logo-volcano-colored.svg';
 import { ReactComponent as SvgLargeEmptyIcon } from './assets/icons/large-empty.svg';
+import { ReactComponent as SvgLargeEmptyNewIcon } from './assets/icons/large-empty-new.svg';
+import { ReactComponent as SvgLargeEmptyMinimalIcon } from './assets/icons/large-empty-minimal.svg';
 import { ReactComponent as SvgKnowledgeTableAvatar } from './assets/icons/knowledge/table-type-avatar.svg';
 import { ReactComponent as SvgKnowledgeImgAvatar } from './assets/icons/knowledge/img-type-avatar.svg';
 import { ReactComponent as SvgUpdateFrequency } from './assets/icons/knowledge/icon_forward-15s_outlined.svg';
@@ -738,6 +740,8 @@ export const IconQueryEmpty = IconFactory(<SvgQueryEmpty />);
 
 export const IconCollapse = IconFactory(<SvgCollapse />);
 export const IconLargeEmpty = IconFactory(<SvgLargeEmptyIcon />);
+export const IconLargeEmptyNew = IconFactory(<SvgLargeEmptyNewIcon />);
+export const IconLargeEmptyMinimal = IconFactory(<SvgLargeEmptyMinimalIcon />);
 export const IconEmpty = IconFactory(<SvgEmptyIcon />);
 export const IconPlayRoundOutlined = IconFactory(<SvgPlayOutline />);
 export const IconCardSearchOutlined = IconFactory(<SvgCardSearchOutline />);
@@ -1165,3 +1169,7 @@ export const IconCozArrowDown = IconFactory(<SvgCozArrowDownIcon />);
 export const IconCozArrowDownLeft = IconFactory(<SvgCozArrowDownLeftIcon />);
 export const IconDiamondFill = IconFactory(<SvgDiamondFill />);
 export const IconCheckMark = IconFactory(<SvgCozCheckMark />);
+
+// 自定义空状态插图
+export { EmptyDataIllustration } from './components/EmptyDataIllustration';
+

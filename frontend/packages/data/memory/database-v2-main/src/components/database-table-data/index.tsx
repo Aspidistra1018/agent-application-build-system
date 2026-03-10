@@ -18,7 +18,7 @@ import { useState, useMemo, useRef, useEffect } from 'react';
 
 import classNames from 'classnames';
 import { useRequest } from 'ahooks';
-import { IllustrationNoContent } from '@douyinfe/semi-illustrations';
+import { EmptyDataIllustration } from '@coze-arch/bot-icons';
 import { I18n } from '@coze-arch/i18n';
 import { type TableType, type FieldItem } from '@coze-arch/bot-api/memory';
 import { MemoryApi } from '@coze-arch/bot-api';
@@ -264,7 +264,7 @@ export function DatabaseTableData({
         })}
         empty={
           <Empty
-            image={<IllustrationNoContent className="w-[140px] h-[140px]" />}
+            image={<EmptyDataIllustration className="w-[140px] h-[140px]" />}
             title={I18n.t('timecapsule_0108_003')}
           />
         }

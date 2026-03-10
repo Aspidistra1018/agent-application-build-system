@@ -29,10 +29,7 @@ import {
 } from '@coze-arch/coze-design';
 import { CheckboxGroup, withField } from '@coze-arch/bot-semi';
 import { type FormSchemaItem } from '@coze-arch/bot-api/connector_api';
-import {
-  IllustrationNoContent,
-  IllustrationNoContentDark,
-} from '@douyinfe/semi-illustrations';
+import { EmptyDataIllustration } from '@coze-arch/bot-icons';
 
 import { useOauthSettingModalController } from '@/hook/publish-platform-setting/use-oauth-setting-modal-controller';
 import { type IActionTarget } from '@/hook/publish-platform-setting/use-custom-platform-controller';
@@ -174,10 +171,10 @@ const OauthSettingModal = ({
           <Empty
             className="pt-[120px]"
             image={
-              <IllustrationNoContent style={{ width: 150, height: 150 }} />
+              <EmptyDataIllustration style={{ width: 150, height: 150 }} />
             }
             darkModeImage={
-              <IllustrationNoContentDark style={{ width: 150, height: 150 }} />
+              <EmptyDataIllustration style={{ width: 150, height: 150 }} />
             }
             description={I18n.t('api_analytics_null')}
           />

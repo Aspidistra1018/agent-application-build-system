@@ -126,10 +126,78 @@
   font-style: normal;
   line-height: 24px;
   color: var(--Light-usage-text---color-text-0, #1C1D23);
+  
+  /* 确保不显示任何必填符号 */
+  &::after {
+    display: none !important;
+  }
+}
+
+/* 针对发布页面的特定样式 */
+.publish-wrapper {
+  :global {
+    .semi-form-field-label-text::after {
+      display: none !important;
+    }
+    
+    .semi-form-field-label-required .semi-form-field-label-text::after {
+      display: none !important;
+    }
+  }
+}
+
+/* 确保发布标题也不显示必填符号 */
+.publish-title-container {
+  :global {
+    .semi-form-field-label-text::after {
+      display: none !important;
+    }
+    
+    .semi-form-field-label-required .semi-form-field-label-text::after {
+      display: none !important;
+    }
+  }
 }
 
 .text-area {
   margin-top: 12px;
+  
+  :global {
+    .semi-input {
+      border: 1px solid var(--semi-color-border) !important;
+      border-radius: 8px;
+      background-color: var(--semi-color-bg-2) !important;
+      
+      &:hover {
+        border-color: var(--semi-color-primary) !important;
+      }
+      
+      &:focus-within {
+        border-color: var(--semi-color-primary) !important;
+        /* 移除蓝色阴影效果，只保留边框颜色变化 */
+        box-shadow: none !important;
+        outline: none !important;
+      }
+    }
+    
+    /* 确保TextArea也有清晰的边框 */
+    .semi-input-textarea {
+      border: 1px solid var(--semi-color-border) !important;
+      border-radius: 8px;
+      background-color: var(--semi-color-bg-2) !important;
+      
+      &:hover {
+        border-color: var(--semi-color-primary) !important;
+      }
+      
+      &:focus-within {
+        border-color: var(--semi-color-primary) !important;
+        /* 移除蓝色阴影效果，只保留边框颜色变化 */
+        box-shadow: none !important;
+        outline: none !important;
+      }
+    }
+  }
 }
 
 .publish-result-table {

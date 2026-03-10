@@ -1,5 +1,17 @@
 .desc-input {
   > input {
     text-overflow: ellipsis;
+    /* 确保边框清晰可见 */
+    border: 1px solid var(--coz-stroke-primary, rgba(68, 83, 130, 0.25)) !important;
+    border-radius: 8px;
+    
+    &:hover {
+      border-color: var(--coz-stroke-hglt, rgba(68, 83, 130, 0.5)) !important;
+    }
+    
+    &:focus {
+      border-color: var(--coz-stroke-hglt, rgba(68, 83, 130, 0.8)) !important;
+      box-shadow: 0 0 0 2px rgba(68, 83, 130, 0.1) !important;
+    }
   }
 }

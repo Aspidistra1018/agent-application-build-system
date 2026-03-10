@@ -286,7 +286,8 @@ export const ShortcutToolConfig: FC<ShortcutToolConfigProps> = props => {
         showBottomBorder={!hasConfiguredShortcuts}
         header={title}
         defaultExpand={defaultExpand}
-        tooltip={<ShortcutTips />}
+        // 移除快捷指令提示符号
+        /* tooltip={<ShortcutTips />} */
         actionButton={
           !isReadonly && (
             <>
