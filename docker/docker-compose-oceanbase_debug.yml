@@ -1,4 +1,4 @@
-name: coze-studio-debug
+name: agent-studio-debug
 
 x-env-file: &env_file
   - .env.debug
@@ -6,7 +6,7 @@ x-env-file: &env_file
 services:
   mysql:
     image: mysql:8.4.5
-    container_name: coze-mysql
+    container_name: agent-mysql
     environment:
       MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD:-root}
       MYSQL_DATABASE: ${MYSQL_DATABASE:-opencoze}
@@ -37,11 +37,11 @@ services:
       retries: 5
       start_period: 30s
     networks:
-      - coze-network
+      - agent-network
 
   redis:
     image: bitnamilegacy/redis:8.0
-    container_name: coze-redis
+    container_name: agent-redis
     user: root
     privileged: true
     profiles: ['middleware']
@@ -78,11 +78,11 @@ services:
       retries: 10
       start_period: 10s
     networks:
-      - coze-network
+      - agent-network
 
   # rocketmq-namesrv:
   #   image: apache/rocketmq:5.3.2
-  #   container_name: coze-rocketmq-namesrv
+  #   container_name: agent-rocketmq-namesrv
   #   privileged: true
   #   user: root
   #   profiles: ['middleware']
@@ -115,10 +115,10 @@ services:
   #     retries: 10
   #     start_period: 10s
   #   networks:
-  #     - coze-network
+  #     - agent-network
   # rocketmq-broker:
   #   image: apache/rocketmq:5.3.2
-  #   container_name: coze-rocketmq-broker
+  #   container_name: agent-rocketmq-broker
   #   privileged: true
   #   user: root
   #   profiles: ['middleware']
@@ -132,7 +132,7 @@ services:
   #     - ./data/rocketmq/broker/store:/home/rocketmq/store:rw,Z
   #     - ./volumes/rocketmq/broker.conf:/home/rocketmq/conf/broker.conf:rw,Z
   #   networks:
-  #     - coze-network
+  #     - agent-network
   #   command: >
   #     bash -c '
   #       # Set proper permissions
@@ -185,7 +185,7 @@ services:
 
   elasticsearch:
     image: bitnamilegacy/elasticsearch:8.18.0
-    container_name: coze-elasticsearch
+    container_name: agent-elasticsearch
     user: root
     privileged: true
     profiles: ['middleware']
@@ -213,7 +213,7 @@ services:
       retries: 10
       start_period: 10s
     networks:
-      - coze-network
+      - agent-network
     # Install smartcn analyzer plugin and initialize ES
     command: >
       bash -c "
@@ -272,7 +272,7 @@ services:
 
   minio:
     image: minio/minio:RELEASE.2025-06-13T11-33-47Z-cpuv1
-    container_name: coze-minio
+    container_name: agent-minio
     user: root
     privileged: true
     profiles: ['middleware']
@@ -298,11 +298,11 @@ services:
       retries: 3
       start_period: 30s
     networks:
-      - coze-network
+      - agent-network
 
   etcd:
     image: bitnamilegacy/etcd:3.5
-    container_name: coze-etcd
+    container_name: agent-etcd
     user: root
     privileged: true
     profiles: ['middleware']
@@ -334,7 +334,7 @@ services:
       retries: 10
       start_period: 10s
     networks:
-      - coze-network
+      - agent-network
 
   # OceanBase for vector storage
   oceanbase:
@@ -370,18 +370,18 @@ services:
       start_period: 30s
       timeout: 10s
     networks:
-      - coze-network
+      - agent-network
 
   nsqlookupd:
     image: nsqio/nsq:v1.2.1
-    container_name: coze-nsqlookupd
+    container_name: agent-nsqlookupd
     command: /nsqlookupd
     profiles: ['middleware']
     ports:
       - '4160:4160'
       - '4161:4161'
     networks:
-      - coze-network
+      - agent-network
     healthcheck:
       test: ['CMD-SHELL', 'nsqlookupd --version']
       interval: 5s
@@ -391,8 +391,8 @@ services:
 
   nsqd:
     image: nsqio/nsq:v1.2.1
-    container_name: coze-nsqd
-    command: /nsqd --lookupd-tcp-address=coze-nsqlookupd:4160 --broadcast-address=coze-nsqd
+    container_name: agent-nsqd
+    command: /nsqd --lookupd-tcp-address=agent-nsqlookupd:4160 --broadcast-address=agent-nsqd
     profiles: ['middleware']
     ports:
       - '4150:4150'
@@ -401,7 +401,7 @@ services:
       nsqlookupd:
         condition: service_healthy
     networks:
-      - coze-network
+      - agent-network
     healthcheck:
       test: ['CMD-SHELL', '/nsqd --version']
       interval: 5s
@@ -411,8 +411,8 @@ services:
 
   nsqadmin:
     image: nsqio/nsq:v1.2.1
-    container_name: coze-nsqadmin
-    command: /nsqadmin --lookupd-http-address=coze-nsqlookupd:4161
+    container_name: agent-nsqadmin
+    command: /nsqadmin --lookupd-http-address=agent-nsqlookupd:4161
     profiles: ['middleware']
     ports:
       - '4171:4171'
@@ -420,11 +420,11 @@ services:
       nsqlookupd:
         condition: service_healthy
     networks:
-      - coze-network
+      - agent-network
 
   minio-setup:
     image: minio/mc:RELEASE.2025-05-21T01-59-54Z-cpuv1
-    container_name: coze-minio-setup
+    container_name: agent-minio-setup
     profiles: ['middleware']
     env_file: *env_file
     depends_on:
@@ -435,19 +435,19 @@ services:
       - ./volumes/minio/official_plugin_icon/:/official_plugin_icon
     entrypoint: >
       /bin/sh -c  "
-        (/usr/bin/mc alias set localminio http://coze-minio:9000 ${MINIO_ROOT_USER} ${MINIO_ROOT_PASSWORD} && \
+        (/usr/bin/mc alias set localminio http://agent-minio:9000 ${MINIO_ROOT_USER} ${MINIO_ROOT_PASSWORD} && \
         /usr/bin/mc mb --ignore-existing localminio/${STORAGE_BUCKET} && \
         /usr/bin/mc cp --recursive /default_icon/ localminio/${STORAGE_BUCKET}/default_icon/ && \
         /usr/bin/mc cp --recursive /official_plugin_icon/ localminio/${STORAGE_BUCKET}/official_plugin_icon/ && \
         echo 'upload files to minio complete: Files uploaded to ${STORAGE_BUCKET} bucket.') || exit 1; \
       "
     networks:
-      - coze-network
+      - agent-network
     restart: 'no'
 
   mysql-setup-schema:
     image: arigaio/atlas:0.35.0-community-alpine
-    container_name: coze-mysql-setup-schema
+    container_name: agent-mysql-setup-schema
     profiles: ['middleware', 'mysql-setup', 'run-server']
     env_file: *env_file
     depends_on:
@@ -482,10 +482,10 @@ services:
          echo "MySQL setup failed after 60 retries."
          exit 1
     networks:
-      - coze-network
+      - agent-network
   mysql-setup-init-sql:
     image: mysql:8.4.5
-    container_name: coze-mysql-setup-init-sql
+    container_name: agent-mysql-setup-init-sql
     profiles: ['middleware', 'mysql-setup', 'run-server', 'volcano-setup']
     env_file: *env_file
     depends_on:
@@ -515,10 +515,10 @@ services:
       - ./volumes/mysql/sql_init.sql:/sql_init.sql
       - ./volumes/mysql/schema.sql:/schema.sql
     networks:
-      - coze-network
+      - agent-network
     restart: 'no'
 
-  coze-server:
+  agent-server:
     build:
       context: ../
       dockerfile: backend/Dockerfile
@@ -526,5 +526,5 @@ services:
     profiles: ['build-server']
 
 networks:
-  coze-network:
+  agent-network:
     driver: bridge

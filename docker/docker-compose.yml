@@ -1,11 +1,11 @@
-name: coze-studio
+name: agent-studio
 x-env-file: &env_file
   - .env
 
 services:
   mysql:
     image: mysql:8.4.5
-    container_name: coze-mysql
+    container_name: agent-mysql
     restart: always
     environment:
       MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD:-root}
@@ -78,11 +78,11 @@ services:
       retries: 5
       start_period: 30s
     networks:
-      - coze-network
+      - agent-network
 
   redis:
     image: bitnamilegacy/redis:8.0
-    container_name: coze-redis
+    container_name: agent-redis
     restart: always
     user: root
     privileged: true
@@ -112,10 +112,10 @@ services:
       retries: 10
       start_period: 10s
     networks:
-      - coze-network
+      - agent-network
   elasticsearch:
     image: bitnamilegacy/elasticsearch:8.18.0
-    container_name: coze-elasticsearch
+    container_name: agent-elasticsearch
     restart: always
     user: root
     privileged: true
@@ -143,7 +143,7 @@ services:
       retries: 10
       start_period: 500s
     networks:
-      - coze-network
+      - agent-network
     # Install smartcn analyzer plugin and initialize ES
     command: >
       bash -c "
@@ -202,7 +202,7 @@ services:
 
   minio:
     image: minio/minio:RELEASE.2025-06-13T11-33-47Z-cpuv1
-    container_name: coze-minio
+    container_name: agent-minio
     user: root
     privileged: true
     restart: always
@@ -251,11 +251,11 @@ services:
       retries: 3
       start_period: 30s
     networks:
-      - coze-network
+      - agent-network
 
   etcd:
     image: bitnamilegacy/etcd:3.5
-    container_name: coze-etcd
+    container_name: agent-etcd
     user: root
     restart: always
     privileged: true
@@ -287,10 +287,10 @@ services:
       retries: 10
       start_period: 10s
     networks:
-      - coze-network
+      - agent-network
 
   milvus:
-    container_name: coze-milvus
+    container_name: agent-milvus
     image: milvusdb/milvus:v2.5.10
     user: root
     privileged: true
@@ -331,17 +331,17 @@ services:
       minio:
         condition: service_healthy
     networks:
-      - coze-network
+      - agent-network
   nsqlookupd:
     image: nsqio/nsq:v1.2.1
-    container_name: coze-nsqlookupd
+    container_name: agent-nsqlookupd
     command: /nsqlookupd
     restart: always
     ports:
       - '4360:4160'
       - '4361:4161'
     networks:
-      - coze-network
+      - agent-network
     healthcheck:
       test: ['CMD-SHELL', 'nsqlookupd --version']
       interval: 5s
@@ -351,7 +351,7 @@ services:
 
   nsqd:
     image: nsqio/nsq:v1.2.1
-    container_name: coze-nsqd
+    container_name: agent-nsqd
     command: /nsqd --lookupd-tcp-address=nsqlookupd:4160 --broadcast-address=nsqd
     restart: always
     ports:
@@ -361,7 +361,7 @@ services:
       nsqlookupd:
         condition: service_healthy
     networks:
-      - coze-network
+      - agent-network
     healthcheck:
       test: ['CMD-SHELL', '/nsqd --version']
       interval: 5s
@@ -371,7 +371,7 @@ services:
 
   nsqadmin:
     image: nsqio/nsq:v1.2.1
-    container_name: coze-nsqadmin
+    container_name: agent-nsqadmin
     command: /nsqadmin --lookupd-http-address=nsqlookupd:4161
     restart: always
     ports:
@@ -380,21 +380,21 @@ services:
       nsqlookupd:
         condition: service_healthy
     networks:
-      - coze-network
+      - agent-network
 
-  coze-server:
+  agent-server:
     #    2.使用本地源代码进行构建还是远程镜像构建
     build:
         context: ../
         dockerfile: backend/Dockerfile
 #    image: cozedev/coze-studio-server:latest
     restart: always
-    container_name: coze-server
+    container_name: agent-server
     env_file: *env_file
     # environment:
     #   LISTEN_ADDR: 0.0.0.0:8888
     networks:
-      - coze-network
+      - agent-network
     #     1.如果是进行开发就解除注释，不开发就注释掉
     ports:
       - '8888:8888'
@@ -416,13 +416,13 @@ services:
         condition: service_healthy
     command: ['/app/opencoze']
 
-  coze-web:
+  agent-web:
     #    2.使用本地源代码进行构建还是远程镜像构建
     build:
       context: ..
       dockerfile: frontend/Dockerfile
     #    image: cozedev/coze-studio-web:latest
-    container_name: coze-web
+    container_name: agent-web
     restart: always
     ports:
       - "${WEB_LISTEN_ADDR:-8080}:80"
@@ -432,10 +432,10 @@ services:
       - ./nginx/conf.d/default.conf:/etc/nginx/conf.d/default.conf:ro  # Proxy config
       # - ./nginx/ssl:/etc/nginx/ssl:ro  # SSL certificates (uncomment if using SSL)
     depends_on:
-      - coze-server
+      - agent-server
     networks:
-      - coze-network
+      - agent-network
 
 networks:
-  coze-network:
+  agent-network:
     driver: bridge

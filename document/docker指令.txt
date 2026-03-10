@@ -1,17 +1,17 @@
 构建后端
-docker-compose build coze-server
+docker-compose build agent-server
 构建前端
-docker-compose build coze-web
+docker-compose build agent-web
 
 运行后端
-docker-compose up -d coze-server
+docker-compose up -d agent-server
 运行前端
-docker-compose up -d coze-web 
+docker-compose up -d agent-web 
 
 构建并运行后端
-docker-compose up -d --build coze-server
+docker-compose up -d --build agent-server
 构建并运行前端
-docker-compose up -d --build coze-web
+docker-compose up -d --build agent-web
 
 拉取镜像并运行所有容器
 docker compose up -d

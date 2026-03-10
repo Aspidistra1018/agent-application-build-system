@@ -50,7 +50,7 @@ Deployment steps:
    # Clone code
    git clone https://github.com/coze-dev/coze-studio.git
    ```
-2. Deploy and start the service. When deploying and starting Coze Studio for the first time, it may take a while to retrieve images and build local images. Please be patient. If you see the message "Container coze-server Started," it means the Coze Studio service has started successfully.
+2. Deploy and start the service. When deploying and starting Coze Studio for the first time, it may take a while to retrieve images and build local images. Please be patient. If you see the message "Container agent-server Started," it means the Coze Studio service has started successfully.
 
    ```Bash
    cd coze-studio

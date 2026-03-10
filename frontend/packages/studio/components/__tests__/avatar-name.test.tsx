@@ -24,7 +24,7 @@ describe('AvatarName', () => {
       <AvatarName
         name="BotNickName"
         username="BotUserName"
-        avatar="https://sf-coze-web-cdn.coze.com/obj/coze-web-sg/obric/coze/favicon.1970.png"
+        avatar="https://sf-agent-web-cdn.coze.com/obj/agent-web-sg/obric/coze/favicon.1970.png"
       />,
     );
     expect(wrapper.getAllByRole('img').length).toBe(1);
@@ -36,9 +36,9 @@ describe('AvatarName', () => {
       <AvatarName
         name="BotNickName"
         username="BotUserName"
-        avatar="https://sf-coze-web-cdn.coze.com/obj/coze-web-sg/obric/coze/favicon.1970.png"
+        avatar="https://sf-agent-web-cdn.coze.com/obj/agent-web-sg/obric/coze/favicon.1970.png"
         label={{
-          icon: 'https://sf-coze-web-cdn.coze.com/obj/coze-web-sg/obric/coze/favicon.1970.png',
+          icon: 'https://sf-agent-web-cdn.coze.com/obj/agent-web-sg/obric/coze/favicon.1970.png',
           name: 'test',
         }}
       />,

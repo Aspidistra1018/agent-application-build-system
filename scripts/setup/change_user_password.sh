@@ -40,7 +40,7 @@ PASSWORD="${2:-123456}"
 MYSQL_USER="${MYSQL_USER:-coze}"
 MYSQL_PASSWORD="${MYSQL_PASSWORD:-coze123}"
 MYSQL_DATABASE="${MYSQL_DATABASE:-opencoze}"
-MYSQL_CONTAINER="coze-mysql"
+MYSQL_CONTAINER="agent-mysql"
 
 echo "Updating password for user $EMAIL..."
 

@@ -73,10 +73,10 @@ redis:
     storageClassName: ""
     size: "50Gi"
 
-# -- coze-server configuration
+# -- agent-server configuration
 cozeServer:
   enabled: true
-  # -- Number of replicas for the coze-server deployment
+  # -- Number of replicas for the agent-server deployment
   replicaCount: 1
 
   image:

@@ -192,7 +192,7 @@ nats:
   volumes:
     - ./volumes/nats:/data
   networks:
-    - coze-network
+    - agent-network
   healthcheck:
     test: ["CMD", "wget", "--no-verbose", "--tries=1", "--spider", "http://localhost:8222/"]
     interval: 30s

@@ -160,7 +160,7 @@ services:
     volumes:
       - ./data/pulsar:/pulsar/data
     networks:
-      - coze-network
+      - agent-network
     healthcheck:
       test: ["CMD", "curl", "-f", "http://localhost:8080/admin/v2/clusters"]
       interval: 30s
@@ -209,7 +209,7 @@ services:
     volumes:
       - ./data/pulsar:/pulsar/data
     networks:
-      - coze-network
+      - agent-network
     healthcheck:
       test: ["CMD", "curl", "-f", "http://localhost:8080/admin/v2/clusters"]
       interval: 30s
