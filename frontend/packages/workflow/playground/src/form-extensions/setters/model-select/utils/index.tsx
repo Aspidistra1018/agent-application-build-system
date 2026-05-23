@@ -32,6 +32,25 @@ export const getValueByType = <T,>(value, type?: ModelParamType): T => {
   return _value;
 };
 
+const MODEL_SETTING_TEXT_MAP: Record<string, string> = {
+  'generation diversity': '生成多样性',
+  temperature: '温度',
+  'top p': 'Top P（核采样）',
+  'input and output settings': '输入与输出设置',
+  'input and output length': '输入与输出设置',
+  'response max length': '最大回复长度',
+  'max tokens': '最大回复长度',
+  'output format': '输出格式',
+};
+
+export const getModelSettingText = (text?: string) => {
+  if (!text) {
+    return '';
+  }
+
+  return MODEL_SETTING_TEXT_MAP[text.trim().toLowerCase()] ?? text;
+};
+
 // memory level cache
 const cacheData: {
   [k: string]: unknown;

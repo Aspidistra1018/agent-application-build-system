@@ -53,8 +53,6 @@ import { Outputs } from '@/nodes-v2/components/outputs';
 import { createNodeInputNameValidate } from '@/nodes-v2/components/node-input-name/validate';
 import { NodeInputName } from '@/nodes-v2/components/node-input-name';
 import { FormItemFeedback } from '@/nodes-v2/components/form-item-feedback';
-import { BatchMode } from '@/nodes-v2/components/batch-mode';
-import { Batch } from '@/nodes-v2/components/batch/batch';
 import { useGetWorkflowMode, useGlobalState } from '@/hooks';
 import { FormCard } from '@/form-extensions/components/form-card';
 import { ColumnsTitleWithAction } from '@/form-extensions/components/columns-title-with-action';
@@ -107,16 +105,6 @@ const Render = ({ form }: FormRenderProps<FormData>) => {
           outputsPath={'outputs'}
           batchModePath={'batchMode'}
         />
-        <Field name={'batchMode'}>
-          {({ field }: FieldRenderProps<string>) => (
-            <BatchMode
-              name={field.name}
-              value={field.value}
-              onChange={field.onChange}
-              onBlur={field.onBlur}
-            />
-          )}
-        </Field>
         <Field name={'model'}>
           {({ field }: FieldRenderProps<IModelValue | undefined>) => (
             <FormCard
@@ -127,7 +115,6 @@ const Render = ({ form }: FormRenderProps<FormData>) => {
             </FormCard>
           )}
         </Field>
-        <Batch batchModeName={'batchMode'} name={'batch'} />
         {/* 隐藏技能-插件部分 */}
         {false && !isBindDouyin ? (
           <Field name="fcParam">

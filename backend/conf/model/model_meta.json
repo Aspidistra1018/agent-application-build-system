@@ -2305,6 +2305,114 @@
                         }
                     }
                 ]
+            },
+            "qwen3.6-plus": {
+                "display_info": {
+                    "name": "Qwen3.6-Plus",
+                    "description": {
+                        "zh_cn": "Qwen3.6-Plus supports long-context multimodal generation, tool calling, thinking, and structured output.",
+                        "en_us": "Qwen3.6-Plus supports long-context multimodal generation, tool calling, thinking, and structured output."
+                    },
+                    "output_tokens": 65536,
+                    "max_tokens": 1000000
+                },
+                "capability": {
+                    "cot_display": true,
+                    "function_call": true,
+                    "image_understanding": true,
+                    "video_understanding": true,
+                    "audio_understanding": false,
+                    "support_multi_modal": true
+                },
+                "parameters": [
+                    {
+                        "name": "temperature",
+                        "label": "Temperature",
+                        "desc": "**Temperature** controls generation randomness.",
+                        "type": 1,
+                        "min": "0",
+                        "max": "1.99",
+                        "precision": 2,
+                        "default_val": {
+                            "default_val": "1",
+                            "creative": "1",
+                            "balance": "0.8",
+                            "precise": "0.3"
+                        },
+                        "options": [],
+                        "param_class": {
+                            "class_id": 1,
+                            "label": "Generation diversity"
+                        }
+                    },
+                    {
+                        "name": "top_p",
+                        "label": "Top P",
+                        "desc": "Controls nucleus sampling.",
+                        "type": 1,
+                        "min": "0.01",
+                        "max": "1",
+                        "precision": 2,
+                        "default_val": {
+                            "default_val": "0.95",
+                            "creative": "1",
+                            "balance": "0.95",
+                            "precise": "0.7"
+                        },
+                        "options": [],
+                        "param_class": {
+                            "class_id": 1,
+                            "label": "Generation diversity"
+                        }
+                    },
+                    {
+                        "name": "max_tokens",
+                        "label": "Response max length",
+                        "desc": "Controls the maximum number of generated tokens.",
+                        "type": 2,
+                        "min": "1",
+                        "max": "65536",
+                        "precision": 0,
+                        "default_val": {
+                            "default_val": "4096"
+                        },
+                        "options": [],
+                        "param_class": {
+                            "class_id": 2,
+                            "label": "Input and output settings"
+                        }
+                    },
+                    {
+                        "name": "response_format",
+                        "label": "Response format",
+                        "desc": "Controls whether the model returns text, Markdown, or JSON.",
+                        "type": 2,
+                        "min": "",
+                        "max": "",
+                        "precision": 0,
+                        "default_val": {
+                            "default_val": "0"
+                        },
+                        "options": [
+                            {
+                                "label": "Text",
+                                "value": "0"
+                            },
+                            {
+                                "label": "Markdown",
+                                "value": "1"
+                            },
+                            {
+                                "label": "JSON",
+                                "value": "2"
+                            }
+                        ],
+                        "param_class": {
+                            "class_id": 2,
+                            "label": "Input and output settings"
+                        }
+                    }
+                ]
             }
         },
         "SEED": {

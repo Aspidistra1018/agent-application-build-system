@@ -38,6 +38,10 @@ export const LoginPage: FC = () => {
 
   const submitDisabled = !email || !password || hasError;
 
+  useEffect(() => {
+    document.title = I18n.t('platform_name');
+  }, []);
+
   // SSO自动登录
   useEffect(() => {
     const ssoEmail = searchParams.get('sso_email');

@@ -22,6 +22,7 @@ import { GLOBAL_ENVS } from '@coze-arch/bot-env';
 const API_PROXY_TARGET = `http://localhost:${
   process.env.WEB_SERVER_PORT || 8888
 }/`;
+const APP_TITLE = 'Agent应用自动构建平台';
 
 const mergedConfig = defineConfig({
   server: {
@@ -42,7 +43,7 @@ const mergedConfig = defineConfig({
     ],
   },
   html: {
-    title: 'Agent应用自动构建平台 Studio',
+    title: APP_TITLE,
     favicon: './assets/favicon.png',
     template: './index.html',
     crossorigin: 'anonymous',

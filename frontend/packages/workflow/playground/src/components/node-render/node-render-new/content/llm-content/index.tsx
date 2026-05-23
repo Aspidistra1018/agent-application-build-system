@@ -15,7 +15,6 @@
  */
 
 import { InputParameters, Outputs, Model } from '../../fields';
-import { Skill } from './skill';
 
 export function LLMContent() {
   return (
@@ -23,7 +22,6 @@ export function LLMContent() {
       <InputParameters />
       <Outputs />
       <Model />
-      <Skill />
     </>
   );
 }

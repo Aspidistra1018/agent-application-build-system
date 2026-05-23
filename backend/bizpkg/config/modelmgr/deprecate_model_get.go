@@ -275,6 +275,14 @@ func toNewModel(old *OldModel) (*Model, error) {
 		},
 	}
 
+	if old.Meta.ConnConfig.EnableThinking != nil {
+		if *old.Meta.ConnConfig.EnableThinking {
+			m.Connection.BaseConnInfo.ThinkingType = config.ThinkingType_Enable
+		} else {
+			m.Connection.BaseConnInfo.ThinkingType = config.ThinkingType_Disable
+		}
+	}
+
 	m.DisplayInfo.Name = old.Name
 
 	if modelMeta.Connection != nil {

@@ -106,7 +106,7 @@ meta:
         prefill_response: false
     conn_config:
         base_url: "https://ark.cn-beijing.volces.com/api/v3/"
-        api_key: ""
+        api_key: "4aa7a56c-d1de-47d6-bc39-5b6fb1628dac"
         timeout: 0s
         model: "" # model_id / endpoint_id
         temperature: 0.1

@@ -1562,7 +1562,7 @@
   "app_publish_connector_space_mcp_desc": "发布后，可在Agent应用自动构建平台空间扩展库中添加工具到Agent任务中",
   "app_publish_connector_space_mcp_title": "Agent应用自动构建平台空间扩展库",
   "app_publish_sdk_confirm": "我知道了",
-  "app_publish_sdk_step_1": "将 OAuth 令牌添加到 auth key 中，向用户授予访问令牌：\n{doc_link}",
+  "app_publish_sdk_step_1": "将 OAuth 令牌添加到 auth key 中，向用户授予访问令牌。",
   "app_publish_sdk_step_1_doc": "OAuth 授权概述",
   "app_publish_sdk_step_2": "复制代码并粘贴到网站的 <body> 标签中",
   "app_publish_sdk_step_3": "刷新网站,你的智能体将会显示在页面的右下角",

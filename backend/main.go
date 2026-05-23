@@ -86,17 +86,25 @@ func startHttpServer() {
 	// CORS配置 - 同时支持localhost和127.0.0.1
 	config := cors.DefaultConfig()
 	config.AllowOrigins = []string{
-		"http://localhost:5173",   // 统一登录系统前端
-		"http://127.0.0.1:5173",   // 统一登录系统前端（IP形式）
-		"http://localhost:8080",   // Agent系统前端
-		"http://127.0.0.1:8080",   // Agent系统前端（IP形式）
-		"http://localhost:3000",   // Web系统前端
-		"http://127.0.0.1:3000",   // Web系统前端（IP形式）
+		"http://localhost:5173", // 统一登录系统前端
+		"http://127.0.0.1:5173", // 统一登录系统前端（IP形式）
+		"http://localhost:8080", // Agent系统前端
+		"http://127.0.0.1:8080", // Agent系统前端（IP形式）
+		"http://localhost:3000", // Web系统前端
+		"http://127.0.0.1:3000", // Web系统前端（IP形式）
+	}
+	config.AllowOriginFunc = func(origin string) bool {
+		return strings.HasPrefix(origin, "http://127.0.0.1:") ||
+			strings.HasPrefix(origin, "http://localhost:") ||
+			strings.HasPrefix(origin, "http://0.0.0.0:") ||
+			strings.HasPrefix(origin, "https://127.0.0.1:") ||
+			strings.HasPrefix(origin, "https://localhost:") ||
+			strings.HasPrefix(origin, "https://0.0.0.0:")
 	}
 	config.AllowCredentials = true
 	config.AllowHeaders = []string{
 		"Content-Type",
-		"content-type",  // 小写形式
+		"content-type", // 小写形式
 		"Accept",
 		"accept",
 		"Authorization",

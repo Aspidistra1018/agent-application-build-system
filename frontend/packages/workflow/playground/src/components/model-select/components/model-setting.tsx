@@ -27,7 +27,12 @@ import {
   type ModelParamClass,
 } from '@coze-arch/bot-api/developer_api';
 
-import { cacheData, getCamelNameName, getValueByType } from '../utils';
+import {
+  cacheData,
+  getCamelNameName,
+  getModelSettingText,
+  getValueByType,
+} from '../utils';
 import styles from '../index.module.less';
 import { Divider, SettingLayout, SettingSlider } from './settings';
 
@@ -87,7 +92,7 @@ export const ModelSetting: FC<ModelSettingProps> = ({
     // Specialization 2: Generation Diversity title The style is written dead. Convention with the backend: Generation Diversity class_id === 1
     const generationDiversityGroup = groups.find(d => d.class_id === 1);
     const _generationDiversityGroupTitle =
-      generationDiversityGroup?.label || '';
+      getModelSettingText(generationDiversityGroup?.label);
     if (generationDiversityGroup) {
       // If there is Generation Diversity, it must be at the top
       groups = [
@@ -115,7 +120,9 @@ export const ModelSetting: FC<ModelSettingProps> = ({
 
       // Generate diversity title built-in, no need to add additional
       if (generationDiversityGroup?.class_id !== g.class_id) {
-        _doms.push(<SettingLayout title={g.label ?? ''} bolder />);
+        _doms.push(
+          <SettingLayout title={getModelSettingText(g.label)} bolder />,
+        );
       }
       const items = modelParams?.filter(
         m => m.param_class?.class_id === g.class_id,
@@ -149,7 +156,7 @@ export const ModelSetting: FC<ModelSettingProps> = ({
 
           _doms.push(
             <SettingLayout
-              title={label}
+              title={getModelSettingText(label)}
               description={desc}
               center={
                 <Select
@@ -174,7 +181,7 @@ export const ModelSetting: FC<ModelSettingProps> = ({
           _doms.push(
             <SettingSlider
               readonly={readonly}
-              title={label}
+              title={getModelSettingText(label)}
               description={desc}
               // defaultValue={getValueByType<number | undefined>(
               //   _defaultValue?.[value?.generationDiversity as string]?.[key],

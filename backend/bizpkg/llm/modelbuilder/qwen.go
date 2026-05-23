@@ -23,6 +23,7 @@ import (
 	"github.com/cloudwego/eino-ext/components/model/qwen"
 
 	"github.com/coze-dev/coze-studio/backend/api/model/admin/config"
+	"github.com/coze-dev/coze-studio/backend/api/model/app/bot_common"
 	"github.com/coze-dev/coze-studio/backend/pkg/lang/ptr"
 )
 
@@ -71,6 +72,16 @@ func (q *qwenModelBuilder) applyParamsToQwenConfig(conf *qwen.ChatModelConfig, p
 
 	if params.EnableThinking != nil {
 		conf.EnableThinking = params.EnableThinking
+	}
+
+	if params.ResponseFormat == bot_common.ModelResponseFormat_JSON {
+		conf.ResponseFormat = &openai.ChatCompletionResponseFormat{
+			Type: openai.ChatCompletionResponseFormatTypeJSONObject,
+		}
+	} else {
+		conf.ResponseFormat = &openai.ChatCompletionResponseFormat{
+			Type: openai.ChatCompletionResponseFormatTypeText,
+		}
 	}
 }
 

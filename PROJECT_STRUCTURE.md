@@ -123,14 +123,3 @@ make run
 2. 业务逻辑应该放在 `application/` 或 `domain/` 中
 3. 使用 `internal/` 目录存放不对外暴露的代码
 4. 遵循 Go 的代码规范，使用 `gofmt` 和 `golint` 检查代码
-
-## 贡献指南
-
-1. 创建功能分支：`git checkout -b feature/your-feature`
-2. 提交更改：`git commit -m "Add some feature"`
-3. 推送到远程：`git push origin feature/your-feature`
-4. 创建 Pull Request
-
-## 许可证
-
-[Apache License 2.0](LICENSE-APACHE)
