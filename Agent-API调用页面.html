@@ -1,0 +1,627 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agent-API调用页面</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f7fa;
+            color: #333;
+            line-height: 1.6;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+        
+        header {
+            background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+        
+        h1 {
+            font-size: 2.2rem;
+            margin-bottom: 10px;
+        }
+        
+        .subtitle {
+            font-size: 1rem;
+            opacity: 0.9;
+        }
+        
+        .config-section {
+            padding: 20px;
+            border-bottom: 1px solid #eee;
+            background-color: #f9f9f9;
+        }
+        
+        .config-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+        
+        .form-group {
+            margin-bottom: 15px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 600;
+            color: #555;
+        }
+        
+        input, select, textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+        
+        textarea {
+            min-height: 80px;
+            resize: vertical;
+        }
+        
+        .btn {
+            background-color: #2575fc;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: background-color 0.3s;
+        }
+        
+        .btn:hover {
+            background-color: #1a68e8;
+        }
+        
+        .btn-secondary {
+            background-color: #6c757d;
+        }
+        
+        .btn-secondary:hover {
+            background-color: #5a6268;
+        }
+        
+        .btn-success {
+            background-color: #28a745;
+        }
+        
+        .btn-success:hover {
+            background-color: #218838;
+        }
+        
+        .btn-danger {
+            background-color: #dc3545;
+        }
+        
+        .btn-danger:hover {
+            background-color: #c82333;
+        }
+        
+        .actions {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-top: 15px;
+        }
+        
+        .chat-section {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            padding: 20px;
+        }
+        
+        .chat-container {
+            background-color: #f9f9f9;
+            border-radius: 8px;
+            padding: 15px;
+            height: 400px;
+            overflow-y: auto;
+        }
+        
+        .message {
+            margin-bottom: 15px;
+            padding: 10px;
+            border-radius: 8px;
+            max-width: 80%;
+        }
+        
+        .user-message {
+            background-color: #e3f2fd;
+            margin-left: auto;
+            text-align: right;
+        }
+        
+        .assistant-message {
+            background-color: #f5f5f5;
+        }
+        
+        .response-section {
+            padding: 20px;
+            border-top: 1px solid #eee;
+        }
+        
+        .response-container {
+            background-color: #f8f9fa;
+            border-radius: 8px;
+            padding: 15px;
+            margin-top: 10px;
+            max-height: 300px;
+            overflow-y: auto;
+            white-space: pre-wrap;
+            font-family: monospace;
+            font-size: 0.9rem;
+        }
+        
+        .status {
+            padding: 8px 12px;
+            border-radius: 4px;
+            font-size: 0.9rem;
+            display: inline-block;
+            margin-top: 10px;
+        }
+        
+        .status-success {
+            background-color: #d4edda;
+            color: #155724;
+        }
+        
+        .status-error {
+            background-color: #f8d7da;
+            color: #721c24;
+        }
+        
+        .section-title {
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+            color: #444;
+            border-bottom: 2px solid #eee;
+            padding-bottom: 8px;
+        }
+        
+        .stream-content {
+            background-color: #e8f5e8;
+            border-left: 4px solid #28a745;
+            padding: 10px;
+            margin: 5px 0;
+            border-radius: 4px;
+        }
+        
+        @media (max-width: 768px) {
+            .config-grid, .chat-section {
+                grid-template-columns: 1fr;
+            }
+            
+            .actions {
+                flex-direction: column;
+            }
+            
+            .btn {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Coze API 调用页面</h1>
+            <p class="subtitle">基于 Coze Studio Open Source API 的交互界面</p>
+        </header>
+        
+        <section class="config-section">
+            <h2 class="section-title">API 配置</h2>
+            <div class="config-grid">
+                <div class="form-group">
+                    <label for="host">Host</label>
+                    <input type="text" id="host" value="localhost:8888">
+                </div>
+                <div class="form-group">
+                    <label for="botId">Bot ID</label>
+                    <input type="text" id="botId" value="7572211609167200256">
+                </div>
+                <div class="form-group">
+                    <label for="authToken">Authorization Token</label>
+                    <input type="text" id="authToken" value="pat_43fe6791cbef7f1f71fef284c2a4050b16ac290e28f1e18e30c667fede1edf42">
+                </div>
+                <div class="form-group">
+                    <label for="userId">User ID</label>
+                    <input type="text" id="userId" value="test_user_001">
+                </div>
+            </div>
+            
+            <div class="actions">
+                <button class="btn" id="createConversationBtn">创建对话</button>
+                <button class="btn btn-secondary" id="getConversationsBtn">获取对话列表</button>
+                <button class="btn btn-danger" id="clearContextBtn">清除上下文</button>
+            </div>
+        </section>
+        
+        <section class="chat-section">
+            <div>
+                <h2 class="section-title">发送消息</h2>
+                <div class="form-group">
+                    <label for="conversationId">Conversation ID (可选)</label>
+                    <input type="text" id="conversationId" placeholder="留空将自动创建新对话">
+                </div>
+                <div class="form-group">
+                    <label for="messageContent">消息内容</label>
+                    <textarea id="messageContent" placeholder="输入您要发送的消息..."></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="streamOption">流式响应</label>
+                    <select id="streamOption">
+                        <option value="true">是</option>
+                        <option value="false">否</option>
+                    </select>
+                </div>
+                <button class="btn btn-success" id="sendMessageBtn">发送消息</button>
+            </div>
+            
+            <div>
+                <h2 class="section-title">对话历史</h2>
+                <div class="chat-container" id="chatHistory">
+                    <div class="message assistant-message">
+                        <strong>系统:</strong> 欢迎使用 Coze API 调用页面。请先创建对话或选择现有对话开始聊天。
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section class="response-section">
+            <h2 class="section-title">API 响应</h2>
+            <div class="response-container" id="apiResponse">
+                {/* API 响应将显示在这里 */}
+            </div>
+            <div id="statusMessage"></div>
+        </section>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const host = document.getElementById('host');
+            const botId = document.getElementById('botId');
+            const authToken = document.getElementById('authToken');
+            const userId = document.getElementById('userId');
+            const conversationId = document.getElementById('conversationId');
+            const messageContent = document.getElementById('messageContent');
+            const streamOption = document.getElementById('streamOption');
+            const chatHistory = document.getElementById('chatHistory');
+            const apiResponse = document.getElementById('apiResponse');
+            const statusMessage = document.getElementById('statusMessage');
+            
+            const createConversationBtn = document.getElementById('createConversationBtn');
+            const getConversationsBtn = document.getElementById('getConversationsBtn');
+            const clearContextBtn = document.getElementById('clearContextBtn');
+            const sendMessageBtn = document.getElementById('sendMessageBtn');
+            
+            let currentConversationId = '';
+            let currentAssistantMessage = '';
+            let currentAssistantMessageDiv = null;
+            
+            // 设置状态消息
+            function setStatus(message, isSuccess = true) {
+                statusMessage.textContent = message;
+                statusMessage.className = isSuccess ? 'status status-success' : 'status status-error';
+            }
+            
+            // 显示API响应
+            function displayResponse(data) {
+                if (typeof data === 'object') {
+                    apiResponse.textContent = JSON.stringify(data, null, 2);
+                } else {
+                    apiResponse.textContent = data;
+                }
+            }
+            
+            // 添加消息到聊天历史
+            function addMessageToHistory(role, content, isStreaming = false) {
+                if (isStreaming && role === 'assistant' && currentAssistantMessageDiv) {
+                    // 更新流式消息
+                    currentAssistantMessageDiv.innerHTML = `<strong>助手:</strong> ${content}`;
+                    chatHistory.scrollTop = chatHistory.scrollHeight;
+                    return;
+                }
+                
+                const messageDiv = document.createElement('div');
+                messageDiv.className = `message ${role === 'user' ? 'user-message' : 'assistant-message'}`;
+                
+                const roleText = role === 'user' ? '您' : '助手';
+                messageDiv.innerHTML = `<strong>${roleText}:</strong> ${content}`;
+                
+                chatHistory.appendChild(messageDiv);
+                chatHistory.scrollTop = chatHistory.scrollHeight;
+                
+                if (role === 'assistant' && isStreaming) {
+                    currentAssistantMessageDiv = messageDiv;
+                }
+            }
+            
+            // 通用API请求函数（非流式）
+            async function makeApiCall(endpoint, method = 'GET', body = null) {
+                const url = `http://${host.value}${endpoint}`;
+                const headers = {
+                    'Authorization': `Bearer ${authToken.value}`,
+                    'Content-Type': 'application/json'
+                };
+                
+                const options = {
+                    method: method,
+                    headers: headers
+                };
+                
+                if (body) {
+                    options.body = JSON.stringify(body);
+                }
+                
+                try {
+                    const response = await fetch(url, options);
+                    const data = await response.json();
+                    
+                    if (data.code === 0) {
+                        setStatus('API调用成功');
+                        return data;
+                    } else {
+                        setStatus(`API调用失败: ${data.msg}`, false);
+                        return data;
+                    }
+                } catch (error) {
+                    setStatus(`请求错误: ${error.message}`, false);
+                    return { error: error.message };
+                }
+            }
+            
+            // 流式API请求函数
+            async function makeStreamApiCall(endpoint, method = 'POST', body = null) {
+                const url = `http://${host.value}${endpoint}`;
+                const headers = {
+                    'Authorization': `Bearer ${authToken.value}`,
+                    'Content-Type': 'application/json'
+                };
+                
+                const options = {
+                    method: method,
+                    headers: headers
+                };
+                
+                if (body) {
+                    options.body = JSON.stringify(body);
+                }
+                
+                try {
+                    const response = await fetch(url, options);
+                    
+                    if (!response.ok) {
+                        throw new Error(`HTTP error! status: ${response.status}`);
+                    }
+                    
+                    setStatus('开始接收流式响应');
+                    
+                    const reader = response.body.getReader();
+                    const decoder = new TextDecoder();
+                    let buffer = '';
+                    let eventData = {};
+                    
+                    // 重置当前助手消息
+                    currentAssistantMessage = '';
+                    currentAssistantMessageDiv = null;
+                    
+                    // 添加初始助手消息
+                    addMessageToHistory('assistant', '思考中...', true);
+                    
+                    while (true) {
+                        const { value, done } = await reader.read();
+                        
+                        if (done) break;
+                        
+                        buffer += decoder.decode(value, { stream: true });
+                        const lines = buffer.split('\n');
+                        
+                        // 保留最后一行（可能不完整）
+                        buffer = lines.pop() || '';
+                        
+                        for (const line of lines) {
+                            if (line.startsWith('event:')) {
+                                const eventType = line.substring(6).trim();
+                                eventData.event = eventType;
+                            } else if (line.startsWith('data:')) {
+                                const dataStr = line.substring(5).trim();
+                                
+                                if (dataStr) {
+                                    try {
+                                        const data = JSON.parse(dataStr);
+                                        eventData.data = data;
+                                        
+                                        // 处理不同的事件类型
+                                        processStreamEvent(eventData);
+                                        
+                                        // 显示原始事件数据
+                                        displayStreamEvent(eventData);
+                                    } catch (e) {
+                                        console.log('解析数据失败:', dataStr);
+                                    }
+                                }
+                                
+                                eventData = {};
+                            }
+                        }
+                    }
+                    
+                    setStatus('流式响应接收完成');
+                    return { success: true };
+                } catch (error) {
+                    setStatus(`流式请求错误: ${error.message}`, false);
+                    return { error: error.message };
+                }
+            }
+            
+            // 处理流式事件
+            function processStreamEvent(eventData) {
+                const { event, data } = eventData;
+                
+                switch (event) {
+                    case 'conversation.message.delta':
+                        if (data.reasoning_content) {
+                            // 处理思考内容
+                            currentAssistantMessage += data.reasoning_content;
+                            addMessageToHistory('assistant', currentAssistantMessage, true);
+                        } else if (data.content) {
+                            // 处理回答内容
+                            currentAssistantMessage += data.content;
+                            addMessageToHistory('assistant', currentAssistantMessage, true);
+                        }
+                        break;
+                        
+                    case 'conversation.message.completed':
+                        if (data.type === 'answer' && data.content) {
+                            // 最终消息内容
+                            currentAssistantMessage = data.content;
+                            addMessageToHistory('assistant', currentAssistantMessage, false);
+                        }
+                        break;
+                        
+                    case 'conversation.chat.completed':
+                        setStatus('对话已完成');
+                        break;
+                }
+            }
+            
+            // 显示流式事件
+            function displayStreamEvent(eventData) {
+                const eventDiv = document.createElement('div');
+                eventDiv.className = 'stream-content';
+                eventDiv.innerHTML = `<strong>${eventData.event}:</strong> ${JSON.stringify(eventData.data, null, 2)}`;
+                apiResponse.appendChild(eventDiv);
+                apiResponse.scrollTop = apiResponse.scrollHeight;
+            }
+            
+            // 创建对话
+            createConversationBtn.addEventListener('click', async function() {
+                const data = await makeApiCall('/v1/conversation/create', 'POST', {
+                    bot_id: botId.value
+                });
+                
+                if (data.data) {
+                    currentConversationId = data.data.id;
+                    conversationId.value = currentConversationId;
+                    displayResponse(data);
+                    addMessageToHistory('assistant', `新对话已创建，ID: ${currentConversationId}`);
+                }
+            });
+            
+            // 获取对话列表
+            getConversationsBtn.addEventListener('click', async function() {
+                const data = await makeApiCall(`/v1/conversations?bot_id=${botId.value}&page_num=1&page_size=10`);
+                displayResponse(data);
+            });
+            
+            // 清除上下文
+            clearContextBtn.addEventListener('click', async function() {
+                if (!currentConversationId && !conversationId.value) {
+                    setStatus('请先创建或选择对话', false);
+                    return;
+                }
+                
+                const convId = currentConversationId || conversationId.value;
+                const data = await makeApiCall(`/v1/conversations/${convId}/clear`, 'POST');
+                
+                if (data.data) {
+                    displayResponse(data);
+                    addMessageToHistory('assistant', '上下文已清除，可以开始新的话题');
+                }
+            });
+            
+            // 发送消息
+            sendMessageBtn.addEventListener('click', async function() {
+                if (!messageContent.value.trim()) {
+                    setStatus('请输入消息内容', false);
+                    return;
+                }
+                
+                const convId = conversationId.value || currentConversationId;
+                const messageText = messageContent.value.trim();
+                const useStream = streamOption.value === 'true';
+                
+                // 添加用户消息到聊天历史
+                addMessageToHistory('user', messageText);
+                
+                // 准备请求体
+                const requestBody = {
+                    bot_id: botId.value,
+                    user_id: userId.value,
+                    stream: useStream,
+                    additional_messages: [
+                        {
+                            role: "user",
+                            content: messageText,
+                            content_type: "text"
+                        }
+                    ]
+                };
+                
+                if (convId) {
+                    requestBody.conversation_id = convId;
+                }
+                
+                // 清空API响应区域
+                apiResponse.innerHTML = '';
+                
+                let data;
+                if (useStream) {
+                    // 使用流式请求
+                    data = await makeStreamApiCall('/v3/chat', 'POST', requestBody);
+                } else {
+                    // 使用普通请求
+                    data = await makeApiCall('/v3/chat', 'POST', requestBody);
+                    
+                    if (data.data) {
+                        displayResponse(data);
+                        
+                        // 简化处理，实际应根据API返回结构提取消息内容
+                        if (data.data.messages && data.data.messages.length > 0) {
+                            const lastMessage = data.data.messages[data.data.messages.length - 1];
+                            if (lastMessage.content) {
+                                addMessageToHistory('assistant', lastMessage.content);
+                            }
+                        } else {
+                            addMessageToHistory('assistant', '收到非流式响应，请查看API响应区域了解详情');
+                        }
+                        
+                        // 更新当前对话ID
+                        if (!currentConversationId && data.data.conversation_id) {
+                            currentConversationId = data.data.conversation_id;
+                            conversationId.value = currentConversationId;
+                        }
+                    }
+                }
+                
+                // 清空消息输入框
+                messageContent.value = '';
+            });
+        });
+    </script>
+</body>
+</html>
