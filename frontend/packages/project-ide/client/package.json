@@ -1,7 +1,6 @@
 {
   "name": "@coze-project-ide/client",
   "version": "0.0.1",
-  "author": "chenjiawei.inizio@bytedance.com",
   "main": "./src/index.ts",
   "scripts": {
     "build": "exit 0",
@@ -37,4 +36,3 @@
     "react-dom": ">=17"
   }
 }
-

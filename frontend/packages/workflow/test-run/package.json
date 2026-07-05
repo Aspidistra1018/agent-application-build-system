@@ -1,10 +1,6 @@
 {
   "name": "@coze-workflow/test-run",
   "version": "0.0.1",
-  "description": "workflow test run",
-  "license": "Apache-2.0",
-  "author": "jiangxujin@bytedance.com",
-  "maintainers": [],
   "exports": {
     ".": "./src/index.ts",
     "./plugins": "./src/plugins/test-run-plugin/index.ts",
@@ -36,8 +32,7 @@
   "scripts": {
     "build": "exit 0",
     "lint": "eslint ./ --cache",
-    "test": "exit 0",
-    "test:cov": "exit 0"
+    "test": "exit 0"
   },
   "dependencies": {
     "@coze-arch/bot-api": "workspace:*",
@@ -97,4 +92,3 @@
     "utility-types": "^3.10.0"
   }
 }
-

@@ -1,10 +1,6 @@
 {
   "name": "@coze-data/knowledge-common-services",
   "version": "0.0.1",
-  "description": "knowledge公用service",
-  "license": "Apache-2.0",
-  "author": "haozhenfei@bytedance.com",
-  "maintainers": [],
   "exports": {
     ".": "./src/index.tsx",
     "./use-case": "./src/use-case/index.tsx"
@@ -20,8 +16,7 @@
   "scripts": {
     "build": "exit 0",
     "lint": "eslint ./ --cache",
-    "test": "vitest --run --passWithNoTests",
-    "test:cov": "npm run test -- --coverage"
+    "test": "vitest --run --passWithNoTests"
   },
   "dependencies": {
     "classnames": "^2.3.2"
@@ -49,4 +44,3 @@
     "react-dom": ">=18.2.0"
   }
 }
-

@@ -1,8 +1,6 @@
 {
   "name": "@coze-workflow/test-run-form",
   "version": "0.0.1",
-  "description": "Workflow TestRun Form",
-  "author": "jiangxujin@bytedance.com",
   "exports": {
     ".": "./src/index.ts"
   },
@@ -10,8 +8,7 @@
   "scripts": {
     "build": "exit 0",
     "lint": "eslint ./ --cache",
-    "test": "vitest run --passWithNoTests",
-    "test:cov": "vitest run --passWithNoTests --coverage"
+    "test": "vitest run --passWithNoTests"
   },
   "dependencies": {
     "@coze-arch/coze-design": "0.0.6-alpha.346d77",
@@ -45,4 +42,3 @@
     "vitest": "~3.0.5"
   }
 }
-

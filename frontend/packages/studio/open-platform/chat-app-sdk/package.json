@@ -1,13 +1,6 @@
 {
   "name": "@coze-studio/chat-app-sdk",
   "version": "1.2.0-beta.17",
-  "description": "Coze Web ChatApp SDK",
-  "license": "Apache-2.0",
-  "author": "yangyu.1@bytedance.com",
-  "maintainers": [
-    "liuyuhang.0@bytedance.com",
-    "yangyu.1@bytedance.com"
-  ],
   "sideEffects": [
     "**/*.css",
     "**/*.less",
@@ -52,8 +45,7 @@
     "lint": "eslint ./ --cache",
     "rsbuild": "NODE_ENV=production rspack build -c ./rspack-config/build.config.ts",
     "rsdev": "NODE_ENV=development rspack serve -c ./rspack-config/dev.config.ts",
-    "test": "vitest --run --passWithNoTests",
-    "test:cov": "vitest run --coverage"
+    "test": "vitest --run --passWithNoTests"
   },
   "dependencies": {
     "@coze-common/assets": "workspace:*",
@@ -123,4 +115,3 @@
     "main": "dist/index.js"
   }
 }
-

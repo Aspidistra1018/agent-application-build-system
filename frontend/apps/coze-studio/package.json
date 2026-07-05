@@ -2,19 +2,14 @@
   "name": "@coze-studio/app",
   "version": "0.0.1",
   "private": true,
-  "description": "coze studio app",
   "keywords": [],
-  "license": "Apache-2.0",
-  "author": "fanwenjie.fe@bytedance.com",
-  "maintainers": [],
   "sideEffects": false,
   "scripts": {
     "build": "cross-env IS_OPEN_SOURCE=true rsbuild build",
     "dev": "cross-env IS_OPEN_SOURCE=true CUSTOM_VERSION=release rsbuild dev",
     "lint": "eslint ./ --cache --quiet",
     "preview": "rsbuild preview",
-    "test": "vitest --run --passWithNoTests",
-    "test:cov": "vitest --run --passWithNoTests --coverage"
+    "test": "vitest --run --passWithNoTests"
   },
   "dependencies": {
     "@coze-agent-ide/agent-publish": "workspace:*",
@@ -80,4 +75,3 @@
     "webpack": "~5.91.0"
   }
 }
-

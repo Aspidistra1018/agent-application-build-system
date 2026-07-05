@@ -20,7 +20,7 @@ const noRestrictedSyntaxRule = [
 const readBlockList = () =>
   JSON5.parse(
     fs.readFileSync(
-      // fixme @fanwenjie.fe
+      // fixme 
       path.resolve(__dirname, '../../../disallowed_3rd_libraries.json'),
       'utf-8',
     ),

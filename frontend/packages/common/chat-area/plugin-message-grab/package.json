@@ -1,17 +1,12 @@
 {
   "name": "@coze-common/chat-area-plugin-message-grab",
   "version": "0.0.1",
-  "description": "grab",
-  "license": "Apache-2.0",
-  "author": "liushuoyan@bytedance.com",
-  "maintainers": [],
   "main": "src/index.ts",
   "scripts": {
     "build": "exit 0",
     "lint": "eslint ./ --cache",
     "lint:type": "tsc -p tsconfig.json --noEmit",
-    "test": "vitest --run --passWithNoTests",
-    "test:cov": "npm run test -- --coverage"
+    "test": "vitest --run --passWithNoTests"
   },
   "dependencies": {
     "@coze-arch/bot-flags": "workspace:*",
@@ -55,4 +50,3 @@
     "react-dom": ">=18.2.0"
   }
 }
-

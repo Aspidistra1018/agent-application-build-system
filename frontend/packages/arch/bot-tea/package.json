@@ -1,10 +1,6 @@
 {
   "name": "@coze-arch/bot-tea",
   "version": "0.0.1",
-  "description": "bot tea wrapper",
-  "license": "Apache-2.0",
-  "author": "fanwenjie.fe@bytedance.com",
-  "maintainers": [],
   "exports": {
     ".": "./src/index.ts",
     "./utils": "./src/utils.ts"
@@ -20,8 +16,7 @@
   "scripts": {
     "build": "exit 0",
     "lint": "eslint ./ --cache",
-    "test": "vitest --run --passWithNoTests",
-    "test:cov": "npm run test -- --coverage"
+    "test": "vitest --run --passWithNoTests"
   },
   "dependencies": {
     "@coze-arch/bot-api": "workspace:*",
@@ -38,4 +33,3 @@
     "vitest": "~3.0.5"
   }
 }
-

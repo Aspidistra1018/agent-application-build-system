@@ -1,10 +1,6 @@
 {
   "name": "@coze-studio/bot-env-adapter",
   "version": "0.0.1",
-  "description": "data info adapter for bot-env",
-  "license": "Apache-2.0",
-  "author": "chenjiawei.inizio@bytedance.com",
-  "maintainers": [],
   "exports": {
     ".": "./src/index.ts",
     "./configs": "./src/configs.ts",
@@ -32,8 +28,7 @@
   "scripts": {
     "build": "node -r sucrase/register scripts/index.ts && tsc -b tsconfig.build.json",
     "lint": "eslint ./ --cache",
-    "test": "vitest --run --passWithNoTests",
-    "test:cov": "npm run test -- --coverage"
+    "test": "vitest --run --passWithNoTests"
   },
   "devDependencies": {
     "@coze-arch/eslint-config": "workspace:*",
@@ -46,4 +41,3 @@
     "vitest": "~3.0.5"
   }
 }
-

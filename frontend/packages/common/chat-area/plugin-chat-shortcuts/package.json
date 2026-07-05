@@ -1,10 +1,6 @@
 {
   "name": "@coze-common/chat-area-plugins-chat-shortcuts",
   "version": "0.0.1",
-  "description": "作为chat-input的插件slot默认实现，维护快捷键相关功能",
-  "license": "Apache-2.0",
-  "author": "haozhenfei@bytedance.com",
-  "maintainers": [],
   "exports": {
     ".": "./src/index.tsx",
     "./shortcut-tool": "./src/shortcut-tool/index.tsx"
@@ -20,8 +16,7 @@
   "scripts": {
     "build": "exit 0",
     "lint": "eslint ./ --cache",
-    "test": "vitest --run --passWithNoTests",
-    "test:cov": "npm run test -- --coverage"
+    "test": "vitest --run --passWithNoTests"
   },
   "dependencies": {
     "@coze-agent-ide/tool": "workspace:*",
@@ -85,4 +80,3 @@
   },
   "// deps": "immer@^10.0.3 为脚本自动补齐，请勿改动"
 }
-

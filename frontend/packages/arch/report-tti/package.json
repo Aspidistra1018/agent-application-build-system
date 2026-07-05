@@ -1,10 +1,6 @@
 {
   "name": "@coze-arch/report-tti",
   "version": "0.0.1",
-  "author": "tanjizhen@bytedance.com",
-  "maintainers": [
-    "duwenhan@bytedance.com"
-  ],
   "exports": {
     ".": "./src/index.ts",
     "./custom-perf-metric": "./src/utils/custom-perf-metric"
@@ -20,8 +16,7 @@
   "scripts": {
     "build": "exit 0",
     "lint": "eslint ./ --fix",
-    "test": "vitest --run --passWithNoTests",
-    "test:cov": "npm run test -- --coverage"
+    "test": "vitest --run --passWithNoTests"
   },
   "dependencies": {
     "@coze-arch/logger": "workspace:*",
@@ -46,4 +41,3 @@
     "webpack": "~5.91.0"
   }
 }
-

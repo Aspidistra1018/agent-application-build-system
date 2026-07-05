@@ -1,16 +1,11 @@
 {
   "name": "@coze-common/text-grab",
   "version": "0.0.1",
-  "description": "grab utils and hooks",
-  "license": "Apache-2.0",
-  "author": "liushuoyan@bytedance.com",
-  "maintainers": [],
   "main": "src/index.ts",
   "scripts": {
     "build": "exit 0",
     "lint": "eslint ./ --cache",
-    "test": "vitest --run --passWithNoTests",
-    "test:cov": "npm run test -- --coverage"
+    "test": "vitest --run --passWithNoTests"
   },
   "dependencies": {
     "@coze-arch/bot-md-box-adapter": "workspace:*",
@@ -45,4 +40,3 @@
     "react-dom": ">=18.2.0"
   }
 }
-

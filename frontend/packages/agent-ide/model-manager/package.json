@@ -1,10 +1,6 @@
 {
   "name": "@coze-agent-ide/model-manager",
   "version": "0.0.1",
-  "description": "Bot 编辑页面下模型管理编辑等功能。",
-  "license": "Apache-2.0",
-  "author": "gaoyuanhan.duty@bytedance.com",
-  "maintainers": [],
   "exports": {
     ".": "./src/index.ts",
     "./model-select-v2": "./src/components/model-select-v2/index.ts"
@@ -20,8 +16,7 @@
   "scripts": {
     "build": "exit 0",
     "lint": "eslint ./ --cache",
-    "test": "vitest --run --passWithNoTests",
-    "test:cov": "npm run test -- --coverage"
+    "test": "vitest --run --passWithNoTests"
   },
   "dependencies": {
     "@blueprintjs/core": "^5.1.5",
@@ -102,4 +97,3 @@
     "zustand": "^4.4.7"
   }
 }
-

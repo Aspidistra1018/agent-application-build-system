@@ -1,18 +1,11 @@
 {
   "name": "@coze-data/database-creator",
   "version": "0.0.1",
-  "description": "create or edit database info",
-  "license": "Apache-2.0",
-  "author": "zhangyuanzhou.zyz@bytedance.com",
-  "maintainers": [
-    "liaoxing.lx@bytedance.com"
-  ],
   "main": "src/index.tsx",
   "scripts": {
     "build": "exit 0",
     "lint": "eslint ./ --cache",
-    "test": "vitest --run --passWithNoTests",
-    "test:cov": "npm run test -- --coverage"
+    "test": "vitest --run --passWithNoTests"
   },
   "dependencies": {
     "@coze-arch/bot-api": "workspace:*",
@@ -56,4 +49,3 @@
   },
   "// deps": "immer@^10.0.3 为脚本自动补齐，请勿改动"
 }
-

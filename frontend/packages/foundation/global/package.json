@@ -1,10 +1,6 @@
 {
   "name": "@coze-foundation/global",
   "version": "0.0.1",
-  "description": "应用的全局初始化逻辑",
-  "license": "Apache-2.0",
-  "author": "sunzhiyuan.evan@bytedance.com",
-  "maintainers": [],
   "exports": {
     ".": "./src/index.ts",
     "./use-app-init": "./src/hooks/use-app-init/index.ts"
@@ -20,8 +16,7 @@
   "scripts": {
     "build": "exit 0",
     "lint": "eslint ./ --cache",
-    "test": "vitest --run --passWithNoTests",
-    "test:cov": "npm run test -- --coverage"
+    "test": "vitest --run --passWithNoTests"
   },
   "dependencies": {
     "@coze-agent-ide/space-bot": "workspace:*",
@@ -59,4 +54,3 @@
     "react-dom": ">=18.2.0"
   }
 }
-

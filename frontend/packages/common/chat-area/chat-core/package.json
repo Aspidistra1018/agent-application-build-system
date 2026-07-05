@@ -1,10 +1,6 @@
 {
   "name": "@coze-common/chat-core",
   "version": "1.0.0",
-  "description": "bot chat core js",
-  "license": "Apache-2.0",
-  "author": "haozhenfei@bytedance.com",
-  "maintainers": [],
   "exports": {
     ".": "./src/index.ts",
     "./message/types": "./src/message/types/index.ts",
@@ -33,8 +29,7 @@
     "build": "exit 0",
     "lint": "eslint ./ --cache",
     "lint:type": "tsc -p tsconfig.json --noEmit",
-    "test": "vitest --run --passWithNoTests",
-    "test:cov": "npm run test -- --coverage"
+    "test": "vitest --run --passWithNoTests"
   },
   "dependencies": {
     "@coze-arch/bot-flags": "workspace:*",
@@ -71,4 +66,3 @@
   },
   "// deps": "debug@^4.3.4 为脚本自动补齐，请勿改动"
 }
-

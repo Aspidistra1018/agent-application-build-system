@@ -1,16 +1,11 @@
 {
   "name": "@coze-agent-ide/bot-creator",
   "version": "0.0.1",
-  "description": "entry 导出",
-  "license": "Apache-2.0",
-  "author": "meixuliang.3@bytedance.com",
-  "maintainers": [],
   "main": "src/index.tsx",
   "scripts": {
     "build": "exit 0",
     "lint": "eslint ./ --cache",
-    "test": "vitest --run --passWithNoTests",
-    "test:cov": "npm run test -- --coverage"
+    "test": "vitest --run --passWithNoTests"
   },
   "dependencies": {
     "@coze-agent-ide/bot-config-area-adapter": "workspace:*",
@@ -97,4 +92,3 @@
   },
   "// deps": "immer@^10.0.3 为脚本自动补齐，请勿改动"
 }
-

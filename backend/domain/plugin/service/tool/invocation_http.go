@@ -1,19 +1,3 @@
-/*
- * Copyright 2025 coze-dev Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *     http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-
 package tool
 
 import (
@@ -353,7 +337,7 @@ func (h *httpCallImpl) injectOAuthAccessToken(ctx context.Context, httpReq *http
 }
 
 var authCodeInvalidTokenErrMsg = map[i18n.Locale]string{
-	i18n.LocaleZH: "%s 插件需要授权使用。授权后即代表你同意与Agent应用自动构建平台中你所选择的 AI 模型分享数据。请[点击这里](%s)进行授权。",
+	i18n.LocaleZH: "%s 插件需要授权使用。授权后即代表你同意与Agent应用自动构建平台中你所选择�?AI 模型分享数据。请[点击这里](%s)进行授权�?,
 	i18n.LocaleEN: "The '%s' plugin requires authorization. By authorizing, you agree to share data with the AI model you selected in Coze. Please [click here](%s) to authorize.",
 }
 

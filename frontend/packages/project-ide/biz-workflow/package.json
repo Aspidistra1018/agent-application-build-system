@@ -1,7 +1,6 @@
 {
   "name": "@coze-project-ide/biz-workflow",
   "version": "0.0.1",
-  "author": "jiangxujin@bytedance.com",
   "exports": {
     ".": "./src/index.tsx"
   },
@@ -48,4 +47,3 @@
     "webpack": "~5.91.0"
   }
 }
-

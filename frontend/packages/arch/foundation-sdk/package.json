@@ -1,16 +1,11 @@
 {
   "name": "@coze-arch/foundation-sdk",
   "version": "0.0.1",
-  "description": "SDK for interaction between the foundation and the business.",
-  "license": "Apache-2.0",
-  "author": "sunzhiyuan.evan@bytedance.com",
-  "maintainers": [],
   "main": "src/index.ts",
   "scripts": {
     "build": "exit 0",
     "lint": "eslint ./ --cache",
-    "test": "vitest --run --passWithNoTests",
-    "test:cov": "npm run test -- --coverage"
+    "test": "vitest --run --passWithNoTests"
   },
   "devDependencies": {
     "@coze-arch/coze-design": "0.0.6-alpha.346d77",
@@ -26,4 +21,3 @@
     "zustand": "^4.4.7"
   }
 }
-

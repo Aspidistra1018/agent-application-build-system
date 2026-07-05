@@ -1,10 +1,6 @@
 {
   "name": "@coze-arch/bot-env",
   "version": "0.0.1",
-  "description": "compiler env vars for bot-studio",
-  "license": "Apache-2.0",
-  "author": "fanwenjie.fe@bytedance.com",
-  "maintainers": [],
   "exports": {
     ".": "./src/index.ts",
     "./build": "./scripts/build.ts",
@@ -28,8 +24,7 @@
   "scripts": {
     "build": "node -r sucrase/register scripts/index.ts && tsc -b tsconfig.build.json",
     "lint": "eslint ./ --cache",
-    "test": "vitest --run --passWithNoTests",
-    "test:cov": "npm run test -- --coverage"
+    "test": "vitest --run --passWithNoTests"
   },
   "dependencies": {
     "@coze-studio/bot-env-adapter": "workspace:*"
@@ -45,4 +40,3 @@
     "vitest": "~3.0.5"
   }
 }
-

@@ -1,8 +1,6 @@
 {
   "name": "@coze-arch/tailwind-config",
   "version": "0.0.1",
-  "author": "huangjian@bytedance.com",
-  "maintainers": [],
   "exports": {
     ".": "./src/index.js",
     "./coze": "./src/coze.js",
@@ -14,8 +12,7 @@
     "build": "exit",
     "dev": "npm run build -- -w",
     "lint": "eslint ./ --cache --quiet",
-    "test": "exit",
-    "test:cov": "exit"
+    "test": "exit"
   },
   "dependencies": {
     "@coze-arch/monorepo-kits": "workspace:*",
@@ -33,4 +30,3 @@
     "@types/node": "^18"
   }
 }
-

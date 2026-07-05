@@ -1,20 +1,3 @@
-/*
-
- * Copyright 2025 coze-dev Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *     http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-
 package entity
 
 import (
@@ -214,12 +197,12 @@ var Categories = []Category{
 	},
 	{
 		Key:      "database",
-		Name:     "数据库",
+		Name:     "数据�?,
 		EnUSName: "Database",
 	},
 	{
 		Key:      "data",
-		Name:     "知识库&数据",
+		Name:     "知识�?数据",
 		EnUSName: "Data",
 	},
 	{
@@ -229,7 +212,7 @@ var Categories = []Category{
 	},
 	{
 		Key:      "audio&video",
-		Name:     "音视频处理",
+		Name:     "音视频处�?,
 		EnUSName: "Audio&Video",
 	},
 	{
@@ -261,7 +244,7 @@ var NodeTypeMetas = map[NodeType]*NodeTypeMeta{
 		ID:           1,
 		Key:          NodeTypeEntry,
 		DisplayKey:   "Start",
-		Name:         "开始",
+		Name:         "开�?,
 		Category:     "input&output",
 		Desc:         "工作流的起始节点，用于设定启动工作流需要的信息",
 		Color:        "#5C62FF",
@@ -279,7 +262,7 @@ var NodeTypeMetas = map[NodeType]*NodeTypeMeta{
 		DisplayKey:   "End",
 		Name:         "结束",
 		Category:     "input&output",
-		Desc:         "工作流的最终节点，用于返回工作流运行后的结果信息",
+		Desc:         "工作流的最终节点，用于返回工作流运行后的结果信�?,
 		Color:        "#5C62FF",
 		IconURI:      "default_icon/workflow_icon/icon-end.jpg",
 		SupportBatch: false,
@@ -295,7 +278,7 @@ var NodeTypeMetas = map[NodeType]*NodeTypeMeta{
 		ID:           3,
 		Key:          NodeTypeLLM,
 		DisplayKey:   "LLM",
-		Name:         "大模型",
+		Name:         "大模�?,
 		Category:     "",
 		Desc:         "调用大语言模型,使用变量和提示词生成回复",
 		Color:        "#5C62FF",
@@ -317,7 +300,7 @@ var NodeTypeMetas = map[NodeType]*NodeTypeMeta{
 		DisplayKey:   "Api",
 		Name:         "插件",
 		Category:     "",
-		Desc:         "通过添加工具访问实时数据和执行外部操作",
+		Desc:         "通过添加工具访问实时数据和执行外部操�?,
 		Color:        "#CA61FF",
 		IconURI:      "default_icon/workflow_icon/icon-plugin.jpg",
 		SupportBatch: true,
@@ -335,7 +318,7 @@ var NodeTypeMetas = map[NodeType]*NodeTypeMeta{
 		DisplayKey:   "Code",
 		Name:         "代码",
 		Category:     "logic",
-		Desc:         "编写代码，处理输入变量来生成返回值",
+		Desc:         "编写代码，处理输入变量来生成返回�?,
 		Color:        "#00B2B2",
 		IconURI:      "default_icon/workflow_icon/icon-code.jpg",
 		SupportBatch: false,
@@ -351,9 +334,9 @@ var NodeTypeMetas = map[NodeType]*NodeTypeMeta{
 		ID:           6,
 		Key:          NodeTypeKnowledgeRetriever,
 		DisplayKey:   "Dataset",
-		Name:         "知识库检索",
+		Name:         "知识库检�?,
 		Category:     "data",
-		Desc:         "在选定的知识中,根据输入变量召回最匹配的信息,并以列表形式返回",
+		Desc:         "在选定的知识中,根据输入变量召回最匹配的信�?并以列表形式返回",
 		Color:        "#FF811A",
 		IconURI:      "default_icon/workflow_icon/icon-knowledge-query.jpg",
 		SupportBatch: false,
@@ -370,9 +353,9 @@ var NodeTypeMetas = map[NodeType]*NodeTypeMeta{
 		ID:              8,
 		Key:             NodeTypeSelector,
 		DisplayKey:      "If",
-		Name:            "选择器",
+		Name:            "选择�?,
 		Category:        "logic",
-		Desc:            "连接多个下游分支，若设定的条件成立则仅运行对应的分支，若均不成立则只运行“否则”分支",
+		Desc:            "连接多个下游分支，若设定的条件成立则仅运行对应的分支，若均不成立则只运行“否则”分�?,
 		Color:           "#00B2B2",
 		IconURI:         "default_icon/workflow_icon/icon-condition.jpg",
 		SupportBatch:    false,
@@ -384,7 +367,7 @@ var NodeTypeMetas = map[NodeType]*NodeTypeMeta{
 		ID:           9,
 		Key:          NodeTypeSubWorkflow,
 		DisplayKey:   "SubWorkflow",
-		Name:         "工作流",
+		Name:         "工作�?,
 		Category:     "",
 		Desc:         "集成已发布工作流，可以执行嵌套子任务",
 		Color:        "#00B83E",
@@ -400,9 +383,9 @@ var NodeTypeMetas = map[NodeType]*NodeTypeMeta{
 		ID:           12,
 		Key:          NodeTypeDatabaseCustomSQL,
 		DisplayKey:   "Database",
-		Name:         "SQL自定义",
+		Name:         "SQL自定�?,
 		Category:     "database",
-		Desc:         "基于用户自定义的 SQL 完成对数据库的增删改查操作",
+		Desc:         "基于用户自定义的 SQL 完成对数据库的增删改查操�?,
 		Color:        "#FF811A",
 		IconURI:      "default_icon/workflow_icon/icon-database.jpg",
 		SupportBatch: false,
@@ -456,7 +439,7 @@ var NodeTypeMetas = map[NodeType]*NodeTypeMeta{
 		DisplayKey:   "Question",
 		Name:         "问答",
 		Category:     "utilities",
-		Desc:         "支持中间向用户提问问题,支持预置选项提问和开放式问题提问两种方式",
+		Desc:         "支持中间向用户提问问�?支持预置选项提问和开放式问题提问两种方式",
 		Color:        "#3071F2",
 		IconURI:      "default_icon/workflow_icon/icon-question.jpg",
 		SupportBatch: false,
@@ -489,7 +472,7 @@ var NodeTypeMetas = map[NodeType]*NodeTypeMeta{
 		DisplayKey:      "LoopSetVariable",
 		Name:            "设置变量",
 		Category:        "logic",
-		Desc:            "用于重置循环变量的值，使其下次循环使用重置后的值",
+		Desc:            "用于重置循环变量的值，使其下次循环使用重置后的�?,
 		Color:           "#00B2B2",
 		IconURI:         "default_icon/workflow_icon/icon-loop-set-variable.jpg",
 		SupportBatch:    false,
@@ -522,7 +505,7 @@ var NodeTypeMetas = map[NodeType]*NodeTypeMeta{
 		DisplayKey:   "Intent",
 		Name:         "意图识别",
 		Category:     "logic",
-		Desc:         "用于用户输入的意图识别，并将其与预设意图选项进行匹配。",
+		Desc:         "用于用户输入的意图识别，并将其与预设意图选项进行匹配�?,
 		Color:        "#00B2B2",
 		IconURI:      "default_icon/workflow_icon/icon-intent.jpg",
 		SupportBatch: false,
@@ -539,7 +522,7 @@ var NodeTypeMetas = map[NodeType]*NodeTypeMeta{
 		ID:           27,
 		Key:          NodeTypeKnowledgeIndexer,
 		DisplayKey:   "DatasetWrite",
-		Name:         "知识库写入",
+		Name:         "知识库写�?,
 		Category:     "data",
 		Desc:         "写入节点可以添加 文本类型 的知识库，仅可以添加一个知识库",
 		Color:        "#FF811A",
@@ -557,9 +540,9 @@ var NodeTypeMetas = map[NodeType]*NodeTypeMeta{
 		ID:           28,
 		Key:          NodeTypeBatch,
 		DisplayKey:   "Batch",
-		Name:         "批处理",
+		Name:         "批处�?,
 		Category:     "logic",
-		Desc:         "通过设定批量运行次数和逻辑，运行批处理体内的任务",
+		Desc:         "通过设定批量运行次数和逻辑，运行批处理体内的任�?,
 		Color:        "#00B2B2",
 		IconURI:      "default_icon/workflow_icon/icon-batch.jpg",
 		SupportBatch: false,
@@ -578,7 +561,7 @@ var NodeTypeMetas = map[NodeType]*NodeTypeMeta{
 		DisplayKey:      "Continue",
 		Name:            "继续循环",
 		Category:        "logic",
-		Desc:            "用于终止当前循环，执行下次循环",
+		Desc:            "用于终止当前循环，执行下次循�?,
 		Color:           "#00B2B2",
 		IconURI:         "default_icon/workflow_icon/icon-continue.jpg",
 		SupportBatch:    false,
@@ -592,7 +575,7 @@ var NodeTypeMetas = map[NodeType]*NodeTypeMeta{
 		DisplayKey:   "Input",
 		Name:         "输入",
 		Category:     "input&output",
-		Desc:         "支持中间过程的信息输入",
+		Desc:         "支持中间过程的信息输�?,
 		Color:        "#5C62FF",
 		IconURI:      "default_icon/workflow_icon/icon_input.jpg",
 		SupportBatch: false,
@@ -651,7 +634,7 @@ var NodeTypeMetas = map[NodeType]*NodeTypeMeta{
 		Key:          NodeTypeClearConversationHistory,
 		Name:         "清空会话历史",
 		Category:     "conversation_history", // Mapped from cate_list
-		Desc:         "用于清空会话历史，清空后LLM看到的会话历史为空",
+		Desc:         "用于清空会话历史，清空后LLM看到的会话历史为�?,
 		Color:        "#F2B600",
 		IconURI:      "default_icon/workflow_icon/icon-clear-context.jpg",
 		SupportBatch: false, // supportBatch: 1
@@ -682,9 +665,9 @@ var NodeTypeMetas = map[NodeType]*NodeTypeMeta{
 		ID:              40,
 		Key:             NodeTypeVariableAssigner,
 		DisplayKey:      "AssignVariable",
-		Name:            "变量赋值",
+		Name:            "变量赋�?,
 		Category:        "data",
-		Desc:            "用于给支持写入的变量赋值，包括应用变量、用户变量",
+		Desc:            "用于给支持写入的变量赋值，包括应用变量、用户变�?,
 		Color:           "#FF811A",
 		IconURI:         "default_icon/workflow_icon/icon-variable-assign.jpg",
 		SupportBatch:    false,
@@ -698,7 +681,7 @@ var NodeTypeMetas = map[NodeType]*NodeTypeMeta{
 		DisplayKey:   "DatabaseUpdate",
 		Name:         "更新数据",
 		Category:     "database",
-		Desc:         "修改表中已存在的数据记录，用户指定更新条件和内容来更新数据",
+		Desc:         "修改表中已存在的数据记录，用户指定更新条件和内容来更新数�?,
 		Color:        "#F2B600",
 		IconURI:      "default_icon/workflow_icon/icon-database-update.jpg",
 		SupportBatch: false,
@@ -782,7 +765,7 @@ var NodeTypeMetas = map[NodeType]*NodeTypeMeta{
 		Name:         "修改会话",
 		Key:          NodeTypeConversationUpdate,
 		Category:     "conversation_management",
-		Desc:         "用于修改会话的名字",
+		Desc:         "用于修改会话的名�?,
 		Color:        "#F2B600",
 		IconURI:      "default_icon/workflow_icon/icon-update-conversation.jpg",
 		SupportBatch: false,
@@ -815,7 +798,7 @@ var NodeTypeMetas = map[NodeType]*NodeTypeMeta{
 		Name:         "查询会话列表",
 		Key:          NodeTypeConversationList,
 		Category:     "conversation_management",
-		Desc:         "用于查询所有会话，包含静态会话、动态会话",
+		Desc:         "用于查询所有会话，包含静态会话、动态会�?,
 		Color:        "#F2B600",
 		IconURI:      "default_icon/workflow_icon/icon-query-conversation-list.jpg",
 		SupportBatch: false,
@@ -830,7 +813,7 @@ var NodeTypeMetas = map[NodeType]*NodeTypeMeta{
 		Name:         "查询会话历史",
 		Key:          NodeTypeConversationHistory,
 		Category:     "conversation_history", // Mapped from cate_list
-		Desc:         "用于查询会话历史，返回LLM可见的会话消息",
+		Desc:         "用于查询会话历史，返回LLM可见的会话消�?,
 		Color:        "#F2B600",
 		IconURI:      "default_icon/workflow_icon/icon-query-conversation-history.jpg",
 		SupportBatch: false,
@@ -904,13 +887,13 @@ var NodeTypeMetas = map[NodeType]*NodeTypeMeta{
 		DisplayKey: "ToJSON",
 
 		// Name is the node in ZH_CN, will be displayed on Canvas.
-		Name: "JSON 序列化",
+		Name: "JSON 序列�?,
 
 		// Category is the category of this node, determines which category this node will be displayed in.
 		Category: "utilities",
 
 		// Desc is the desc in ZH_CN, will be displayed as tooltip on Canvas.
-		Desc: "用于把变量转化为JSON字符串",
+		Desc: "用于把变量转化为JSON字符�?,
 
 		// Color is the color of the upper edge of the node displayed on Canvas.
 		Color: "F2B600",
@@ -956,9 +939,9 @@ var NodeTypeMetas = map[NodeType]*NodeTypeMeta{
 		ID:           60,
 		Key:          NodeTypeKnowledgeDeleter,
 		DisplayKey:   "KnowledgeDelete",
-		Name:         "知识库删除",
+		Name:         "知识库删�?,
 		Category:     "data",
-		Desc:         "用于删除知识库中的文档",
+		Desc:         "用于删除知识库中的文�?,
 		Color:        "#FF811A",
 		IconURI:      "default_icon/workflow_icon/icon-knowledge-delete.jpg",
 		SupportBatch: false,

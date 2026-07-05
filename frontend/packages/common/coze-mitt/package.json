@@ -1,10 +1,6 @@
 {
   "name": "@coze-common/coze-mitt",
   "version": "0.0.1",
-  "description": "coze 平台级事件总线，目的是有一个统一的地方定义事件，以供各 pkg 引入",
-  "license": "Apache-2.0",
-  "author": "zhanghaochen.z@bytedance.com",
-  "maintainers": [],
   "exports": {
     ".": "./src/index.ts"
   },
@@ -19,8 +15,7 @@
   "scripts": {
     "build": "exit 0",
     "lint": "eslint ./ --cache",
-    "test": "vitest --run --passWithNoTests",
-    "test:cov": "npm run test -- --coverage"
+    "test": "vitest --run --passWithNoTests"
   },
   "dependencies": {
     "classnames": "^2.3.2",
@@ -46,4 +41,3 @@
     "react-dom": ">=18.2.0"
   }
 }
-

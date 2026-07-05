@@ -1,10 +1,6 @@
 {
   "name": "@coze-studio/tea-interface",
   "version": "0.0.1",
-  "description": "interface that descripts how to use tea ",
-  "license": "Apache-2.0",
-  "author": "chenjiawei.inizio@bytedance.com",
-  "maintainers": [],
   "exports": {
     ".": "./src/index.ts",
     "./events": "./src/events.ts"
@@ -20,8 +16,7 @@
   "scripts": {
     "build": "exit 0",
     "lint": "eslint ./ --cache",
-    "test": "vitest --run --passWithNoTests",
-    "test:cov": "npm run test -- --coverage"
+    "test": "vitest --run --passWithNoTests"
   },
   "dependencies": {
     "@coze-arch/bot-api": "workspace:*"
@@ -36,4 +31,3 @@
     "vitest": "~3.0.5"
   }
 }
-

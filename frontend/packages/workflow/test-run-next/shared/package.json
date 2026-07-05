@@ -1,8 +1,6 @@
 {
   "name": "@coze-workflow/test-run-shared",
   "version": "0.0.1",
-  "description": "Workflow TestRun 公共包",
-  "author": "jiangxujin@bytedance.com",
   "exports": {
     ".": "./src/index.ts"
   },
@@ -10,8 +8,7 @@
   "scripts": {
     "build": "exit 0",
     "lint": "eslint ./ --cache",
-    "test": "vitest run --passWithNoTests",
-    "test:cov": "vitest run --passWithNoTests --coverage"
+    "test": "vitest run --passWithNoTests"
   },
   "dependencies": {
     "@codemirror/language": "^6.10.1",
@@ -38,4 +35,3 @@
     "vitest": "~3.0.5"
   }
 }
-

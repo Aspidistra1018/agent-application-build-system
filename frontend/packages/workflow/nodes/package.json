@@ -1,7 +1,6 @@
 {
   "name": "@coze-workflow/nodes",
   "version": "0.1.0",
-  "author": "wencheng.lwc@bytedance.com",
   "sideEffects": [
     "**/*.css",
     "**/*.less",
@@ -18,7 +17,6 @@
     "new": "edenx new",
     "storybook": "edenx dev storybook",
     "test": "vitest --run",
-    "test:cov": "npm run test -- --coverage",
     "upgrade": "edenx upgrade"
   },
   "dependencies": {
@@ -77,4 +75,3 @@
     "webpack": "~5.91.0"
   }
 }
-

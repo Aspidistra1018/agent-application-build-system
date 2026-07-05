@@ -1,12 +1,6 @@
 {
   "name": "@coze-studio/open-env-adapter",
   "version": "0.0.1",
-  "description": "Coze Web ChatApp SDK ",
-  "license": "Apache-2.0",
-  "author": "gaoding.devingao@bytedance.com",
-  "maintainers": [
-    "gaoding.devingao@bytedance.com"
-  ],
   "sideEffects": false,
   "exports": {
     ".": "./src/index.ts",
@@ -24,8 +18,7 @@
   "scripts": {
     "build": "exit 0",
     "lint": "eslint ./ --cache",
-    "test": "vitest --run --passWithNoTests",
-    "test:cov": "vitest run --coverage"
+    "test": "vitest --run --passWithNoTests"
   },
   "dependencies": {},
   "devDependencies": {
@@ -62,4 +55,3 @@
     "main": "dist/index.js"
   }
 }
-

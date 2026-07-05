@@ -1,9 +1,6 @@
 {
   "name": "@coze-workflow/variable",
   "version": "0.0.1",
-  "description": "workflow 变量包",
-  "license": "Apache-2.0",
-  "author": "wencheng.lwc@bytedance.com",
   "sideEffects": [
     "**/*.css",
     "**/*.less",
@@ -15,8 +12,7 @@
   "scripts": {
     "build": "exit 0",
     "lint": "eslint ./ --cache --quiet",
-    "test": "vitest --run --passWithNoTests",
-    "test:cov": "npm run test -- --coverage"
+    "test": "vitest --run --passWithNoTests"
   },
   "dependencies": {
     "@coze-arch/bot-api": "workspace:*",
@@ -57,4 +53,3 @@
     "webpack": "~5.91.0"
   }
 }
-

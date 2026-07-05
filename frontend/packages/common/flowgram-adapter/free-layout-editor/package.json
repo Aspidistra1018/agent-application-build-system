@@ -1,10 +1,6 @@
 {
   "name": "@flowgram-adapter/free-layout-editor",
   "version": "0.0.1",
-  "description": "对 flowgram 的封装",
-  "license": "Apache-2.0",
-  "author": "wencheng.lwc@bytedance.com",
-  "maintainers": [],
   "exports": {
     ".": {
       "types": "./src/index.ts",
@@ -26,8 +22,7 @@
   "scripts": {
     "build": "exit 0",
     "lint": "eslint ./ --cache",
-    "test": "vitest --run --passWithNoTests",
-    "test:cov": "npm run test -- --coverage"
+    "test": "vitest --run --passWithNoTests"
   },
   "dependencies": {
     "@flowgram.ai/core": "0.1.28",
@@ -76,4 +71,3 @@
     "react-dom": ">=18.2.0"
   }
 }
-

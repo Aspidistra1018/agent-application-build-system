@@ -1,14 +1,11 @@
 {
   "name": "@coze-arch/bot-http",
   "version": "0.0.1",
-  "description": "Global Context for whole hot studio web app. You should keep using this package instead of call `window.xxx` directly",
-  "author": "fanwenjie.fe@bytedance.com",
   "main": "./src/index.ts",
   "scripts": {
     "build": "exit 0",
     "lint": "eslint ./ --cache",
-    "test": "NODE_OPTIONS='--max_old_space_size=2048' NODE_ENV=test vitest --run --passWithNoTests",
-    "test:cov": "npm run test -- --coverage"
+    "test": "NODE_OPTIONS='--max_old_space_size=2048' NODE_ENV=test vitest --run --passWithNoTests"
   },
   "dependencies": {
     "@coze-arch/logger": "workspace:*",
@@ -29,4 +26,3 @@
   },
   "// deps": "debug@^4.3.4 为脚本自动补齐，请勿改动"
 }
-

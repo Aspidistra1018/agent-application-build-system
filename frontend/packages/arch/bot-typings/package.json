@@ -1,10 +1,6 @@
 {
   "name": "@coze-arch/bot-typings",
   "version": "0.0.1",
-  "description": "bot typings that extract from bot/src/typings",
-  "license": "Apache-2.0",
-  "author": "fanwenjie.fe@bytedance.com",
-  "maintainers": [],
   "exports": {
     ".": "./src/index.d.ts",
     "./common": "./src/common.ts",
@@ -48,4 +44,3 @@
     "webpack": "~5.91.0"
   }
 }
-

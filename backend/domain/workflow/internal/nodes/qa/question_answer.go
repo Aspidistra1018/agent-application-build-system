@@ -1,19 +1,3 @@
-/*
- * Copyright 2025 coze-dev Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *     http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-
 package qa
 
 import (
@@ -338,15 +322,15 @@ const (
 
 const (
 	extractSystemPrompt = `# 角色
-你是一个参数提取 agent，你的工作是从用户的回答中提取出多个字段的值，每个字段遵循以下规则
+你是一个参数提�?agent，你的工作是从用户的回答中提取出多个字段的值，每个字段遵循以下规则
 # 字段说明
 %s
 ## 输出要求
-- 严格以 json 格式返回答案。
-- 严格确保答案采用有效的 JSON 格式。
-- 按照字段说明提取出字段的值，将已经提取到的字段放在 fields 字段
-- 对于未提取到的<必填字段>生成一个新的追问问题question
-- 确保在追问问题中只包含所有未提取的<必填字段>
+- 严格�?json 格式返回答案�?
+- 严格确保答案采用有效�?JSON 格式�?
+- 按照字段说明提取出字段的值，将已经提取到的字段放�?fields 字段
+- 对于未提取到�?必填字段>生成一个新的追问问题question
+- 确保在追问问题中只包含所有未提取�?必填字段>
 - 不要重复问之前问过的问题
 - 问题的语种请和用户的输入保持一致，如英文、中文等
 - 输出按照下面结构体格式返回，包含提取到的字段或者追问的问题
@@ -356,8 +340,8 @@ fields FieldInfo // According to the field description, the fields that have bee
 question string // Follow-up question for the next round
 }`
 	extractUserPromptSuffix = `
-- 严格以 json 格式返回答案。
-- 严格确保答案采用有效的 JSON 格式。
+- 严格�?json 格式返回答案�?
+- 严格确保答案采用有效�?JSON 格式�?
 - - 必填字段没有获取全则继续追问
 - 必填字段: %s
 %s

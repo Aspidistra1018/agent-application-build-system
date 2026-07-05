@@ -1,9 +1,6 @@
 {
   "name": "@coze-devops/testset-manage",
   "version": "1.0.0",
-  "description": "Testset manage for coze",
-  "license": "Apache-2.0",
-  "author": "qihai@bytedance.com",
   "sideEffects": [
     "**/*.less",
     "**/*.svg"
@@ -55,4 +52,3 @@
   },
   "// deps": "immer@^10.0.3 为脚本自动补齐，请勿改动"
 }
-

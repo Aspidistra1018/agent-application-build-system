@@ -1,10 +1,6 @@
 {
   "name": "@coze-workflow/playground",
   "version": "0.0.1",
-  "description": "workflow 画布页面",
-  "license": "Apache-2.0",
-  "author": "lvxinsheng@bytedance.com",
-  "maintainers": [],
   "exports": {
     ".": "./src/index.tsx",
     "./workflow-playground": "./src/workflow-playground.tsx",
@@ -29,8 +25,7 @@
     "build": "exit 0",
     "create:node": "node ./scripts/create-node/index.js",
     "lint": "eslint ./ --cache",
-    "test": "vitest --run --passWithNoTests",
-    "test:cov": "npm run test -- --coverage"
+    "test": "vitest --run --passWithNoTests"
   },
   "dependencies": {
     "@codemirror/commands": "^6.3.3",
@@ -216,4 +211,3 @@
   },
   "// deps": "debug@^4.3.4 为脚本自动补齐，请勿改动"
 }
-

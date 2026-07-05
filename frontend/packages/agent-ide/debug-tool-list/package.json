@@ -1,16 +1,11 @@
 {
   "name": "@coze-agent-ide/debug-tool-list",
   "version": "0.0.1",
-  "description": "agent ide debug tool list",
-  "license": "Apache-2.0",
-  "author": "gaoyuanhan.duty@bytedance.com",
-  "maintainers": [],
   "main": "src/index.ts",
   "scripts": {
     "build": "exit 0",
     "lint": "eslint ./ --cache",
-    "test": "vitest --run --passWithNoTests",
-    "test:cov": "npm run test -- --coverage"
+    "test": "vitest --run --passWithNoTests"
   },
   "dependencies": {
     "@blueprintjs/core": "^5.1.5",
@@ -48,4 +43,3 @@
     "react-dom": ">=18.2.0"
   }
 }
-

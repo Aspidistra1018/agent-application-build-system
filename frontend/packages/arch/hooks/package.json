@@ -1,17 +1,12 @@
 {
   "name": "@coze-arch/hooks",
   "version": "0.0.1",
-  "description": "coze arch hooks",
-  "license": "Apache-2.0",
-  "author": "fanwenjie.fe@bytedance.com",
-  "maintainers": [],
   "sideEffects": false,
   "main": "src/index.ts",
   "scripts": {
     "build": "exit 0",
     "lint": "eslint ./ --cache",
-    "test": "vitest --run --passWithNoTests",
-    "test:cov": "npm run test -- --coverage"
+    "test": "vitest --run --passWithNoTests"
   },
   "dependencies": {
     "lodash-es": "^4.17.21",
@@ -37,4 +32,3 @@
     "react-dom": "~18.2.0"
   }
 }
-

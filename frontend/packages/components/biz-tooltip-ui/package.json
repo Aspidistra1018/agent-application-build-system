@@ -1,16 +1,11 @@
 {
   "name": "@coze-common/biz-tooltip-ui",
   "version": "0.0.1",
-  "description": "special business tooltip ui",
-  "license": "Apache-2.0",
-  "author": "gaoyuanhan.duty@bytedance.com",
-  "maintainers": [],
   "main": "src/index.tsx",
   "scripts": {
     "build": "exit 0",
     "lint": "eslint ./ --cache",
-    "test": "vitest --run --passWithNoTests",
-    "test:cov": "npm run test -- --coverage"
+    "test": "vitest --run --passWithNoTests"
   },
   "dependencies": {
     "@coze-arch/i18n": "workspace:*",
@@ -39,4 +34,3 @@
     "react-dom": ">=18.2.0"
   }
 }
-

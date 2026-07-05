@@ -387,7 +387,7 @@ services:
     build:
         context: ../
         dockerfile: backend/Dockerfile
-#    image: cozedev/coze-studio-server:latest
+#    image: agent-application/server:latest
     restart: always
     container_name: agent-server
     env_file: *env_file
@@ -421,7 +421,7 @@ services:
     build:
       context: ..
       dockerfile: frontend/Dockerfile
-    #    image: cozedev/coze-studio-web:latest
+    #    image: agent-application/web:latest
     container_name: agent-web
     restart: always
     ports:

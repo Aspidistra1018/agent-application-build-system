@@ -1,16 +1,11 @@
 {
   "name": "@coze-studio/slardar-interface",
   "version": "0.0.1",
-  "description": "interface that descripts how to use slardar ",
-  "license": "Apache-2.0",
-  "author": "fanwenjie.fe@bytedance.com",
-  "maintainers": [],
   "main": "src/index.ts",
   "scripts": {
     "build": "exit 0",
     "lint": "eslint ./ --cache",
-    "test": "vitest --run --passWithNoTests",
-    "test:cov": "npm run test -- --coverage"
+    "test": "vitest --run --passWithNoTests"
   },
   "dependencies": {},
   "devDependencies": {
@@ -23,4 +18,3 @@
     "vitest": "~3.0.5"
   }
 }
-

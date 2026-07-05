@@ -1,16 +1,11 @@
 {
   "name": "@coze-arch/bot-hooks-base",
   "version": "0.0.1",
-  "description": "hooks for bot studio",
-  "license": "Apache-2.0",
-  "author": "zhanghaochen.z@bytedance.com",
-  "maintainers": [],
   "main": "src/index.ts",
   "scripts": {
     "build": "exit 0",
     "lint": "eslint ./ --cache",
-    "test": "vitest --run --passWithNoTests",
-    "test:cov": "npm run test -- --coverage"
+    "test": "vitest --run --passWithNoTests"
   },
   "dependencies": {
     "@coze-agent-ide/tool-config": "workspace:*",
@@ -59,4 +54,3 @@
   },
   "// deps": "immer@^10.0.3 为脚本自动补齐，请勿改动"
 }
-

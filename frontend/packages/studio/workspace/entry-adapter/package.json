@@ -1,10 +1,6 @@
 {
   "name": "@coze-studio/workspace-adapter",
   "version": "0.0.1",
-  "description": "工作空间菜单栏入口页面",
-  "license": "Apache-2.0",
-  "author": "duwenhan@bytedance.com",
-  "maintainers": [],
   "exports": {
     "./develop": "./src/pages/develop/index.tsx",
     "./library": "./src/pages/library/index.tsx"
@@ -24,8 +20,7 @@
     "build": "exit 0",
     "dev": "exit 0",
     "lint": "eslint ./ --cache",
-    "test": "vitest --run --passWithNoTests",
-    "test:cov": "npm run test -- --coverage"
+    "test": "vitest --run --passWithNoTests"
   },
   "dependencies": {
     "@coze-arch/bot-api": "workspace:*",
@@ -61,4 +56,3 @@
     "react-dom": ">=18.2.0"
   }
 }
-

@@ -1,7 +1,6 @@
 {
   "name": "@coze-project-ide/view",
   "version": "0.0.1",
-  "author": "chenjiawei.inizio@bytedance.com",
   "main": "./src/index.ts",
   "types": "./src/index.ts",
   "scripts": {
@@ -11,7 +10,6 @@
     "clean": "rimraf dist",
     "lint": "eslint ./ --cache --quiet",
     "test": "exit",
-    "test:cov": "exit",
     "ts-check": "tsc --noEmit",
     "watch": "npm run build:fast -- --dts-resolve --watch --ignore-watch dist"
   },
@@ -47,4 +45,3 @@
     "react-dom": ">=17"
   }
 }
-

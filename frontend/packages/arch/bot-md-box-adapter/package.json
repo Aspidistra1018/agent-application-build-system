@@ -1,13 +1,6 @@
 {
   "name": "@coze-arch/bot-md-box-adapter",
   "version": "0.0.1",
-  "description": "md-box for coze",
-  "license": "Apache-2.0",
-  "author": "gaoyuanhan.duty@bytedance.com",
-  "maintainers": [
-    "houtao.zzj@bytedance.com",
-    "fanwenjie.fe@bytedance.com"
-  ],
   "exports": {
     ".": "./src/full/index.ts",
     "./lazy": "./src/lazy/index.ts",
@@ -43,8 +36,7 @@
   "scripts": {
     "build": "exit 0",
     "lint": "eslint ./ --cache",
-    "test": "vitest --run --passWithNoTests",
-    "test:cov": "npm run test -- --coverage"
+    "test": "vitest --run --passWithNoTests"
   },
   "dependencies": {
     "@bytedance/calypso": "0.1.0-beta.8"
@@ -72,4 +64,3 @@
     "react-dom": ">=18.2.0"
   }
 }
-

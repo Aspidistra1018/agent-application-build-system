@@ -1,19 +1,3 @@
-/*
- * Copyright 2025 coze-dev Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *     http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-
 package coze
 
 import (
@@ -1233,11 +1217,11 @@ func TestValidateTree(t *testing.T) {
 			for _, i := range errs[0] {
 				if i.NodeError != nil {
 					if i.NodeError.NodeID == "108984" {
-						assert.Equal(t, i.Message, `node "代码_1" not connected`)
+						assert.Equal(t, i.Message, `node "浠ｇ爜_1" not connected`)
 					}
 					if i.NodeError.NodeID == "160892" {
-						assert.Contains(t, i.Message, `node "意图识别"'s port "branch_1" not connected`)
-						assert.Contains(t, i.Message, `node "意图识别"'s port "default" not connected`)
+						assert.Contains(t, i.Message, `node "鎰忓浘璇嗗埆"'s port "branch_1" not connected`)
+						assert.Contains(t, i.Message, `node "鎰忓浘璇嗗埆"'s port "default" not connected`)
 					}
 
 				}
@@ -1268,7 +1252,7 @@ func TestValidateTree(t *testing.T) {
 
 		t.Run("workflow_variable_assigner", func(t *testing.T) {
 			errs := r.validateTree("validate/workflow_variable_assigner.json")
-			assert.Equal(t, errs[0][0].Message, `node name 变量赋值,param [app_list_v2], type mismatch`)
+			assert.Equal(t, errs[0][0].Message, `node name 鍙橀噺璧嬪€?param [app_list_v2], type mismatch`)
 		})
 
 		t.Run("sub_workflow_terminate_plan_type", func(t *testing.T) {
@@ -1276,16 +1260,16 @@ func TestValidateTree(t *testing.T) {
 
 			errs := r.validateTree("validate/sub_workflow_terminate_plan_type.json")
 			require.Equal(t, 2, len(errs))
-			assert.Equal(t, errs[0][0].Message, `node name 变量赋值,param [app_list_v2], type mismatch`)
+			assert.Equal(t, errs[0][0].Message, `node name 鍙橀噺璧嬪€?param [app_list_v2], type mismatch`)
 
 			for _, i := range errs[1] {
 				if i.NodeError != nil {
 					if i.NodeError.NodeID == "108984" {
-						assert.Equal(t, i.Message, `node "代码_1" not connected`)
+						assert.Equal(t, i.Message, `node "浠ｇ爜_1" not connected`)
 					}
 					if i.NodeError.NodeID == "160892" {
-						assert.Contains(t, i.Message, `node "意图识别"'s port "branch_1" not connected`)
-						assert.Contains(t, i.Message, `node "意图识别"'s port "default" not connected`)
+						assert.Contains(t, i.Message, `node "鎰忓浘璇嗗埆"'s port "branch_1" not connected`)
+						assert.Contains(t, i.Message, `node "鎰忓浘璇嗗埆"'s port "default" not connected`)
 					}
 				}
 			}
@@ -1686,15 +1670,15 @@ func TestInputComplex(t *testing.T) {
 func TestGetLLMNodeFCSettingsDetailAndMerged(t *testing.T) {
 	mockey.PatchConvey("fc setting detail", t, func() {
 		operationString := `{
-  "summary" : "根据输入的解梦标题给出相关对应的解梦内容，如果返回的内容为空，给用户返回固定的话术：如果想了解自己梦境的详细解析，需要给我详细的梦见信息，例如： 梦见XXX",
+  "summary" : "鏍规嵁杈撳叆鐨勮В姊︽爣棰樼粰鍑虹浉鍏冲�搴旂殑瑙ｆⅵ鍐呭�锛屽�鏋滆繑鍥炵殑鍐呭�涓虹┖锛岀粰鐢ㄦ埛杩斿洖鍥哄畾鐨勮瘽鏈�細濡傛灉鎯充簡瑙ｈ嚜宸辨ⅵ澧冪殑璇︾粏瑙ｆ瀽锛岄渶瑕佺粰鎴戣�缁嗙殑姊﹁�淇℃伅锛屼緥濡傦細 姊﹁�XXX",
   "operationId" : "xz_zgjm",
   "parameters" : [ {
-    "description" : "查询解梦标题，例如：梦见蛇",
+    "description" : "鏌ヨ�瑙ｆⅵ鏍囬�锛屼緥濡傦細姊﹁�铔?,
     "in" : "query",
     "name" : "title",
     "required" : true,
     "schema" : {
-      "description" : "查询解梦标题，例如：梦见蛇",
+      "description" : "鏌ヨ�瑙ｆⅵ鏍囬�锛屼緥濡傦細姊﹁�铔?,
       "type" : "string"
     }
   } ],
@@ -1714,29 +1698,29 @@ func TestGetLLMNodeFCSettingsDetailAndMerged(t *testing.T) {
           "schema" : {
             "properties" : {
               "data" : {
-                "description" : "返回数据",
+                "description" : "杩斿洖鏁版嵁",
                 "type" : "string"
               },
               "data_structural" : {
-                "description" : "返回数据结构",
+                "description" : "杩斿洖鏁版嵁缁撴瀯",
                 "properties" : {
                   "content" : {
-                    "description" : "解梦内容",
+                    "description" : "瑙ｆⅵ鍐呭�",
                     "type" : "string"
                   },
                   "title" : {
-                    "description" : "解梦标题",
+                    "description" : "瑙ｆⅵ鏍囬�",
                     "type" : "string"
                   },
                   "weburl" : {
-                    "description" : "当前内容关联的页面地址",
+                    "description" : "褰撳墠鍐呭�鍏宠仈鐨勯〉闈㈠湴鍧€",
                     "type" : "string"
                   }
                 },
                 "type" : "object"
               },
               "err_msg" : {
-                "description" : "错误提示",
+                "description" : "閿欒�鎻愮ず",
                 "type" : "string"
               }
             },
@@ -1803,15 +1787,15 @@ func TestGetLLMNodeFCSettingsDetailAndMerged(t *testing.T) {
 	})
 	mockey.PatchConvey("fc setting merged", t, func() {
 		operationString := `{
-  "summary" : "根据输入的解梦标题给出相关对应的解梦内容，如果返回的内容为空，给用户返回固定的话术：如果想了解自己梦境的详细解析，需要给我详细的梦见信息，例如： 梦见XXX",
+  "summary" : "鏍规嵁杈撳叆鐨勮В姊︽爣棰樼粰鍑虹浉鍏冲�搴旂殑瑙ｆⅵ鍐呭�锛屽�鏋滆繑鍥炵殑鍐呭�涓虹┖锛岀粰鐢ㄦ埛杩斿洖鍥哄畾鐨勮瘽鏈�細濡傛灉鎯充簡瑙ｈ嚜宸辨ⅵ澧冪殑璇︾粏瑙ｆ瀽锛岄渶瑕佺粰鎴戣�缁嗙殑姊﹁�淇℃伅锛屼緥濡傦細 姊﹁�XXX",
   "operationId" : "xz_zgjm",
   "parameters" : [ {
-    "description" : "查询解梦标题，例如：梦见蛇",
+    "description" : "鏌ヨ�瑙ｆⅵ鏍囬�锛屼緥濡傦細姊﹁�铔?,
     "in" : "query",
     "name" : "title",
     "required" : true,
     "schema" : {
-      "description" : "查询解梦标题，例如：梦见蛇",
+      "description" : "鏌ヨ�瑙ｆⅵ鏍囬�锛屼緥濡傦細姊﹁�铔?,
       "type" : "string"
     }
   } ],
@@ -1831,29 +1815,29 @@ func TestGetLLMNodeFCSettingsDetailAndMerged(t *testing.T) {
           "schema" : {
             "properties" : {
               "data" : {
-                "description" : "返回数据",
+                "description" : "杩斿洖鏁版嵁",
                 "type" : "string"
               },
               "data_structural" : {
-                "description" : "返回数据结构",
+                "description" : "杩斿洖鏁版嵁缁撴瀯",
                 "properties" : {
                   "content" : {
-                    "description" : "解梦内容",
+                    "description" : "瑙ｆⅵ鍐呭�",
                     "type" : "string"
                   },
                   "title" : {
-                    "description" : "解梦标题",
+                    "description" : "瑙ｆⅵ鏍囬�",
                     "type" : "string"
                   },
                   "weburl" : {
-                    "description" : "当前内容关联的页面地址",
+                    "description" : "褰撳墠鍐呭�鍏宠仈鐨勯〉闈㈠湴鍧€",
                     "type" : "string"
                   }
                 },
                 "type" : "object"
               },
               "err_msg" : {
-                "description" : "错误提示",
+                "description" : "閿欒�鎻愮ず",
                 "type" : "string"
               }
             },
@@ -3187,7 +3171,7 @@ func TestConversationHistoryNodes(t *testing.T) {
 				{
 					ID:   mID,
 					Role: schema.User,
-					Text: ptr.Of("你好"),
+					Text: ptr.Of("浣犲ソ"),
 				},
 			},
 		}, nil).AnyTimes()
@@ -3209,7 +3193,7 @@ func TestConversationHistoryNodes(t *testing.T) {
 		var messageList []any
 		msg := map[string]any{
 			"role":    "user",
-			"content": "你好",
+			"content": "浣犲ソ",
 		}
 		messageList = append(messageList, msg)
 		assert.Equal(t, messageList, outputMap["history_list"])
@@ -3248,7 +3232,7 @@ func TestConversationHistoryNodes(t *testing.T) {
 				{
 					ID:   mID,
 					Role: schema.Assistant,
-					Text: ptr.Of("你好, 我是coze"),
+					Text: ptr.Of("浣犲ソ, 鎴戞槸coze"),
 				},
 			},
 		}, nil).AnyTimes()
@@ -3270,7 +3254,7 @@ func TestConversationHistoryNodes(t *testing.T) {
 		var messageList []any
 		msg := map[string]any{
 			"role":    "assistant",
-			"content": "你好, 我是coze",
+			"content": "浣犲ソ, 鎴戞槸coze",
 		}
 		messageList = append(messageList, msg)
 		assert.Equal(t, messageList, outputMap["history_list"])

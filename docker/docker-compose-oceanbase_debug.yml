@@ -164,7 +164,6 @@ services:
   #       fi
 
   #       echo "Creating topics..."
-  #       for t in opencoze_knowledge opencoze_search_app opencoze_search_resource \
   #                 %RETRY%cg_knowledge %RETRY%cg_search_app %RETRY%cg_search_resource; do
   #         sh mqadmin updateTopic -n rocketmq-namesrv:9876 \
   #           -c DefaultCluster -t "$$t"

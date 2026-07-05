@@ -1,16 +1,11 @@
 {
   "name": "@coze-agent-ide/bot-editor-context-store",
   "version": "0.0.1",
-  "description": "Bot Editor store with context",
-  "license": "Apache-2.0",
-  "author": "gaoyuanhan.duty@bytedance.com",
-  "maintainers": [],
   "main": "src/index.ts",
   "scripts": {
     "build": "exit 0",
     "lint": "eslint ./ --cache",
-    "test": "vitest --run --passWithNoTests",
-    "test:cov": "npm run test -- --coverage"
+    "test": "vitest --run --passWithNoTests"
   },
   "dependencies": {
     "classnames": "^2.3.2"
@@ -48,4 +43,3 @@
     "zustand": "^4.4.7"
   }
 }
-

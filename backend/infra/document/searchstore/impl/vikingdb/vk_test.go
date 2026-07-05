@@ -1,19 +1,3 @@
-/*
- * Copyright 2025 coze-dev Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *     http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-
 package vikingdb
 
 import (
@@ -101,7 +85,7 @@ func TestVikingEmbeddingIntegration(t *testing.T) {
 		ids, err := ss.Store(ctx, []*schema.Document{
 			{
 				ID:      "101",
-				Content: "埃菲尔铁塔：位于法国巴黎，是世界上最著名的地标之一，由居斯塔夫・埃菲尔设计并建于 1889 年。",
+				Content: "埃菲尔铁塔：位于法国巴黎，是世界上最著名的地标之一，由居斯塔夫・埃菲尔设计并建�?1889 年�?,
 				MetaData: map[string]any{
 					document.MetaDataKeyCreatorID: int64(111),
 					document.MetaDataKeyExternalStorage: map[string]any{
@@ -111,7 +95,7 @@ func TestVikingEmbeddingIntegration(t *testing.T) {
 			},
 			{
 				ID:      "102",
-				Content: "长城：位于中国，是世界七大奇迹之一，从秦至明代修筑而成，全长超过 2 万公里",
+				Content: "长城：位于中国，是世界七大奇迹之一，从秦至明代修筑而成，全长超�?2 万公�?,
 				MetaData: map[string]any{
 					document.MetaDataKeyCreatorID: int64(111),
 					document.MetaDataKeyExternalStorage: map[string]any{
@@ -121,7 +105,7 @@ func TestVikingEmbeddingIntegration(t *testing.T) {
 			},
 			{
 				ID:      "103",
-				Content: "罗马斗兽场：位于意大利罗马，于公元 70-80 年间建成，是古罗马帝国最大的圆形竞技场。",
+				Content: "罗马斗兽场：位于意大利罗马，于公�?70-80 年间建成，是古罗马帝国最大的圆形竞技场�?,
 				MetaData: map[string]any{
 					document.MetaDataKeyCreatorID: int64(111),
 					document.MetaDataKeyExternalStorage: map[string]any{
@@ -231,7 +215,7 @@ func TestBuiltinEmbeddingIntegration(t *testing.T) {
 		ids, err := ss.Store(ctx, []*schema.Document{
 			{
 				ID:      "101",
-				Content: "埃菲尔铁塔：位于法国巴黎，是世界上最著名的地标之一，由居斯塔夫・埃菲尔设计并建于 1889 年。",
+				Content: "埃菲尔铁塔：位于法国巴黎，是世界上最著名的地标之一，由居斯塔夫・埃菲尔设计并建�?1889 年�?,
 				MetaData: map[string]any{
 					document.MetaDataKeyCreatorID: int64(111),
 					document.MetaDataKeyExternalStorage: map[string]any{
@@ -241,7 +225,7 @@ func TestBuiltinEmbeddingIntegration(t *testing.T) {
 			},
 			{
 				ID:      "102",
-				Content: "长城：位于中国，是世界七大奇迹之一，从秦至明代修筑而成，全长超过 2 万公里",
+				Content: "长城：位于中国，是世界七大奇迹之一，从秦至明代修筑而成，全长超�?2 万公�?,
 				MetaData: map[string]any{
 					document.MetaDataKeyCreatorID: int64(111),
 					document.MetaDataKeyExternalStorage: map[string]any{
@@ -251,7 +235,7 @@ func TestBuiltinEmbeddingIntegration(t *testing.T) {
 			},
 			{
 				ID:      "103",
-				Content: "罗马斗兽场：位于意大利罗马，于公元 70-80 年间建成，是古罗马帝国最大的圆形竞技场。",
+				Content: "罗马斗兽场：位于意大利罗马，于公�?70-80 年间建成，是古罗马帝国最大的圆形竞技场�?,
 				MetaData: map[string]any{
 					document.MetaDataKeyCreatorID: int64(111),
 					document.MetaDataKeyExternalStorage: map[string]any{

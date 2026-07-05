@@ -1,7 +1,6 @@
 {
   "name": "@coze-workflow/history",
   "version": "0.1.0",
-  "author": "zhangyi.hanchayi@bytedance.com",
   "sideEffects": [
     "**/*.css",
     "**/*.less",
@@ -37,4 +36,3 @@
     "scheduler": ">=0.19.0"
   }
 }
-

@@ -1,17 +1,12 @@
 {
   "name": "@coze-foundation/account-base",
   "version": "0.0.1",
-  "description": "account & login related utils & hooks & stores",
-  "license": "Apache-2.0",
-  "author": "duwenhan@bytedance.com",
-  "maintainers": [],
   "main": "src/index.ts",
   "scripts": {
     "build": "exit 0",
     "dev": "exit 0",
     "lint": "eslint ./ --cache",
-    "test": "vitest --run --passWithNoTests",
-    "test:cov": "npm run test -- --coverage"
+    "test": "vitest --run --passWithNoTests"
   },
   "dependencies": {
     "@coze-arch/bot-api": "workspace:*",
@@ -45,4 +40,3 @@
     "react": ">=18.2.0"
   }
 }
-

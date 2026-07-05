@@ -1,10 +1,6 @@
 {
   "name": "@coze-data/database-v2-adapter",
   "version": "0.0.1",
-  "description": "@coze-data/database-v2-adapter",
-  "license": "Apache-2.0",
-  "author": "haozhenfei@bytedance.com",
-  "maintainers": [],
   "exports": {
     ".": "./src/index.tsx",
     "./components/*": "./src/components/*/index.tsx",
@@ -24,8 +20,7 @@
   "scripts": {
     "build": "exit 0",
     "lint": "eslint ./ --cache",
-    "test": "vitest --run --passWithNoTests",
-    "test:cov": "npm run test -- --coverage"
+    "test": "vitest --run --passWithNoTests"
   },
   "dependencies": {
     "@coze-arch/bot-api": "workspace:*",
@@ -59,4 +54,3 @@
     "react-dom": ">=18.2.0"
   }
 }
-

@@ -1,8 +1,6 @@
 {
   "name": "@coze-agent-ide/space-bot",
   "version": "0.0.1",
-  "description": "空间下的 bot 能力",
-  "author": "liwei.1019@bytedance.com",
   "exports": {
     ".": "./src/index.tsx",
     "./hook": "./src/hook/index.ts",
@@ -63,8 +61,7 @@
     "build": "exit 0",
     "lint": "eslint ./ --cache",
     "lint:type": "tsc -p tsconfig.json --noEmit",
-    "test": "vitest --run --passWithNoTests",
-    "test:cov": "npm run test -- --coverage"
+    "test": "vitest --run --passWithNoTests"
   },
   "dependencies": {
     "@blueprintjs/core": "^5.1.5",
@@ -194,4 +191,3 @@
   },
   "// deps": "immer@^10.0.3 为脚本自动补齐，请勿改动"
 }
-

@@ -1,15 +1,11 @@
 {
   "name": "@coze-arch/idl2ts-helper",
   "version": "0.1.6",
-  "description": "@coze-arch/idl2ts-helper",
-  "license": "Apache-2.0",
-  "author": "fanwenjie.fe@bytedance.com",
   "main": "./src/index.ts",
   "scripts": {
     "build": "exit 0",
     "lint": "eslint ./ --cache",
-    "test": "vitest --run --passWithNoTests",
-    "test:cov": "npm run test -- --coverage"
+    "test": "vitest --run --passWithNoTests"
   },
   "dependencies": {
     "@babel/parser": "^7.12.14",
@@ -33,4 +29,3 @@
     "vitest": "~3.0.5"
   }
 }
-

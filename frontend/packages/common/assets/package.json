@@ -1,10 +1,6 @@
 {
   "name": "@coze-common/assets",
   "version": "0.0.1",
-  "description": "通用全局样式 & 图片啥的",
-  "license": "Apache-2.0",
-  "author": "fanchen@bytedance.com",
-  "maintainers": [],
   "scripts": {
     "build": "exit 0",
     "lint": "eslint ./ --cache"
@@ -20,4 +16,3 @@
     "react-dom": "~18.2.0"
   }
 }
-

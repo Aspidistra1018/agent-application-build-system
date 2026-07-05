@@ -1,8 +1,6 @@
 {
   "name": "@coze-arch/bot-api",
   "version": "0.0.1",
-  "description": "RPC wrapper for bot studio application",
-  "author": "fanwenjie.fe@bytedance.com",
   "exports": {
     ".": "./src/index.ts",
     "./developer_api": "./src/idl/developer_api.ts",
@@ -150,8 +148,7 @@
   "scripts": {
     "build": "exit 0",
     "lint": "eslint ./ --cache",
-    "test": "vitest --run --passWithNoTests",
-    "test:cov": "npm run test -- --coverage"
+    "test": "vitest --run --passWithNoTests"
   },
   "dependencies": {
     "@coze-arch/bot-http": "workspace:*",
@@ -175,4 +172,3 @@
   },
   "// deps": "debug@^4.3.4 为脚本自动补齐，请勿改动"
 }
-

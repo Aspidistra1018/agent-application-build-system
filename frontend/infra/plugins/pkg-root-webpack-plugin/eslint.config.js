@@ -7,7 +7,6 @@ module.exports = defineConfig({
     {
       files: ['__tests__/**'],
       rules: {
-        '@coze-arch/package-require-author': 'off',
         'unicorn/filename-case': 'off',
         '@typescript-eslint/no-explicit-any': 'off',
         '@typescript-eslint/consistent-type-assertions': 'off',

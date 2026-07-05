@@ -1,19 +1,3 @@
-/*
- * Copyright 2025 coze-dev Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *     http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-
 package service
 
 import (
@@ -221,25 +205,25 @@ func TestKnowledgeSVC_CreateDocument(t *testing.T) {
 				VirtualTableName: "test",
 				Columns: []*entity.TableColumn{
 					{
-						Name:     "第一列",
+						Name:     "绗�竴鍒?,
 						Type:     document.TableColumnTypeBoolean,
 						Indexing: true,
 						Sequence: 0,
 					},
 					{
-						Name:     "第二列",
+						Name:     "绗�簩鍒?,
 						Type:     document.TableColumnTypeTime,
 						Indexing: false,
 						Sequence: 1,
 					},
 					{
-						Name:     "第三列",
+						Name:     "绗�笁鍒?,
 						Type:     document.TableColumnTypeString,
 						Indexing: false,
 						Sequence: 2,
 					},
 					{
-						Name:     "第四列",
+						Name:     "绗�洓鍒?,
 						Type:     document.TableColumnTypeNumber,
 						Indexing: true,
 						Sequence: 3,
@@ -332,25 +316,25 @@ func TestKnowledgeSVC_DeleteDocument(t *testing.T) {
 			VirtualTableName: "test",
 			Columns: []*entity.TableColumn{
 				{
-					Name:     "第一列",
+					Name:     "绗�竴鍒?,
 					Type:     document.TableColumnTypeBoolean,
 					Indexing: true,
 					Sequence: 0,
 				},
 				{
-					Name:     "第二列",
+					Name:     "绗�簩鍒?,
 					Type:     document.TableColumnTypeTime,
 					Indexing: false,
 					Sequence: 1,
 				},
 				{
-					Name:     "第三列",
+					Name:     "绗�笁鍒?,
 					Type:     document.TableColumnTypeString,
 					Indexing: false,
 					Sequence: 2,
 				},
 				{
-					Name:     "第四列",
+					Name:     "绗�洓鍒?,
 					Type:     document.TableColumnTypeNumber,
 					Indexing: true,
 					Sequence: 3,

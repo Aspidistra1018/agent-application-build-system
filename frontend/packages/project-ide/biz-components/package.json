@@ -1,16 +1,11 @@
 {
   "name": "@coze-project-ide/biz-components",
   "version": "0.0.1",
-  "description": "project ide business components",
-  "license": "Apache-2.0",
-  "author": "zhangchaoyang.805@bytedance.com",
-  "maintainers": [],
   "main": "src/index.ts",
   "scripts": {
     "build": "exit 0",
     "lint": "eslint ./ --cache",
-    "test": "vitest --run --passWithNoTests",
-    "test:cov": "npm run test -- --coverage"
+    "test": "vitest --run --passWithNoTests"
   },
   "dependencies": {
     "@coze-arch/bot-api": "workspace:*",
@@ -52,4 +47,3 @@
     "react-dom": ">=18.2.0"
   }
 }
-

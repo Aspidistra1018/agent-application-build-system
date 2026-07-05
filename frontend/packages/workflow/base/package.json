@@ -1,10 +1,6 @@
 {
   "name": "@coze-workflow/base",
   "version": "0.0.1",
-  "description": "workflow 基础包",
-  "license": "Apache-2.0",
-  "author": "lvxinsheng@bytedance.com",
-  "maintainers": [],
   "exports": {
     ".": "./src/index.ts",
     "./api": "./src/api/index.ts",
@@ -39,8 +35,7 @@
   "scripts": {
     "build": "exit 0",
     "lint": "eslint ./ --cache",
-    "test": "vitest --run --passWithNoTests",
-    "test:cov": "npm run test -- --coverage"
+    "test": "vitest --run --passWithNoTests"
   },
   "dependencies": {
     "@coze-arch/bot-api": "workspace:*",
@@ -81,4 +76,3 @@
   },
   "// deps": "immer@^10.0.3 为脚本自动补齐，请勿改动"
 }
-

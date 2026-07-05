@@ -2,19 +2,14 @@
   "name": "{{ packageName }}",
   "version": "0.0.1",
   "private": true,
-  "description": "{{ description }}",
   "keywords": [],
-  "license": "Apache-2.0",
-  "author": "{{ authorName }}",
-  "maintainers": [],
   "sideEffects": false,
   "scripts": {
     "build": "rsbuild build",
     "dev": "rsbuild dev",
     "lint": "eslint ./ --cache --quiet",
     "preview": "rsbuild preview",
-    "test": "vitest --run --passWithNoTests",
-    "test:cov": "vitest --run --passWithNoTests --coverage"
+    "test": "vitest --run --passWithNoTests"
   },
   "dependencies": {
     "@coze-arch/logger": "workspace:*",
@@ -42,4 +37,3 @@
     "vitest": "~3.0.5"
   }
 }
-

@@ -1,10 +1,6 @@
 {
   "name": "@coze-common/chat-answer-action",
   "version": "0.0.1",
-  "description": "Chat Answer Action",
-  "license": "Apache-2.0",
-  "author": "gaoyuanhan.duty@bytedance.com",
-  "maintainers": [],
   "exports": {
     ".": "./src/index.ts",
     "./hooks/*": "./src/hooks/*"
@@ -20,8 +16,7 @@
   "scripts": {
     "build": "exit 0",
     "lint": "eslint ./ --cache",
-    "test": "vitest --run --passWithNoTests",
-    "test:cov": "npm run test -- --coverage"
+    "test": "vitest --run --passWithNoTests"
   },
   "dependencies": {
     "@coze-arch/bot-flags": "workspace:*",
@@ -82,4 +77,3 @@
     "zustand": "^4.4.7"
   }
 }
-

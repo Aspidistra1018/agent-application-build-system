@@ -1,10 +1,6 @@
 {
   "name": "@coze-studio/file-kit",
   "version": "0.0.1",
-  "description": "file kit ",
-  "license": "Apache-2.0",
-  "author": "liuyuhang.0@bytedance.com",
-  "maintainers": [],
   "exports": {
     "./config": "./src/exports/config.ts",
     "./logic": "./src/exports/logic.ts"
@@ -22,8 +18,7 @@
   "scripts": {
     "build": "exit 0",
     "lint": "eslint ./ --cache",
-    "test": "vitest --run --passWithNoTests",
-    "test:cov": "npm run test -- --coverage"
+    "test": "vitest --run --passWithNoTests"
   },
   "dependencies": {
     "@coze-arch/i18n": "workspace:*"
@@ -47,4 +42,3 @@
     "vitest": "~3.0.5"
   }
 }
-

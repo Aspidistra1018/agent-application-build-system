@@ -1,16 +1,12 @@
 {
   "name": "@coze-arch/idl2ts-generator",
   "version": "0.1.6",
-  "description": "@coze-arch/idl2ts-generator",
   "homepage": "",
-  "license": "Apache-2.0",
-  "author": "fanwenjie.fe@bytedance.com",
   "main": "./src/index.ts",
   "scripts": {
     "build": "exit 0",
     "lint": "eslint ./ --cache",
-    "test": "vitest --run --passWithNoTests",
-    "test:cov": "npm run test -- --coverage"
+    "test": "vitest --run --passWithNoTests"
   },
   "dependencies": {
     "@babel/core": "^7.20.2",
@@ -45,4 +41,3 @@
     "vitest": "~3.0.5"
   }
 }
-

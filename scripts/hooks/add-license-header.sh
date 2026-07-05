@@ -1,37 +1,9 @@
 #!/bin/bash
 
 # License header content
-APACHE_LICENSE_HEADER="/*
- * Copyright 2025 coze-dev Authors
- *
- * Licensed under the Apache License, Version 2.0 (the \"License\");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *     http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an \"AS IS\" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */"
+APACHE_LICENSE_HEADER=""
 
-SHELL_LICENSE_HEADER="#
-# Copyright 2025 coze-dev Authors
-#
-# Licensed under the Apache License, Version 2.0 (the \"License\");
-# you may not use this file except in compliance with the License.
-# You may obtain a copy of the License at
-#
-#     http://www.apache.org/licenses/LICENSE-2.0
-#
-# Unless required by applicable law or agreed to in writing, software
-# distributed under the License is distributed on an \"AS IS\" BASIS,
-# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-# See the License for the specific language governing permissions and
-# limitations under the License.
-#"
+SHELL_LICENSE_HEADER=""
 
 # File extensions that require license headers
 declare -a FILE_EXTENSIONS=("go" "ts" "tsx" "js" "jsx" "sh")
@@ -43,12 +15,12 @@ has_license_header() {
     
     case "$ext" in
         "go"|"ts"|"tsx"|"js"|"jsx")
-            # Check for /* Copyright pattern within first 5 lines
-            head -n 5 "$file" | grep -q "Copyright.*coze-dev Authors"
+            # Check for copyright pattern within first 5 lines
+            head -n 5 "$file" | grep -q "Copyright"
             ;;
         "sh")
-            # Check for # Copyright pattern within first 10 lines (accounting for shebang)
-            head -n 10 "$file" | grep -q "Copyright.*coze-dev Authors"
+            # Check for copyright pattern within first 10 lines (accounting for shebang)
+            head -n 10 "$file" | grep -q "Copyright"
             ;;
         *)
             return 1

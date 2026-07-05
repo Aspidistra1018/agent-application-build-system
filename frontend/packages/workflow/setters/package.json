@@ -1,18 +1,13 @@
 {
   "name": "@coze-workflow/setters",
   "version": "0.0.1",
-  "description": "workflow setters",
-  "license": "Apache-2.0",
-  "author": "zhuxiaowei.711@bytedance.com",
-  "maintainers": [],
   "main": "src/index.ts",
   "types": "src/index.ts",
   "scripts": {
     "build": "exit 0",
     "dev": "storybook dev -p 6006",
     "lint": "eslint ./ --cache",
-    "test": "vitest --run --passWithNoTests",
-    "test:cov": "npm run test -- --coverage"
+    "test": "vitest --run --passWithNoTests"
   },
   "dependencies": {
     "@coze-arch/coze-design": "0.0.6-alpha.346d77",
@@ -69,4 +64,3 @@
     "react-dom": ">=18.2.0"
   }
 }
-

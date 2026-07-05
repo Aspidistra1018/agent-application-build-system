@@ -1,16 +1,11 @@
 {
   "name": "@coze-community/explore",
   "version": "0.0.1",
-  "description": "explore page",
-  "license": "Apache-2.0",
-  "author": "gaoding.devingao@bytedance.com",
-  "maintainers": [],
   "main": "src/index.tsx",
   "scripts": {
     "build": "exit 0",
     "lint": "eslint ./ --cache",
-    "test": "vitest --run --passWithNoTests",
-    "test:cov": "npm run test -- --coverage"
+    "test": "vitest --run --passWithNoTests"
   },
   "dependencies": {
     "@ahooksjs/use-url-state": "^3.5.1",
@@ -57,4 +52,3 @@
     "react-dom": ">=18.2.0"
   }
 }
-

@@ -1,16 +1,11 @@
 {
   "name": "@coze-arch/fs-enhance",
   "version": "0.0.1",
-  "description": "Utils to enhance fs dx",
-  "license": "Apache-2.0",
-  "author": "fanwenjie.fe@bytedance.com",
-  "maintainers": [],
   "main": "src/index.ts",
   "scripts": {
     "build": "exit 0",
     "lint": "eslint ./ --cache",
-    "test": "vitest --run --passWithNoTests",
-    "test:cov": "npm run test -- --coverage"
+    "test": "vitest --run --passWithNoTests"
   },
   "dependencies": {
     "json5": "^2.2.1",
@@ -26,4 +21,3 @@
     "vitest": "~3.0.5"
   }
 }
-

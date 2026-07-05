@@ -135,7 +135,7 @@ paths:
             schema:
               properties:
                 folder_token:
-                  description: 文件夹 token，支持文件夹url输入，如：https://bytedance.larkoffice.com/drive/folder/CxHEf4DCSlNkL2dUTCJcPRgentg
+                  description: 文件夹 token，支持文件夹url输入
                   type: string
                 title:
                   description: 电子表格标题

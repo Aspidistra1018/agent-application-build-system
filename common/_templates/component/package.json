@@ -1,17 +1,12 @@
 {
   "name": "{{ packageName }}",
   "version": "0.0.1",
-  "description": "{{ description }}",
-  "license": "Apache-2.0",
-  "author": "{{ authorName }}",
-  "maintainers": [],
   "main": "src/index.tsx",
   "scripts": {
     "build": "exit 0",
     "dev": "storybook dev -p 6006",
     "lint": "eslint ./ --cache",
-    "test": "vitest --run --passWithNoTests",
-    "test:cov": "npm run test -- --coverage"
+    "test": "vitest --run --passWithNoTests"
   },
   "dependencies": {
     "classnames": "^2.3.2"
@@ -48,4 +43,3 @@
     "react-dom": ">=18.2.0"
   }
 }
-

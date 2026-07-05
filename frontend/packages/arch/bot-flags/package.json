@@ -1,10 +1,6 @@
 {
   "name": "@coze-arch/bot-flags",
   "version": "0.0.1",
-  "description": "feature gating for bot studio ",
-  "license": "Apache-2.0",
-  "author": "fanwenjie.fe@bytedance.com",
-  "maintainers": [],
   "sideEffects": false,
   "exports": {
     ".": "./src/index.ts",
@@ -29,8 +25,7 @@
   "scripts": {
     "build": "exit 0",
     "lint": "eslint ./ --cache",
-    "test": "vitest --run --passWithNoTests",
-    "test:cov": "npm run test -- --coverage"
+    "test": "vitest --run --passWithNoTests"
   },
   "dependencies": {
     "@coze-arch/logger": "workspace:*",
@@ -52,4 +47,3 @@
     "vitest": "~3.0.5"
   }
 }
-

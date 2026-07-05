@@ -1,13 +1,11 @@
 {
   "name": "@coze-arch/logger",
   "version": "0.0.1",
-  "author": "liukaizhan@bytedance.com",
   "main": "./src/index.ts",
   "scripts": {
     "build": "exit 0",
     "lint": "eslint ./ --cache",
-    "test": "vitest --run --passWithNoTests",
-    "test:cov": "npm run test -- --coverage"
+    "test": "vitest --run --passWithNoTests"
   },
   "dependencies": {
     "@coze-arch/bot-env": "workspace:*",
@@ -28,4 +26,3 @@
     "vitest": "~3.0.5"
   }
 }
-

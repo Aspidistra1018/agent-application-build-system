@@ -1,10 +1,6 @@
 {
   "name": "@coze-project-ide/biz-data",
   "version": "0.0.1",
-  "description": "knowledge in project ide",
-  "license": "Apache-2.0",
-  "author": "meixuliang.3@bytedance.com",
-  "maintainers": [],
   "exports": {
     ".": "./src/index.tsx",
     "./registry": "./src/registry.tsx"
@@ -20,8 +16,7 @@
   "scripts": {
     "build": "exit 0",
     "lint": "eslint ./ --cache",
-    "test": "vitest --run --passWithNoTests",
-    "test:cov": "npm run test -- --coverage"
+    "test": "vitest --run --passWithNoTests"
   },
   "dependencies": {
     "@coze-arch/bot-api": "workspace:*",
@@ -70,4 +65,3 @@
     "react-dom": ">=18.2.0"
   }
 }
-

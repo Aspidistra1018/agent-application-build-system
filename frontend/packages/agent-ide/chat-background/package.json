@@ -1,16 +1,11 @@
 {
   "name": "@coze-agent-ide/chat-background",
   "version": "0.0.1",
-  "description": "chat background setting",
-  "license": "Apache-2.0",
-  "author": "zhangnan.615@bytedance.com",
-  "maintainers": [],
   "main": "src/index.tsx",
   "scripts": {
     "build": "exit 0",
     "lint": "eslint ./ --cache",
-    "test": "vitest --run --passWithNoTests",
-    "test:cov": "npm run test -- --coverage"
+    "test": "vitest --run --passWithNoTests"
   },
   "dependencies": {
     "@coze-agent-ide/chat-background-config-content-adapter": "workspace:*",
@@ -65,4 +60,3 @@
   },
   "// deps": "immer@^10.0.3 为脚本自动补齐，请勿改动"
 }
-

@@ -1,18 +1,14 @@
 {
   "name": "@coze-arch/pkg-root-webpack-plugin",
   "version": "1.0.0",
-  "description": "> 用于支持 `@` 根目录引用的插件",
   "keywords": [],
-  "license": "Apache-2.0",
-  "author": "fanwenjie.fe@bytedance.com",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
   "scripts": {
     "build": "tsc -b ./tsconfig.build.json --force",
     "dev": "tsc -w",
     "lint": "eslint ./ --cache",
-    "test": "vitest --run --passWithNoTests",
-    "test:cov": "npm run test -- --coverage"
+    "test": "vitest --run --passWithNoTests"
   },
   "dependencies": {
     "@coze-arch/pkg-root-webpack-plugin-origin": "npm:@coze-arch/pkg-root-webpack-plugin@1.0.0-alpha.48aa2e",
@@ -33,4 +29,3 @@
     "webpack": "~5.89.0"
   }
 }
-

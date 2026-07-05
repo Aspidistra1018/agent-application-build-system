@@ -1,16 +1,11 @@
 {
   "name": "@coze-agent-ide/onboarding",
   "version": "0.0.1",
-  "description": "Bot 编辑页面下开场白编辑等功能。",
-  "license": "Apache-2.0",
-  "author": "gaoyuanhan.duty@bytedance.com",
-  "maintainers": [],
   "main": "src/index.ts",
   "scripts": {
     "build": "exit 0",
     "lint": "eslint ./ --cache",
-    "test": "vitest --run --passWithNoTests",
-    "test:cov": "npm run test -- --coverage"
+    "test": "vitest --run --passWithNoTests"
   },
   "dependencies": {
     "@coze-arch/bot-error": "workspace:*",
@@ -82,4 +77,3 @@
     "zustand": "^4.4.7"
   }
 }
-

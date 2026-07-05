@@ -1,10 +1,6 @@
 {
   "name": "@coze-arch/responsive-kit",
   "version": "0.0.1",
-  "description": "The kit provides resoponsive functions for mobile adaptation",
-  "license": "Apache-2.0",
-  "author": "liukaizhan.038@bytedance.com",
-  "maintainers": [],
   "exports": {
     ".": "./src/index.tsx",
     "./constant": "./src/constant.ts"
@@ -20,8 +16,7 @@
   "scripts": {
     "build": "exit 0",
     "lint": "eslint ./ --cache",
-    "test": "vitest --run --passWithNoTests",
-    "test:cov": "npm run test -- --coverage"
+    "test": "vitest --run --passWithNoTests"
   },
   "dependencies": {
     "@coze-arch/bot-semi": "workspace:*",
@@ -51,4 +46,3 @@
     "react-dom": ">=18.2.0"
   }
 }
-

@@ -1,19 +1,3 @@
-/*
- * Copyright 2025 coze-dev Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *     http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-
 package sheet
 
 import (
@@ -646,14 +630,14 @@ func InitIdentifier() {
 			"(\\d{2,4})\\/(0?[1-9]|1[0-2])\\/(0?[1-9]|[1-2]\\d|3[0-1])",
 			"(\\d{2,4})-(0?[1-9]|1[0-2])-(0?[1-9]|[1-2]\\d|3[0-1])",
 			"(\\d{2,4})\\.(0?[1-9]|1[0-2])\\.(0?[1-9]|[1-2]\\d|3[0-1])",
-			"(\\d{2,4})å¹´(0?[1-9]|1[0-2])æœˆ(0?[1-9]|[1-2]\\d|3[0-1])æ—¥",
+			"(\\d{2,4})å¹?0?[1-9]|1[0-2])æœ?0?[1-9]|[1-2]\\d|3[0-1])æ—?,
 		}
 
 		timePatternList := []string{
 			"([0-1]?\\d|2[0-3]):[0-5]\\d(:[0-5]\\d)?",
-			"([0-1]?\\d|2[0-3])æ—¶[0-5]\\dåˆ†([0-5]\\dç§’)?",
+			"([0-1]?\\d|2[0-3])æ—¶[0-5]\\dåˆ?[0-5]\\dç§??",
 			"(0?\\d|1[0-2]):[0-5]\\d(:[0-5]\\d)? (am|AM|pm|PM)",
-			"(0?\\d|1[0-2])æ—¶[0-5]\\dåˆ†([0-5]\\dç§’)? (am|AM|pm|PM)",
+			"(0?\\d|1[0-2])æ—¶[0-5]\\dåˆ?[0-5]\\dç§?? (am|AM|pm|PM)",
 		}
 
 		dateTimePattern = getDateTimeRegExp(datePatternList, timePatternList)

@@ -1,16 +1,11 @@
 {
   "name": "@coze-foundation/global-store",
   "version": "0.0.1",
-  "description": "global store for foundation",
-  "license": "Apache-2.0",
-  "author": "liushuoyan@bytedance.com",
-  "maintainers": [],
   "main": "src/index.ts",
   "scripts": {
     "build": "exit 0",
     "lint": "eslint ./ --cache",
-    "test": "vitest --run --passWithNoTests",
-    "test:cov": "npm run test -- --coverage"
+    "test": "vitest --run --passWithNoTests"
   },
   "dependencies": {
     "classnames": "^2.3.2",
@@ -42,4 +37,3 @@
     "react-dom": ">=18.2.0"
   }
 }
-

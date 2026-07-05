@@ -1,16 +1,11 @@
 {
   "name": "@coze-project-ide/biz-plugin-registry-adapter",
   "version": "0.0.1",
-  "description": "biz plugin registry registry",
-  "license": "Apache-2.0",
-  "author": "gaoyuanhan.duty@bytedance.com",
-  "maintainers": [],
   "main": "src/index.ts",
   "scripts": {
     "build": "exit 0",
     "lint": "eslint ./ --cache",
-    "test": "vitest --run --passWithNoTests",
-    "test:cov": "npm run test -- --coverage"
+    "test": "vitest --run --passWithNoTests"
   },
   "dependencies": {
     "@coze-arch/coze-design": "0.0.6-alpha.346d77",
@@ -41,4 +36,3 @@
     "react-dom": ">=18.2.0"
   }
 }
-

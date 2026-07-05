@@ -1,10 +1,6 @@
 {
   "name": "@coze-agent-ide/bot-plugin-export",
   "version": "0.0.1",
-  "description": "plugin 导出模块",
-  "license": "Apache-2.0",
-  "author": "lihuiwen.123@bytedance.com",
-  "maintainers": [],
   "exports": {
     ".": "./src/index.tsx",
     "./agentSkillPluginModal/hooks": "./src/component/agent-skill-plugin-modal/hooks.tsx",
@@ -48,8 +44,7 @@
   "scripts": {
     "build": "exit 0",
     "lint": "eslint ./ --cache",
-    "test": "vitest --run --passWithNoTests",
-    "test:cov": "npm run test -- --coverage"
+    "test": "vitest --run --passWithNoTests"
   },
   "dependencies": {
     "@blueprintjs/core": "^5.1.5",
@@ -130,4 +125,3 @@
     "react-dom": ">=18.2.0"
   }
 }
-

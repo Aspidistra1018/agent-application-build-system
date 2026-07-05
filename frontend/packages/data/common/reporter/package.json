@@ -1,10 +1,6 @@
 {
   "name": "@coze-data/reporter",
   "version": "0.0.1",
-  "description": "coze knowledge reporter",
-  "license": "Apache-2.0",
-  "author": "rosefang.123@bytedance.com",
-  "maintainers": [],
   "main": "src/index.ts",
   "unpkg": "./dist/umd/index.js",
   "module": "./dist/esm/index.js",
@@ -17,8 +13,7 @@
     "build": "exit 0",
     "dev": "storybook dev -p 6006",
     "lint": "eslint ./ --cache",
-    "test": "vitest --run --passWithNoTests",
-    "test:cov": "npm run test -- --coverage"
+    "test": "vitest --run --passWithNoTests"
   },
   "dependencies": {
     "@coze-arch/i18n": "workspace:*",
@@ -62,4 +57,3 @@
     "react-dom": ">=18.2.0"
   }
 }
-

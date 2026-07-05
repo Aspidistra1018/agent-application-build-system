@@ -1,13 +1,6 @@
 {
   "name": "@coze-arch/bot-monaco-editor",
   "version": "0.0.1",
-  "description": "coze's monaco-editor",
-  "license": "Apache-2.0",
-  "author": "tanjizhen@bytedance.com",
-  "maintainers": [
-    "lvxinsheng@bytedance.com",
-    "liwei.1019@bytedance.com"
-  ],
   "exports": {
     ".": "./src/index.tsx",
     "./types": "./src/types.ts",
@@ -31,8 +24,7 @@
     "build": "exit 0",
     "dev": "storybook dev -p 6006",
     "lint": "eslint ./ --cache",
-    "test": "vitest --run --passWithNoTests",
-    "test:cov": "npm run test -- --coverage"
+    "test": "vitest --run --passWithNoTests"
   },
   "dependencies": {
     "@monaco-editor/react": "^4.5.2",
@@ -71,4 +63,3 @@
     "react-dom": ">=18.2.0"
   }
 }
-

@@ -1,10 +1,6 @@
 {
   "name": "@coze-data/knowledge-modal-base",
   "version": "0.0.1",
-  "description": "coze knowledge modal base components",
-  "license": "Apache-2.0",
-  "author": "haozhenfei@bytedance.com",
-  "maintainers": [],
   "exports": {
     ".": "./src/index.tsx",
     "./create-knowledge-modal-v2": "./src/create-knowledge-modal-v2/index.ts",
@@ -24,8 +20,7 @@
   "scripts": {
     "build": "exit 0",
     "lint": "eslint ./ --cache",
-    "test": "vitest --run --passWithNoTests",
-    "test:cov": "npm run test -- --coverage"
+    "test": "vitest --run --passWithNoTests"
   },
   "dependencies": {
     "@coze-arch/bot-api": "workspace:*",
@@ -86,4 +81,3 @@
     "react-dom": ">=18.2.0"
   }
 }
-

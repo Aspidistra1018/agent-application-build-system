@@ -1,16 +1,11 @@
 {
   "name": "@coze-workflow/code-editor-adapter",
   "version": "0.0.1",
-  "description": "code editor",
-  "license": "Apache-2.0",
-  "author": "liji.leej@bytedance.com",
-  "maintainers": [],
   "main": "src/index.tsx",
   "scripts": {
     "build": "exit 0",
     "lint": "eslint ./ --cache",
-    "test": "vitest --run --passWithNoTests",
-    "test:cov": "npm run test -- --coverage"
+    "test": "vitest --run --passWithNoTests"
   },
   "dependencies": {
     "@codemirror/state": "^6.4.1",
@@ -44,4 +39,3 @@
     "react-dom": ">=18.2.0"
   }
 }
-

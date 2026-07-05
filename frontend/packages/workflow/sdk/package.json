@@ -1,10 +1,6 @@
 {
   "name": "@coze-workflow/sdk",
   "version": "0.0.1",
-  "description": "workflow对外sdk",
-  "license": "Apache-2.0",
-  "author": "lvxinsheng@bytedance.com",
-  "maintainers": [],
   "main": "src/index.ts",
   "unpkg": "./dist/umd/index.js",
   "module": "./dist/esm/index.js",
@@ -16,8 +12,7 @@
   "scripts": {
     "build": "exit 0",
     "lint": "eslint ./ --cache",
-    "test": "vitest --run --passWithNoTests",
-    "test:cov": "npm run test -- --coverage"
+    "test": "vitest --run --passWithNoTests"
   },
   "dependencies": {
     "@coze-workflow/base": "workspace:*",
@@ -44,4 +39,3 @@
     "react-dom": ">=18.2.0"
   }
 }
-

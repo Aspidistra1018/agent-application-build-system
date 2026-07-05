@@ -1,7 +1,6 @@
 {
   "name": "@coze-project-ide/biz-plugin",
   "version": "0.0.1",
-  "author": "fanchen@bytedance.com",
   "exports": {
     ".": "./src/index.tsx",
     "./main": "./src/main.tsx",
@@ -50,4 +49,3 @@
     "typescript": "~5.8.2"
   }
 }
-

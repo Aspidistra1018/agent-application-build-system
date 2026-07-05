@@ -1,19 +1,3 @@
-/*
- * Copyright 2025 coze-dev Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *     http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-
 package vo
 
 import (
@@ -691,7 +675,7 @@ const defaultZhCNInitCanvasJsonSchema = `{
      "description": "工作流的起始节点，用于设定启动工作流需要的信息",
      "icon": "https://lf3-static.bytednsdoc.com/obj/eden-cn/dvsmryvd_avi_dvsm/ljhwZthlaukjlkulzlp/icon/icon-Start.png",
      "subTitle": "",
-     "title": "开始"
+     "title": "开�?
     },
     "outputs": [
      {
@@ -720,7 +704,7 @@ const defaultZhCNInitCanvasJsonSchema = `{
    },
    "data": {
     "nodeMeta": {
-     "description": "工作流的最终节点，用于返回工作流运行后的结果信息",
+     "description": "工作流的最终节点，用于返回工作流运行后的结果信�?,
      "icon": "https://lf3-static.bytednsdoc.com/obj/eden-cn/dvsmryvd_avi_dvsm/ljhwZthlaukjlkulzlp/icon/icon-End.png",
      "subTitle": "",
      "title": "结束"
@@ -850,11 +834,11 @@ const defaultZhCNInitCanvasJsonSchemaChat = `{
 				"type": "string",
 				"name": "CONVERSATION_NAME",
 				"required": false,
-				"description": "本次请求绑定的会话，会自动写入消息、会从该会话读对话历史。",
+				"description": "本次请求绑定的会话，会自动写入消息、会从该会话读对话历史�?,
 				"defaultValue": "%s"
 			}],
 			"nodeMeta": {
-				"title": "开始",
+				"title": "开�?,
 				"icon": "https://lf3-static.bytednsdoc.com/obj/eden-cn/dvsmryvd_avi_dvsm/ljhwZthlaukjlkulzlp/icon/icon-Start.png",
 				"description": "工作流的起始节点，用于设定启动工作流需要的信息",
 				"subTitle": ""
@@ -873,7 +857,7 @@ const defaultZhCNInitCanvasJsonSchemaChat = `{
 			"nodeMeta": {
 				"title": "结束",
 				"icon": "https://lf3-static.bytednsdoc.com/obj/eden-cn/dvsmryvd_avi_dvsm/ljhwZthlaukjlkulzlp/icon/icon-End.png",
-				"description": "工作流的最终节点，用于返回工作流运行后的结果信息",
+				"description": "工作流的最终节点，用于返回工作流运行后的结果信�?,
 				"subTitle": ""
 			},
 			"inputs": {

@@ -1,6 +1,6 @@
 namespace py base
 namespace go base
-namespace java com.bytedance.thrift.base
+namespace java org.agentapplication.thrift.base
 
 struct TrafficEnv {
     1: bool   Open = false,

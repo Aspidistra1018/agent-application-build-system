@@ -1,5 +1,5 @@
 table "agent_to_database" {
-  schema  = schema.opencoze
+  schema  = schema.agent_application
   comment = "agent_to_database info"
   collate = "utf8mb4_general_ci"
   column "id" {
@@ -40,7 +40,7 @@ table "agent_to_database" {
   }
 }
 table "agent_tool_draft" {
-  schema  = schema.opencoze
+  schema  = schema.agent_application
   comment = "Draft Agent Tool"
   column "id" {
     null     = false
@@ -131,7 +131,7 @@ table "agent_tool_draft" {
   }
 }
 table "agent_tool_version" {
-  schema  = schema.opencoze
+  schema  = schema.agent_application
   comment = "Agent Tool Version"
   column "id" {
     null     = false
@@ -228,7 +228,7 @@ table "agent_tool_version" {
   }
 }
 table "api_key" {
-  schema  = schema.opencoze
+  schema  = schema.agent_application
   comment = "api key table"
   column "id" {
     null           = false
@@ -298,7 +298,7 @@ table "api_key" {
   }
 }
 table "app_connector_release_ref" {
-  schema  = schema.opencoze
+  schema  = schema.agent_application
   comment = "Connector Release Record Reference"
   column "id" {
     null     = false
@@ -354,7 +354,7 @@ table "app_connector_release_ref" {
   }
 }
 table "app_conversation_template_draft" {
-  schema  = schema.opencoze
+  schema  = schema.agent_application
   comment = "app_conversation_template_draft"
   column "id" {
     null     = false
@@ -416,7 +416,7 @@ table "app_conversation_template_draft" {
   }
 }
 table "app_conversation_template_online" {
-  schema  = schema.opencoze
+  schema  = schema.agent_application
   comment = "app_conversation_template_online"
   column "id" {
     null     = false
@@ -472,7 +472,7 @@ table "app_conversation_template_online" {
   }
 }
 table "app_draft" {
-  schema  = schema.opencoze
+  schema  = schema.agent_application
   comment = "Draft Application"
   column "id" {
     null     = false
@@ -536,7 +536,7 @@ table "app_draft" {
   }
 }
 table "app_dynamic_conversation_draft" {
-  schema  = schema.opencoze
+  schema  = schema.agent_application
   comment = "app_dynamic_conversation_draft"
   column "id" {
     null     = false
@@ -595,7 +595,7 @@ table "app_dynamic_conversation_draft" {
   }
 }
 table "app_dynamic_conversation_online" {
-  schema  = schema.opencoze
+  schema  = schema.agent_application
   comment = "app_dynamic_conversation_online"
   column "id" {
     null     = false
@@ -654,7 +654,7 @@ table "app_dynamic_conversation_online" {
   }
 }
 table "app_release_record" {
-  schema  = schema.opencoze
+  schema  = schema.agent_application
   comment = "Application Release Record"
   column "id" {
     null     = false
@@ -761,7 +761,7 @@ table "app_release_record" {
   }
 }
 table "app_static_conversation_draft" {
-  schema  = schema.opencoze
+  schema  = schema.agent_application
   comment = "app_static_conversation_draft"
   column "id" {
     null     = false
@@ -812,7 +812,7 @@ table "app_static_conversation_draft" {
   }
 }
 table "app_static_conversation_online" {
-  schema  = schema.opencoze
+  schema  = schema.agent_application
   comment = "app_static_conversation_online"
   column "id" {
     null     = false
@@ -858,7 +858,7 @@ table "app_static_conversation_online" {
   }
 }
 table "chat_flow_role_config" {
-  schema  = schema.opencoze
+  schema  = schema.agent_application
   comment = "chat_flow_role_config"
   column "id" {
     null     = false
@@ -957,7 +957,7 @@ table "chat_flow_role_config" {
   }
 }
 table "connector_workflow_version" {
-  schema  = schema.opencoze
+  schema  = schema.agent_application
   comment = "connector workflow version"
   column "id" {
     null           = false
@@ -1007,7 +1007,7 @@ table "connector_workflow_version" {
   }
 }
 table "conversation" {
-  schema  = schema.opencoze
+  schema  = schema.agent_application
   comment = "conversation info record"
   column "id" {
     null           = false
@@ -1094,7 +1094,7 @@ table "conversation" {
   }
 }
 table "data_copy_task" {
-  schema  = schema.opencoze
+  schema  = schema.agent_application
   comment = "data copy task record"
   collate = "utf8mb4_general_ci"
   column "master_task_id" {
@@ -1210,7 +1210,7 @@ table "data_copy_task" {
   }
 }
 table "draft_database_info" {
-  schema  = schema.opencoze
+  schema  = schema.agent_application
   comment = "draft database info"
   collate = "utf8mb4_general_ci"
   column "id" {
@@ -1313,7 +1313,7 @@ table "draft_database_info" {
   }
 }
 table "files" {
-  schema  = schema.opencoze
+  schema  = schema.agent_application
   comment = "file resource table"
   collate = "utf8mb4_general_ci"
   column "id" {
@@ -1407,7 +1407,7 @@ table "files" {
   }
 }
 table "knowledge" {
-  schema  = schema.opencoze
+  schema  = schema.agent_application
   comment = "knowledge tabke"
   column "id" {
     null     = false
@@ -1496,7 +1496,7 @@ table "knowledge" {
   }
 }
 table "knowledge_document" {
-  schema  = schema.opencoze
+  schema  = schema.agent_application
   comment = "knowledge document info"
   column "id" {
     null     = false
@@ -1625,7 +1625,7 @@ table "knowledge_document" {
   }
 }
 table "knowledge_document_review" {
-  schema  = schema.opencoze
+  schema  = schema.agent_application
   comment = "Document slice preview info"
   column "id" {
     null     = false
@@ -1722,7 +1722,7 @@ table "knowledge_document_review" {
   }
 }
 table "knowledge_document_slice" {
-  schema  = schema.opencoze
+  schema  = schema.agent_application
   comment = "knowledge document slice"
   column "id" {
     null     = false
@@ -1819,7 +1819,7 @@ table "knowledge_document_slice" {
   }
 }
 table "kv_entries" {
-  schema  = schema.opencoze
+  schema  = schema.agent_application
   comment = "kv data"
   collate = "utf8mb4_general_ci"
   column "id" {
@@ -1853,7 +1853,7 @@ table "kv_entries" {
   }
 }
 table "message" {
-  schema  = schema.opencoze
+  schema  = schema.agent_application
   comment = "message record"
   column "id" {
     null           = false
@@ -1983,7 +1983,7 @@ table "message" {
   }
 }
 table "model_entity" {
-  schema  = schema.opencoze
+  schema  = schema.agent_application
   comment = "Model information"
   column "id" {
     null     = false
@@ -2055,7 +2055,7 @@ table "model_entity" {
   }
 }
 table "model_instance" {
-  schema  = schema.opencoze
+  schema  = schema.agent_application
   comment = "Model Instance Management Table"
   column "id" {
     null           = false
@@ -2123,7 +2123,7 @@ table "model_instance" {
   }
 }
 table "model_meta" {
-  schema  = schema.opencoze
+  schema  = schema.agent_application
   comment = "Model metadata"
   column "id" {
     null     = false
@@ -2203,7 +2203,7 @@ table "model_meta" {
   }
 }
 table "node_execution" {
-  schema  = schema.opencoze
+  schema  = schema.agent_application
   comment = "Node run record, used to record the status information of each node during each workflow execution"
   column "id" {
     null     = false
@@ -2331,7 +2331,7 @@ table "node_execution" {
   }
 }
 table "online_database_info" {
-  schema  = schema.opencoze
+  schema  = schema.agent_application
   comment = "online database info"
   collate = "utf8mb4_general_ci"
   column "id" {
@@ -2434,7 +2434,7 @@ table "online_database_info" {
   }
 }
 table "plugin" {
-  schema  = schema.opencoze
+  schema  = schema.agent_application
   comment = "Latest Plugin"
   column "id" {
     null     = false
@@ -2528,7 +2528,7 @@ table "plugin" {
   }
 }
 table "plugin_draft" {
-  schema  = schema.opencoze
+  schema  = schema.agent_application
   comment = "Draft Plugin"
   column "id" {
     null     = false
@@ -2619,7 +2619,7 @@ table "plugin_draft" {
   }
 }
 table "plugin_oauth_auth" {
-  schema  = schema.opencoze
+  schema  = schema.agent_application
   comment = "Plugin OAuth Authorization Code Info"
   column "id" {
     null     = false
@@ -2708,7 +2708,7 @@ table "plugin_oauth_auth" {
   }
 }
 table "plugin_version" {
-  schema  = schema.opencoze
+  schema  = schema.agent_application
   comment = "Plugin Version"
   column "id" {
     null     = false
@@ -2805,7 +2805,7 @@ table "plugin_version" {
   }
 }
 table "prompt_resource" {
-  schema  = schema.opencoze
+  schema  = schema.agent_application
   comment = "prompt_resource"
   column "id" {
     null           = false
@@ -2869,7 +2869,7 @@ table "prompt_resource" {
   }
 }
 table "run_record" {
-  schema  = schema.opencoze
+  schema  = schema.agent_application
   comment = "run record"
   column "id" {
     null     = false
@@ -2982,7 +2982,7 @@ table "run_record" {
   }
 }
 table "shortcut_command" {
-  schema  = schema.opencoze
+  schema  = schema.agent_application
   comment = "bot shortcut command table"
   collate = "utf8mb4_general_ci"
   column "id" {
@@ -3144,7 +3144,7 @@ table "shortcut_command" {
   }
 }
 table "single_agent_draft" {
-  schema  = schema.opencoze
+  schema  = schema.agent_application
   comment = "Single Agent Draft Copy Table"
   column "id" {
     null           = false
@@ -3290,7 +3290,7 @@ table "single_agent_draft" {
   }
 }
 table "single_agent_publish" {
-  schema  = schema.opencoze
+  schema  = schema.agent_application
   comment = "Bot connector and release version info"
   column "id" {
     null           = false
@@ -3383,7 +3383,7 @@ table "single_agent_publish" {
   }
 }
 table "single_agent_version" {
-  schema  = schema.opencoze
+  schema  = schema.agent_application
   comment = "Single Agent Version Copy Table"
   column "id" {
     null           = false
@@ -3541,7 +3541,7 @@ table "single_agent_version" {
   }
 }
 table "space" {
-  schema  = schema.opencoze
+  schema  = schema.agent_application
   comment = "Space Table"
   column "id" {
     null           = false
@@ -3613,7 +3613,7 @@ table "space" {
   }
 }
 table "space_user" {
-  schema  = schema.opencoze
+  schema  = schema.agent_application
   comment = "Space Member Table"
   column "id" {
     null           = false
@@ -3668,7 +3668,7 @@ table "space_user" {
   }
 }
 table "template" {
-  schema  = schema.opencoze
+  schema  = schema.agent_application
   comment = "Template Info Table"
   column "id" {
     null           = false
@@ -3745,7 +3745,7 @@ table "template" {
   }
 }
 table "tool" {
-  schema  = schema.opencoze
+  schema  = schema.agent_application
   comment = "Latest Tool"
   column "id" {
     null     = false
@@ -3817,7 +3817,7 @@ table "tool" {
   }
 }
 table "tool_draft" {
-  schema  = schema.opencoze
+  schema  = schema.agent_application
   comment = "Draft Tool"
   column "id" {
     null     = false
@@ -3890,7 +3890,7 @@ table "tool_draft" {
   }
 }
 table "tool_version" {
-  schema  = schema.opencoze
+  schema  = schema.agent_application
   comment = "Tool Version"
   column "id" {
     null     = false
@@ -3957,7 +3957,7 @@ table "tool_version" {
   }
 }
 table "user" {
-  schema  = schema.opencoze
+  schema  = schema.agent_application
   comment = "User Table"
   column "id" {
     null           = false
@@ -4056,7 +4056,7 @@ table "user" {
   }
 }
 table "variable_instance" {
-  schema  = schema.opencoze
+  schema  = schema.agent_application
   comment = "KV Memory"
   column "id" {
     null     = false
@@ -4134,7 +4134,7 @@ table "variable_instance" {
   }
 }
 table "variables_meta" {
-  schema  = schema.opencoze
+  schema  = schema.agent_application
   comment = "KV Memory meta"
   column "id" {
     null     = false
@@ -4199,7 +4199,7 @@ table "variables_meta" {
   }
 }
 table "workflow_draft" {
-  schema  = schema.opencoze
+  schema  = schema.agent_application
   comment = "Workflow canvas draft table, used to record the latest draft canvas information of workflow"
   column "id" {
     null     = false
@@ -4261,7 +4261,7 @@ table "workflow_draft" {
   }
 }
 table "workflow_execution" {
-  schema  = schema.opencoze
+  schema  = schema.agent_application
   comment = "Workflow Execution Record Table, used to record the status of each workflow execution"
   column "id" {
     null     = false
@@ -4424,7 +4424,7 @@ table "workflow_execution" {
   }
 }
 table "workflow_meta" {
-  schema  = schema.opencoze
+  schema  = schema.agent_application
   comment = "The workflow metadata table,used to record the basic metadata of workflow"
   column "id" {
     null     = false
@@ -4552,7 +4552,7 @@ table "workflow_meta" {
   }
 }
 table "workflow_reference" {
-  schema  = schema.opencoze
+  schema  = schema.agent_application
   comment = "The workflow association table,used to record the direct mutual reference relationship between workflows"
   column "id" {
     null     = false
@@ -4616,7 +4616,7 @@ table "workflow_reference" {
   }
 }
 table "workflow_snapshot" {
-  schema  = schema.opencoze
+  schema  = schema.agent_application
   comment = "snapshot for executed workflow draft"
   column "workflow_id" {
     null     = false
@@ -4666,7 +4666,7 @@ table "workflow_snapshot" {
   }
 }
 table "workflow_version" {
-  schema  = schema.opencoze
+  schema  = schema.agent_application
   comment = "Workflow Canvas Version Information Table, used to record canvas information for different versions"
   column "id" {
     null           = false
@@ -4739,7 +4739,7 @@ table "workflow_version" {
     columns = [column.workflow_id, column.version]
   }
 }
-schema "opencoze" {
+schema "agent_application" {
   charset = "utf8mb4"
   collate = "utf8mb4_unicode_ci"
 }

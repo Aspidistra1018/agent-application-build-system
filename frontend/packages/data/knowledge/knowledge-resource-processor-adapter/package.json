@@ -1,16 +1,11 @@
 {
   "name": "@coze-data/knowledge-resource-processor-adapter",
   "version": "0.0.1",
-  "description": "knowledge resource processor adapter",
-  "license": "Apache-2.0",
-  "author": "haozhenfei@bytedance.com",
-  "maintainers": [],
   "main": "src/index.tsx",
   "scripts": {
     "build": "exit 0",
     "lint": "eslint ./ --cache",
-    "test": "vitest --run --passWithNoTests",
-    "test:cov": "npm run test -- --coverage"
+    "test": "vitest --run --passWithNoTests"
   },
   "dependencies": {
     "@coze-data/knowledge-resource-processor-base": "workspace:*",
@@ -43,4 +38,3 @@
     "react-dom": ">=18.2.0"
   }
 }
-

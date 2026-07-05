@@ -4341,7 +4341,7 @@
   "chooseImageError": "Upload failed.",
   "clear_result": "Clear result",
   "click_button_to_create_mockset": "Click button to create a mockset",
-  "click_links_for_authorization": "模型所有者需点击链接开通并授权火山引擎（字节跳动旗下云服务）云服务：",
+  "click_links_for_authorization": "模型所有者需点击链接开通并授权云服务：",
   "click_upload_or_drag_files": "Click to upload or drag files here",
   "client_id_name": "Client ID",
   "client_id_tips": "Client ID is a public identifier for apps.",

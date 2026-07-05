@@ -1,16 +1,11 @@
 {
   "name": "@coze-devops/mockset-manage",
   "version": "0.0.1",
-  "description": "plugin mockset management",
-  "license": "Apache-2.0",
-  "author": "linyueqiang@bytedance.com",
-  "maintainers": [],
   "main": "src/index.tsx",
   "scripts": {
     "build": "exit 0",
     "lint": "eslint ./ --cache",
-    "test": "vitest --run --passWithNoTests",
-    "test:cov": "npm run test -- --coverage"
+    "test": "vitest --run --passWithNoTests"
   },
   "devDependencies": {
     "@coze-arch/bot-api": "workspace:*",
@@ -71,4 +66,3 @@
   },
   "// deps": "debug@^4.3.4 为脚本自动补齐，请勿改动"
 }
-

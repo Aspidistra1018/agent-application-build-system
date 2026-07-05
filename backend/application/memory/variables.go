@@ -1,19 +1,3 @@
-/*
- * Copyright 2025 coze-dev Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *     http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-
 package memory
 
 import (
@@ -65,7 +49,7 @@ var i18nLocal2GroupVariableInfo = map[i18n.Locale]map[project_memory.VariableCha
 var channel2GroupVariableInfo = map[project_memory.VariableChannel]project_memory.GroupVariableInfo{
 	project_memory.VariableChannel_APP: {
 		GroupName:    "应用变量",
-		GroupDesc:    "用于配置应用中多处开发场景需要访问的数据，每次新请求均会初始化为默认值。",
+		GroupDesc:    "用于配置应用中多处开发场景需要访问的数据，每次新请求均会初始化为默认值�?,
 		GroupExtDesc: "",
 		IsReadOnly:   false,
 		SubGroupList: []*project_memory.GroupVariableInfo{},
@@ -73,7 +57,7 @@ var channel2GroupVariableInfo = map[project_memory.VariableChannel]project_memor
 	},
 	project_memory.VariableChannel_Custom: {
 		GroupName:    "用户变量",
-		GroupDesc:    "用于存储每个用户使用项目过程中，需要持久化存储和读取的数据，如用户的语言偏好、个性化设置等。",
+		GroupDesc:    "用于存储每个用户使用项目过程中，需要持久化存储和读取的数据，如用户的语言偏好、个性化设置等�?,
 		GroupExtDesc: "",
 		IsReadOnly:   false,
 		SubGroupList: []*project_memory.GroupVariableInfo{},
@@ -81,7 +65,7 @@ var channel2GroupVariableInfo = map[project_memory.VariableChannel]project_memor
 	},
 	project_memory.VariableChannel_System: {
 		GroupName:    "系统变量",
-		GroupDesc:    "可选择开启你需要获取的，系统在用户在请求自动产生的数据，仅可读不可修改。如用于通过ID识别用户或处理某些渠道特有的功能。",
+		GroupDesc:    "可选择开启你需要获取的，系统在用户在请求自动产生的数据，仅可读不可修改。如用于通过ID识别用户或处理某些渠道特有的功能�?,
 		GroupExtDesc: "",
 		IsReadOnly:   true,
 		SubGroupList: []*project_memory.GroupVariableInfo{},

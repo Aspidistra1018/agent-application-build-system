@@ -2,7 +2,6 @@
   "name": "rush-commitlint",
   "version": "1.0.0",
   "private": true,
-  "author": "fanwenjie.fe@bytedance.com",
   "config": {
     "commitizen": {
       "path": "common/autoinstallers/rush-commitlint/node_modules/cz-customizable"
@@ -19,4 +18,3 @@
     "@types/node": "^18.11.9"
   }
 }
-

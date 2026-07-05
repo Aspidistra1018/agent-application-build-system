@@ -2,14 +2,11 @@
   "name": "@coze-arch/idl2ts-runtime",
   "version": "0.1.0",
   "homepage": "",
-  "license": "Apache-2.0",
-  "author": "zhaorujun@bytedance.com",
   "main": "src/index.ts",
   "scripts": {
     "build": "exit 0",
     "lint": "eslint ./ --cache",
-    "test": "vitest --run --passWithNoTests",
-    "test:cov": "npm run test -- --coverage"
+    "test": "vitest --run --passWithNoTests"
   },
   "devDependencies": {
     "@coze-arch/eslint-config": "workspace:*",
@@ -25,4 +22,3 @@
     "qs": "^6.11.2"
   }
 }
-

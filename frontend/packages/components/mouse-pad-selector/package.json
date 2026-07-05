@@ -1,17 +1,12 @@
 {
   "name": "@coze-common/mouse-pad-selector",
   "version": "0.0.1",
-  "description": "通用的画布模式切换组件，支持画布模式切换成鼠标或者触摸板模式",
-  "license": "Apache-2.0",
-  "author": "zengxiaohui@bytedance.com",
-  "maintainers": [],
   "main": "src/index.tsx",
   "scripts": {
     "build": "exit 0",
     "dev": "storybook dev -p 6006",
     "lint": "eslint ./ --cache",
-    "test": "vitest --run --passWithNoTests",
-    "test:cov": "npm run test -- --coverage"
+    "test": "vitest --run --passWithNoTests"
   },
   "dependencies": {
     "@coze-arch/bot-semi": "workspace:*",
@@ -49,4 +44,3 @@
     "vitest": "~3.0.5"
   }
 }
-

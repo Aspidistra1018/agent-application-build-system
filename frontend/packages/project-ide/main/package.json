@@ -1,7 +1,6 @@
 {
   "name": "@coze-project-ide/main",
   "version": "0.0.1",
-  "author": "jiangxujin@bytedance.com",
   "main": "./src/index.tsx",
   "scripts": {
     "build": "exit 0",
@@ -71,4 +70,3 @@
     "webpack": "~5.91.0"
   }
 }
-

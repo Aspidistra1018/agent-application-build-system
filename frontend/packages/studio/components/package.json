@@ -1,10 +1,6 @@
 {
   "name": "@coze-studio/components",
   "version": "0.0.1",
-  "description": "biz components extract from apps/bot/src/components",
-  "license": "Apache-2.0",
-  "author": "fanwenjie.fe@bytedance.com",
-  "maintainers": [],
   "exports": {
     ".": "./src/index.ts",
     "./coze-brand": "./src/coze-brand/index.tsx",
@@ -64,8 +60,7 @@
   "scripts": {
     "build": "exit 0",
     "lint": "eslint ./ --cache",
-    "test": "vitest --run --passWithNoTests",
-    "test:cov": "exit 0"
+    "test": "vitest --run --passWithNoTests"
   },
   "dependencies": {
     "@blueprintjs/core": "^5.1.5",
@@ -138,4 +133,3 @@
   },
   "// deps": "immer@^10.0.3 为脚本自动补齐，请勿改动"
 }
-

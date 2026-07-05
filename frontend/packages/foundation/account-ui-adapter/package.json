@@ -1,10 +1,6 @@
 {
   "name": "@coze-foundation/account-ui-adapter",
   "version": "0.0.1",
-  "description": "账号登录 UI 组件",
-  "license": "Apache-2.0",
-  "author": "duwenhan@bytedance.com",
-  "maintainers": [],
   "exports": {
     ".": "./src/index.ts",
     "./login-page": "./src/pages/login-page/index.tsx"
@@ -23,8 +19,7 @@
   "scripts": {
     "build": "exit 0",
     "lint": "eslint ./ --cache",
-    "test": "vitest --run --passWithNoTests",
-    "test:cov": "npm run test -- --coverage"
+    "test": "vitest --run --passWithNoTests"
   },
   "dependencies": {
     "@coze-arch/bot-semi": "workspace:*",
@@ -61,4 +56,3 @@
     "react-dom": ">=18.2.0"
   }
 }
-

@@ -2,18 +2,13 @@
   "name": "{{ packageName }}",
   "version": "0.0.1",
   "private": true,
-  "description": "{{ description }}",
   "keywords": [],
-  "license": "Apache-2.0",
-  "author": "{{ authorName }}",
-  "maintainers": [],
   "sideEffects": false,
   "scripts": {
     "build": "NODE_ENV=production rspack build",
     "dev": "NODE_ENV=development rspack serve",
     "lint": "eslint ./ --cache --quiet",
-    "test": "vitest --run --passWithNoTests",
-    "test:cov": "npm run test -- --coverage"
+    "test": "vitest --run --passWithNoTests"
   },
   "dependencies": {
     "@coze-arch/bot-api": "workspace:*",
@@ -55,4 +50,3 @@
     "vitest": "~3.0.5"
   }
 }
-

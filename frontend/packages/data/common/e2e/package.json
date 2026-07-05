@@ -1,10 +1,6 @@
 {
   "name": "@coze-data/e2e",
   "version": "0.0.1",
-  "description": "e2e打标",
-  "license": "Apache-2.0",
-  "author": "wangyan.yoki@bytedance.com",
-  "maintainers": [],
   "main": "src/index.ts",
   "scripts": {
     "build": "exit 0",
@@ -18,4 +14,3 @@
     "stylelint": "^15.11.0"
   }
 }
-

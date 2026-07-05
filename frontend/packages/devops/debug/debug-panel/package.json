@@ -1,17 +1,12 @@
 {
   "name": "@coze-devops/debug-panel",
   "version": "0.0.1",
-  "description": "coze debug panel",
-  "license": "Apache-2.0",
-  "author": "lukexian.bryce@bytedance.com",
-  "maintainers": [],
   "main": "src/index.ts",
   "typings": "src/index.ts",
   "scripts": {
     "build": "exit 0",
     "lint": "eslint ./ --cache",
-    "test": "vitest --run --passWithNoTests",
-    "test:cov": "npm run test -- --coverage"
+    "test": "vitest --run --passWithNoTests"
   },
   "dependencies": {
     "@coze-devops/json-link-preview": "workspace:*",
@@ -73,4 +68,3 @@
     "zustand": "^4.4.7"
   }
 }
-

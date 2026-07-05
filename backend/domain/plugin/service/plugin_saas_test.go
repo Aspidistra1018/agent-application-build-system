@@ -1,19 +1,3 @@
-/*
- * Copyright 2025 coze-dev Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *     http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-
 package service
 
 import (
@@ -68,7 +52,7 @@ func TestSearchSaasPluginResponse_JSONUnmarshal(t *testing.T) {
 						"heat": 0,
 						"avg_exec_duration_ms": 114.61111,
 						"call_count": 20,
-						"description": "当你需要获取某些分类的时候，就调用",
+						"description": "当你需要获取某些分类的时候，就调�?,
 						"total_tools_count": 2,
 						"bots_use_count": 7,
 						"associated_bots_use_count": 0,
@@ -272,7 +256,7 @@ func TestJsonSchemaTypeUnmarshaling(t *testing.T) {
 		"plugins": [{
 			"tools": [{
 				"tool_id": "7379227817307029513",
-				"description": "当你需要获取网页、pdf、doc、docx、xlsx、csv、text 内容时，使用此工具",
+				"description": "当你需要获取网页、pdf、doc、docx、xlsx、csv、text 内容时，使用此工�?,
 				"name": "LinkReaderPlugin",
 				"inputSchema": {
 					"required": ["url"],
@@ -282,7 +266,7 @@ func TestJsonSchemaTypeUnmarshaling(t *testing.T) {
 							"type": "boolean"
 						},
 						"url": {
-							"description": "网页url、pdf url、docx url、csv url、 xlsx url。",
+							"description": "网页url、pdf url、docx url、csv url�?xlsx url�?,
 							"type": "string"
 						}
 					},
@@ -341,7 +325,7 @@ func TestJsonSchemaTypeUnmarshaling(t *testing.T) {
 	urlProp := tool.InputSchema.Properties["url"]
 	assert.NotNil(t, urlProp)
 	assert.Equal(t, domainDto.JsonSchemaType_STRING, urlProp.Type)
-	assert.Equal(t, "网页url、pdf url、docx url、csv url、 xlsx url。", urlProp.Description)
+	assert.Equal(t, "网页url、pdf url、docx url、csv url�?xlsx url�?, urlProp.Description)
 
 	needImageProp := tool.InputSchema.Properties["need_image_url"]
 	assert.NotNil(t, needImageProp)
@@ -413,7 +397,7 @@ func TestBatchGetSaasPluginToolsInfoIntegration(t *testing.T) {
 		"plugins": [{
 			"tools": [{
 				"tool_id": "7379227817307029513",
-				"description": "当你需要获取网页、pdf、doc、docx、xlsx、csv、text 内容时，使用此工具，可以获取url链接下的标题和内容。由于个别网站自身站点限制，无法获取网页内容。",
+				"description": "当你需要获取网页、pdf、doc、docx、xlsx、csv、text 内容时，使用此工具，可以获取url链接下的标题和内容。由于个别网站自身站点限制，无法获取网页内容�?,
 				"name": "LinkReaderPlugin",
 				"inputSchema": {
 					"required": ["url"],
@@ -423,7 +407,7 @@ func TestBatchGetSaasPluginToolsInfoIntegration(t *testing.T) {
 							"type": "boolean"
 						},
 						"url": {
-							"description": "网页url、pdf url、docx url、csv url、 xlsx url。",
+							"description": "网页url、pdf url、docx url、csv url�?xlsx url�?,
 							"type": "string"
 						}
 					},
@@ -456,7 +440,7 @@ func TestBatchGetSaasPluginToolsInfoIntegration(t *testing.T) {
 							"type": "string"
 						},
 						"error_code": {
-							"description": "错误码",
+							"description": "错误�?,
 							"type": "string"
 						},
 						"error_msg": {
@@ -468,11 +452,11 @@ func TestBatchGetSaasPluginToolsInfoIntegration(t *testing.T) {
 							"type": "string"
 						},
 						"pdf_content": {
-							"description": "pdf的内容",
+							"description": "pdf的内�?,
 							"type": "string"
 						},
 						"code": {
-							"description": "错误码",
+							"description": "错误�?,
 							"type": "integer"
 						}
 					},
@@ -529,7 +513,7 @@ func TestBatchGetSaasPluginToolsInfoIntegration(t *testing.T) {
 	assert.True(t, urlParam.IsRequired)
 	assert.Equal(t, pluginCommon.ParameterType_String, urlParam.Type)
 	assert.Equal(t, pluginCommon.ParameterLocation_Body, urlParam.Location)
-	assert.Equal(t, "网页url、pdf url、docx url、csv url、 xlsx url。", urlParam.Desc)
+	assert.Equal(t, "网页url、pdf url、docx url、csv url�?xlsx url�?, urlParam.Desc)
 
 	// Check need_image_url parameter
 	imageParam := paramMap["need_image_url"]

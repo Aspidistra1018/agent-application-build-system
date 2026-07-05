@@ -1,15 +1,11 @@
 {
   "name": "@coze-arch/import-watch-loader",
   "version": "1.0.0",
-  "description": "",
-  "license": "Apache-2.0",
-  "author": "wangfocheng@bytedance.com",
   "main": "index.js",
   "scripts": {
     "build": "exit 0",
     "lint": "eslint ./",
-    "test": "vitest --run --passWithNoTests",
-    "test:cov": "npm run test -- --coverage"
+    "test": "vitest --run --passWithNoTests"
   },
   "devDependencies": {
     "@coze-arch/eslint-config": "workspace:*",
@@ -19,4 +15,3 @@
     "vitest": "~3.0.5"
   }
 }
-

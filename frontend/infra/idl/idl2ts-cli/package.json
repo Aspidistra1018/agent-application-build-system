@@ -1,18 +1,14 @@
 {
   "name": "@coze-arch/idl2ts-cli",
   "version": "0.1.7",
-  "description": "@coze-arch/idl2ts-cli",
   "homepage": "",
-  "license": "Apache-2.0",
-  "author": "fanwenjie.fe@bytedance.com",
   "bin": {
     "idl2ts": "./src/cli.js"
   },
   "scripts": {
     "build": "exit 0",
     "lint": "eslint ./ --cache",
-    "test": "vitest --run --passWithNoTests",
-    "test:cov": "npm run test -- --coverage"
+    "test": "vitest --run --passWithNoTests"
   },
   "dependencies": {
     "@babel/types": "^7.20.7",
@@ -36,4 +32,3 @@
     "vitest": "~3.0.5"
   }
 }
-

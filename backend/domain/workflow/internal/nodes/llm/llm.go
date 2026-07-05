@@ -1,19 +1,3 @@
-/*
- * Copyright 2025 coze-dev Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *     http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-
 package llm
 
 import (
@@ -98,12 +82,12 @@ const (
 	ReasoningOutputKey = "reasoning_content"
 )
 
-const knowledgeUserPromptTemplate = `根据引用的内容回答问题:
- 1.如果引用的内容里面包含 <img src=""> 的标签, 标签里的 src 字段表示图片地址, 需要在回答问题的时候展示出去, 输出格式为"![图片名称](图片地址)" 。
- 2.如果引用的内容不包含 <img src=""> 的标签, 你回答问题时不需要展示图片 。
-例如：
-  如果内容为<img src="https://example.com/image.jpg">一只小猫，你的输出应为：![一只小猫](https://example.com/image.jpg)。
-  如果内容为<img src="https://example.com/image1.jpg">一只小猫 和 <img src="https://example.com/image2.jpg">一只小狗 和 <img src="https://example.com/image3.jpg">一只小牛，你的输出应为：![一只小猫](https://example.com/image1.jpg) 和 ![一只小狗](https://example.com/image2.jpg) 和 ![一只小牛](https://example.com/image3.jpg)
+const knowledgeUserPromptTemplate = `根据引用的内容回答问�?
+ 1.如果引用的内容里面包�?<img src=""> 的标�? 标签里的 src 字段表示图片地址, 需要在回答问题的时候展示出�? 输出格式�?![图片名称](图片地址)" �?
+ 2.如果引用的内容不包含 <img src=""> 的标�? 你回答问题时不需要展示图�?�?
+例如�?
+  如果内容�?img src="https://example.com/image.jpg">一只小猫，你的输出应为�?[一只小猫](https://example.com/image.jpg)�?
+  如果内容�?img src="https://example.com/image1.jpg">一只小�?�?<img src="https://example.com/image2.jpg">一只小�?�?<img src="https://example.com/image3.jpg">一只小牛，你的输出应为�?[一只小猫](https://example.com/image1.jpg) �?![一只小狗](https://example.com/image2.jpg) �?![一只小牛](https://example.com/image3.jpg)
 you can refer to the following content and do relevant searches to improve:
 ---
 %s
@@ -114,28 +98,28 @@ question is:
 
 const knowledgeIntentPrompt = `
 # 角色:
-你是一个知识库意图识别AI Agent。
+你是一个知识库意图识别AI Agent�?
 ## 目标:
-- 按照「系统提示词」、用户需求、最新的聊天记录选择应该使用的知识库。
+- 按照「系统提示词」、用户需求、最新的聊天记录选择应该使用的知识库�?
 ## 工作流程:
-1. 分析「系统提示词」以确定用户的具体需求。
-2. 如果「系统提示词」明确指明了要使用的知识库，则直接返回这些知识库，只输出它们的knowledge_id，不需要再判断用户的输入
-3. 检查每个知识库的knowledge_name和knowledge_description，以了解它们各自的功能。
-4. 根据用户需求，选择最符合的知识库。
-5. 如果找到一个或多个合适的知识库，输出它们的knowledge_id。如果没有合适的知识库，输出0。
+1. 分析「系统提示词」以确定用户的具体需求�?
+2. 如果「系统提示词」明确指明了要使用的知识库，则直接返回这些知识库，只输出它们的knowledge_id，不需要再判断用户的输�?
+3. 检查每个知识库的knowledge_name和knowledge_description，以了解它们各自的功能�?
+4. 根据用户需求，选择最符合的知识库�?
+5. 如果找到一个或多个合适的知识库，输出它们的knowledge_id。如果没有合适的知识库，输出0�?
 ## 约束:
-- 严格按照「系统提示词」和用户的需求选择知识库。「系统提示词」的优先级大于用户的需求
-- 如果有多个合适的知识库，将它们的knowledge_id用英文逗号连接后输出。
-- 输出必须仅为knowledge_id或0，不得包括任何其他内容或解释，不要在id后面输出知识库名称。
+- 严格按照「系统提示词」和用户的需求选择知识库。「系统提示词」的优先级大于用户的需�?
+- 如果有多个合适的知识库，将它们的knowledge_id用英文逗号连接后输出�?
+- 输出必须仅为knowledge_id�?，不得包括任何其他内容或解释，不要在id后面输出知识库名称�?
 
 ## 输出示例
 123,456
 
 ## 输出格式:
-输出应该是一个纯数字或者由英文逗号连接的数字序列，具体取决于选择的知识库数量。不应包含任何其他文本或格式。
-## 知识库列表如下
+输出应该是一个纯数字或者由英文逗号连接的数字序列，具体取决于选择的知识库数量。不应包含任何其他文本或格式�?
+## 知识库列表如�?
 %s
-## 「系统提示词」如下
+## 「系统提示词」如�?
 %s
 `
 

@@ -1,10 +1,6 @@
 {
   "name": "@coze-agent-ide/bot-plugin",
   "version": "0.0.1",
-  "description": "空间下 plugin 能力",
-  "license": "Apache-2.0",
-  "author": "lihuiwen.123@bytedance.com",
-  "maintainers": [],
   "exports": {
     ".": "./src/index.tsx",
     "./page": "./src/pages/index.ts",
@@ -44,8 +40,7 @@
   "scripts": {
     "build": "exit 0",
     "lint": "eslint ./ --cache",
-    "test": "vitest --run --passWithNoTests",
-    "test:cov": "npm run test -- --coverage"
+    "test": "vitest --run --passWithNoTests"
   },
   "dependencies": {
     "@blueprintjs/core": "^5.1.5",
@@ -141,4 +136,3 @@
   },
   "// deps": "debug@^4.3.4 为脚本自动补齐，请勿改动"
 }
-

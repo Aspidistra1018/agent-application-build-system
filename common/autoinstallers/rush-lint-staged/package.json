@@ -2,7 +2,6 @@
   "name": "rush-lint-staged",
   "version": "1.0.0",
   "private": true,
-  "author": "fanwenjie.fe@bytedance.com",
   "resolutions": {},
   "dependencies": {
     "@microsoft/rush-lib": "5.147.1",

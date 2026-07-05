@@ -1,19 +1,3 @@
-/*
- * Copyright 2025 coze-dev Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *     http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-
 package dto
 
 import (
@@ -129,7 +113,7 @@ type CopyPluginResponse struct {
 	Tools  map[int64]*entity.ToolInfo // old tool id -> new tool
 }
 
-// DefaultParamSource 表示默认参数的设置来源
+// DefaultParamSource 表示默认参数的设置来�?
 type DefaultParamSource int32
 
 const (
@@ -162,7 +146,7 @@ type Parameter struct {
 	SubType            string               `json:"subType,omitempty"`    // 如果Type是数组，则有subtype
 	FromNodeId         *string              `json:"fromNodeId,omitempty"` // 如果入参的值是引用的则有fromNodeId
 	FromOutput         []string             `json:"fromOutput,omitempty"` // 具体引用哪个节点的key
-	Value              *string              `json:"value,omitempty"`      // 如果入参是用户手输 就放这里
+	Value              *string              `json:"value,omitempty"`      // 如果入参是用户手�?就放这里
 	Format             *string              `json:"format,omitempty"`
 	Title              *string              `json:"title,omitempty"`
 	EnumList           []string             `json:"enumList,omitempty"`
@@ -172,7 +156,7 @@ type Parameter struct {
 	ExclusiveMinimum   *bool                `json:"exclusiveMinimum,omitempty"`
 	ExclusiveMaximum   *bool                `json:"exclusiveMaximum,omitempty"`
 	BizExtend          *string              `json:"bizExtend,omitempty"`
-	DefaultParamSource *DefaultParamSource  `json:"defaultParamSource,omitempty"` // 默认入参的设置来源
+	DefaultParamSource *DefaultParamSource  `json:"defaultParamSource,omitempty"` // 默认入参的设置来�?
 	VariableRef        *string              `json:"variableRef,omitempty"`        // 引用variable的key
 	AssistType         *AssistParameterType `json:"assistType,omitempty"`
 }

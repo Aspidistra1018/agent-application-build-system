@@ -1,10 +1,6 @@
 {
   "name": "@coze-arch/bot-semi",
   "version": "0.0.1",
-  "description": "Wrapper components for semi",
-  "license": "Apache-2.0",
-  "author": "liukaizhan@bytedance.com",
-  "maintainers": [],
   "exports": {
     ".": "./src/index.ts",
     "./Anchor": "./src/semi/anchor.ts",
@@ -279,8 +275,7 @@
   "scripts": {
     "build": "exit 0",
     "lint": "eslint ./ --cache",
-    "test": "vitest --run --passWithNoTests",
-    "test:cov": "npm run test --coverage"
+    "test": "vitest --run --passWithNoTests"
   },
   "dependencies": {
     "@coze-arch/bot-icons": "workspace:*",
@@ -320,4 +315,3 @@
     "webpack": "~5.91.0"
   }
 }
-

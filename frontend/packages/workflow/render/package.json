@@ -1,7 +1,6 @@
 {
   "name": "@coze-workflow/render",
   "version": "0.1.0",
-  "author": "wencheng.lwc@bytedance.com",
   "sideEffects": [
     "**/*.css",
     "**/*.less",
@@ -52,4 +51,3 @@
     "webpack": "~5.91.0"
   }
 }
-

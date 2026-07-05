@@ -1,19 +1,3 @@
-/*
- * Copyright 2025 coze-dev Authors
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *     http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-
 package entity
 
 type DocumentStatus int64
@@ -32,17 +16,17 @@ const (
 func (s DocumentStatus) String() string {
 	switch s {
 	case DocumentStatusInit:
-		return "初始化"
+		return "初始�?
 	case DocumentStatusUploading:
-		return "上传中"
+		return "上传�?
 	case DocumentStatusEnable:
 		return "生效"
 	case DocumentStatusDisable:
 		return "失效"
 	case DocumentStatusDeleted:
-		return "已删除"
+		return "已删�?
 	case DocumentStatusChunking:
-		return "切片中"
+		return "切片�?
 	// case DocumentStatusRefreshing:
 	//	Returns "Refreshing"
 	case DocumentStatusFailed:

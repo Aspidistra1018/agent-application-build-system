@@ -1,10 +1,6 @@
 {
   "name": "@coze-common/chat-area",
   "version": "0.0.1",
-  "description": "The abstraction of the Chat",
-  "license": "Apache-2.0",
-  "author": "gaoyuanhan.duty@bytedance.com",
-  "maintainers": [],
   "exports": {
     ".": "./src/index.tsx",
     "./hooks/*": "./src/hooks/*",
@@ -37,8 +33,7 @@
     "build": "exit 0",
     "lint": "eslint ./ --cache",
     "lint:type": "tsc -p tsconfig.json --noEmit",
-    "test": "vitest --run --passWithNoTests",
-    "test:cov": "npm run test -- --coverage"
+    "test": "vitest --run --passWithNoTests"
   },
   "dependencies": {
     "@coze-arch/bot-flags": "workspace:*",
@@ -129,4 +124,3 @@
     "zustand": "^4.4.7"
   }
 }
-

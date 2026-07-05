@@ -1,15 +1,12 @@
 {
   "name": "@coze-arch/postcss-config",
   "version": "0.0.1",
-  "author": "huangjian@bytedance.com",
-  "maintainers": [],
   "main": "src/index.js",
   "scripts": {
     "build": "exit",
     "dev": "npm run build -- -w",
     "lint": "eslint ./ --cache --quiet",
-    "test": "exit",
-    "test:cov": "exit"
+    "test": "exit"
   },
   "dependencies": {
     "@csstools/postcss-is-pseudo-class": "^4.0.5",
@@ -25,4 +22,3 @@
     "@types/node": "^18"
   }
 }
-

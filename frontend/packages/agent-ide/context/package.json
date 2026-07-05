@@ -1,16 +1,11 @@
 {
   "name": "@coze-agent-ide/bot-creator-context",
   "version": "0.0.1",
-  "description": "Context for bot creator",
-  "license": "Apache-2.0",
-  "author": "sunzhiyuan.evan@bytedance.com",
-  "maintainers": [],
   "main": "src/index.tsx",
   "scripts": {
     "build": "exit 0",
     "lint": "eslint ./ --cache",
-    "test": "vitest --run --passWithNoTests",
-    "test:cov": "npm run test -- --coverage"
+    "test": "vitest --run --passWithNoTests"
   },
   "dependencies": {
     "classnames": "^2.3.2"
@@ -38,4 +33,3 @@
     "react-dom": ">=18.2.0"
   }
 }
-

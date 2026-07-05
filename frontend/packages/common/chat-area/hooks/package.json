@@ -1,17 +1,12 @@
 {
   "name": "@coze-common/chat-hooks",
   "version": "0.0.1",
-  "description": "Simple pure helpful hooks.",
-  "license": "Apache-2.0",
-  "author": "wanglitong@bytedance.com",
-  "maintainers": [],
   "main": "src/index.ts",
   "scripts": {
     "build": "exit 0",
     "lint": "eslint ./ --cache",
     "lint:type": "tsc -p tsconfig.json --noEmit",
-    "test": "vitest --run --passWithNoTests",
-    "test:cov": "npm run test -- --coverage"
+    "test": "vitest --run --passWithNoTests"
   },
   "devDependencies": {
     "@coze-arch/bot-typings": "workspace:*",
@@ -38,4 +33,3 @@
     "react-dom": ">=18.2.0"
   }
 }
-

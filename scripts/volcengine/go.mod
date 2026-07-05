@@ -1,4 +1,4 @@
-module github.com/coze-dev/coze-studio/scripts/volcengine
+module github.com/agent-application/scripts/volcengine
 
 go 1.24.1
 
